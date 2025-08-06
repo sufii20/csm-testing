@@ -3,15 +3,27 @@ import { ChevronDown } from 'lucide-react';
 import logo from '../assets/Logo-main.svg'; // Ensure the path is correct
 import starIcon from '../assets/icon.svg'; // Import the star icon
 
-const Navbar = () => {
+const Navbar = ({ onPageChange, currentPage }) => {
   const [isBrandsOpen, setIsBrandsOpen] = useState(false);
 
   const brands = [
-    'ZEEKR', 
-    'RIDDARA',
-    'FORTHING',
-    'JMEV',
+    { name: 'ZEEKR', page: 'zeekr' }, 
+    { name: 'RIDDARA', page: 'riddara' },
+    { name: 'FORTHING', page: 'forthing' },
+    { name: 'JMEV', page: 'jmev' },
   ];
+
+  const handleNavigation = (page, event) => {
+    event.preventDefault();
+    onPageChange(page);
+    setIsBrandsOpen(false); // Close dropdown when navigating
+  };
+
+  const handleBrandClick = (brandPage, event) => {
+    event.preventDefault();
+    onPageChange(brandPage);
+    setIsBrandsOpen(false);
+  };
 
   return (
     <header className="w-full bg-white border-b border-gray-200">
@@ -34,14 +46,24 @@ const Navbar = () => {
           <nav className="hidden lg:flex items-center space-x-8 xl:space-x-12">
             <a 
               href="#" 
-              className="text-gray-600 hover:text-black text-sm font-medium uppercase tracking-wide transition-colors"
+              onClick={(e) => handleNavigation('home', e)}
+              className={`text-sm font-medium uppercase tracking-wide transition-colors ${
+                currentPage === 'home' 
+                  ? 'text-black border-b-2 border-black pb-1' 
+                  : 'text-gray-600 hover:text-black'
+              }`}
             >
               HOME
             </a>
             
             <a 
               href="#" 
-              className="text-gray-600 hover:text-black text-sm font-medium uppercase tracking-wide transition-colors"
+              onClick={(e) => handleNavigation('about', e)}
+              className={`text-sm font-medium uppercase tracking-wide transition-colors ${
+                currentPage === 'about' 
+                  ? 'text-black border-b-2 border-black pb-1' 
+                  : 'text-gray-600 hover:text-black'
+              }`}
             >
               ABOUT US
             </a>
@@ -50,7 +72,11 @@ const Navbar = () => {
             <div className="relative">
               <button
                 onClick={() => setIsBrandsOpen(!isBrandsOpen)}
-                className="flex items-center text-black text-sm font-medium uppercase tracking-wide border-b-2 border-black pb-1"
+                className={`flex items-center text-sm font-medium uppercase tracking-wide transition-colors ${
+                  ['zeekr', 'riddara', 'forthing', 'jmev'].includes(currentPage)
+                    ? 'text-black border-b-2 border-black pb-1'
+                    : 'text-gray-600 hover:text-black'
+                }`}
               >
                 BRANDS
                 <ChevronDown className="ml-1 h-4 w-4" />
@@ -71,10 +97,14 @@ const Navbar = () => {
                         <a
                           key={index}
                           href="#"
-                          className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-black transition-colors"
-                          onClick={() => setIsBrandsOpen(false)}
+                          onClick={(e) => handleBrandClick(brand.page, e)}
+                          className={`block px-4 py-2 text-sm transition-colors ${
+                            currentPage === brand.page
+                              ? 'bg-gray-100 text-black font-medium'
+                              : 'text-gray-700 hover:bg-gray-50 hover:text-black'
+                          }`}
                         >
-                          {brand}
+                          {brand.name}
                         </a>
                       ))}
                     </div>
@@ -85,21 +115,36 @@ const Navbar = () => {
             
             <a 
               href="#" 
-              className="text-gray-600 hover:text-black text-sm font-medium uppercase tracking-wide transition-colors"
+              onClick={(e) => handleNavigation('news', e)}
+              className={`text-sm font-medium uppercase tracking-wide transition-colors ${
+                currentPage === 'news' 
+                  ? 'text-black border-b-2 border-black pb-1' 
+                  : 'text-gray-600 hover:text-black'
+              }`}
             >
               NEWS & INSIGHTS
             </a>
             
             <a 
               href="#" 
-              className="text-gray-600 hover:text-black text-sm font-medium uppercase tracking-wide transition-colors"
+              onClick={(e) => handleNavigation('locations', e)}
+              className={`text-sm font-medium uppercase tracking-wide transition-colors ${
+                currentPage === 'locations' 
+                  ? 'text-black border-b-2 border-black pb-1' 
+                  : 'text-gray-600 hover:text-black'
+              }`}
             >
               LOCATIONS
             </a>
             
             <a 
               href="#" 
-              className="text-gray-600 hover:text-black text-sm font-medium uppercase tracking-wide transition-colors"
+              onClick={(e) => handleNavigation('contact', e)}
+              className={`text-sm font-medium uppercase tracking-wide transition-colors ${
+                currentPage === 'contact' 
+                  ? 'text-black border-b-2 border-black pb-1' 
+                  : 'text-gray-600 hover:text-black'
+              }`}
             >
               CONTACT US
             </a>
