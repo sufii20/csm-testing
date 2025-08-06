@@ -1,25 +1,30 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { ChevronDown } from 'lucide-react';
 import logo from '../assets/Logo-main.svg'; // Ensure the path is correct
 import starIcon from '../assets/icon.svg'; // Import the star icon
 
-const Navbar = ({ onPageChange, currentPage }) => {
+interface NavbarProps {
+  onPageChange: (pageName: string) => void;
+  currentPage: string;
+}
+
+const Navbar: React.FC<NavbarProps> = ({ onPageChange, currentPage }) => {
   const [isBrandsOpen, setIsBrandsOpen] = useState(false);
 
   const brands = [
-    { name: 'ZEEKR', page: 'zeekr' }, 
+    { name: 'ZEEKR', page: 'zeekr' },
     { name: 'RIDDARA', page: 'riddara' },
     { name: 'FORTHING', page: 'forthing' },
     { name: 'JMEV', page: 'jmev' },
   ];
 
-  const handleNavigation = (page, event) => {
+  const handleNavigation = (page: string, event: React.MouseEvent<HTMLAnchorElement>) => {
     event.preventDefault();
     onPageChange(page);
     setIsBrandsOpen(false); // Close dropdown when navigating
   };
 
-  const handleBrandClick = (brandPage, event) => {
+  const handleBrandClick = (brandPage: string, event: React.MouseEvent<HTMLAnchorElement>) => {
     event.preventDefault();
     onPageChange(brandPage);
     setIsBrandsOpen(false);
@@ -29,67 +34,64 @@ const Navbar = ({ onPageChange, currentPage }) => {
     <header className="w-full bg-white border-b border-gray-200">
       <div className="w-full px-6 lg:px-12">
         <div className="flex items-center justify-between h-20">
-          
+
           {/* Left Side - Logo */}
           <div className="flex items-center">
-            <img 
-              src={logo} 
-              alt="Capital Smart Motors Logo" 
+            <img
+              src={logo}
+              alt="Capital Smart Motors Logo"
               className="h-12 w-auto mr-4"
             />
             <div className="flex flex-col">
-          
+
             </div>
           </div>
 
           {/* Center - Navigation Menu */}
           <nav className="hidden lg:flex items-center space-x-8 xl:space-x-12">
-            <a 
-              href="#" 
+            <a
+              href="#"
               onClick={(e) => handleNavigation('home', e)}
-              className={`text-sm font-medium uppercase tracking-wide transition-colors ${
-                currentPage === 'home' 
-                  ? 'text-black border-b-2 border-black pb-1' 
-                  : 'text-gray-600 hover:text-black'
-              }`}
+              className={`text-sm font-medium uppercase tracking-wide transition-colors ${currentPage === 'home'
+                ? 'text-black border-b-2 border-black pb-1'
+                : 'text-gray-600 hover:text-black'
+                }`}
             >
               HOME
             </a>
-            
-            <a 
-              href="#" 
+
+            <a
+              href="#"
               onClick={(e) => handleNavigation('about', e)}
-              className={`text-sm font-medium uppercase tracking-wide transition-colors ${
-                currentPage === 'about' 
-                  ? 'text-black border-b-2 border-black pb-1' 
-                  : 'text-gray-600 hover:text-black'
-              }`}
+              className={`text-sm font-medium uppercase tracking-wide transition-colors ${currentPage === 'about'
+                ? 'text-black border-b-2 border-black pb-1'
+                : 'text-gray-600 hover:text-black'
+                }`}
             >
               ABOUT US
             </a>
-            
+
             {/* Brands Dropdown */}
             <div className="relative">
               <button
                 onClick={() => setIsBrandsOpen(!isBrandsOpen)}
-                className={`flex items-center text-sm font-medium uppercase tracking-wide transition-colors ${
-                  ['zeekr', 'riddara', 'forthing', 'jmev'].includes(currentPage)
-                    ? 'text-black border-b-2 border-black pb-1'
-                    : 'text-gray-600 hover:text-black'
-                }`}
+                className={`flex items-center text-sm font-medium uppercase tracking-wide transition-colors ${['zeekr', 'riddara', 'forthing', 'jmev'].includes(currentPage)
+                  ? 'text-black border-b-2 border-black pb-1'
+                  : 'text-gray-600 hover:text-black'
+                  }`}
               >
                 BRANDS
                 <ChevronDown className="ml-1 h-4 w-4" />
               </button>
-              
+
               {isBrandsOpen && (
                 <>
                   {/* Overlay */}
-                  <div 
+                  <div
                     className="fixed inset-0 z-40"
                     onClick={() => setIsBrandsOpen(false)}
                   />
-                  
+
                   {/* Dropdown Menu */}
                   <div className="absolute top-full left-0 mt-2 w-48 bg-white rounded-md shadow-lg border border-gray-200 z-50">
                     <div className="py-1">
@@ -98,11 +100,10 @@ const Navbar = ({ onPageChange, currentPage }) => {
                           key={index}
                           href="#"
                           onClick={(e) => handleBrandClick(brand.page, e)}
-                          className={`block px-4 py-2 text-sm transition-colors ${
-                            currentPage === brand.page
-                              ? 'bg-gray-100 text-black font-medium'
-                              : 'text-gray-700 hover:bg-gray-50 hover:text-black'
-                          }`}
+                          className={`block px-4 py-2 text-sm transition-colors ${currentPage === brand.page
+                            ? 'bg-gray-100 text-black font-medium'
+                            : 'text-gray-700 hover:bg-gray-50 hover:text-black'
+                            }`}
                         >
                           {brand.name}
                         </a>
@@ -112,39 +113,36 @@ const Navbar = ({ onPageChange, currentPage }) => {
                 </>
               )}
             </div>
-            
-            <a 
-              href="#" 
+
+            <a
+              href="#"
               onClick={(e) => handleNavigation('news', e)}
-              className={`text-sm font-medium uppercase tracking-wide transition-colors ${
-                currentPage === 'news' 
-                  ? 'text-black border-b-2 border-black pb-1' 
-                  : 'text-gray-600 hover:text-black'
-              }`}
+              className={`text-sm font-medium uppercase tracking-wide transition-colors ${currentPage === 'news'
+                ? 'text-black border-b-2 border-black pb-1'
+                : 'text-gray-600 hover:text-black'
+                }`}
             >
               NEWS & INSIGHTS
             </a>
-            
-            <a 
-              href="#" 
+
+            <a
+              href="#"
               onClick={(e) => handleNavigation('locations', e)}
-              className={`text-sm font-medium uppercase tracking-wide transition-colors ${
-                currentPage === 'locations' 
-                  ? 'text-black border-b-2 border-black pb-1' 
-                  : 'text-gray-600 hover:text-black'
-              }`}
+              className={`text-sm font-medium uppercase tracking-wide transition-colors ${currentPage === 'locations'
+                ? 'text-black border-b-2 border-black pb-1'
+                : 'text-gray-600 hover:text-black'
+                }`}
             >
               LOCATIONS
             </a>
-            
-            <a 
-              href="#" 
+
+            <a
+              href="#"
               onClick={(e) => handleNavigation('contact', e)}
-              className={`text-sm font-medium uppercase tracking-wide transition-colors ${
-                currentPage === 'contact' 
-                  ? 'text-black border-b-2 border-black pb-1' 
-                  : 'text-gray-600 hover:text-black'
-              }`}
+              className={`text-sm font-medium uppercase tracking-wide transition-colors ${currentPage === 'contact'
+                ? 'text-black border-b-2 border-black pb-1'
+                : 'text-gray-600 hover:text-black'
+                }`}
             >
               CONTACT US
             </a>
@@ -152,9 +150,9 @@ const Navbar = ({ onPageChange, currentPage }) => {
 
           {/* Right Side - Rating */}
           <div className="flex items-center">
-            <img 
-              src={starIcon} 
-              alt="Star" 
+            <img
+              src={starIcon}
+              alt="Star"
               className="w-8 h-8 text-gray-600 mr-3"
             />
             <span className="text-black font-bold text-lg">789,967</span>

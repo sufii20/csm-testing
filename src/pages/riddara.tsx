@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
-import RiddaraFullBanner from '../assets/RiddaraFullBanner.png';
+// import RiddaraFullBanner from '../assets/RiddaraFullBanner.png';
 import whiteCar from '../assets/car_white_top.webp';
 import blueCar from '../assets/car_blue.webp';
 import greyCar from '../assets/car_gray.webp';
@@ -175,7 +175,7 @@ export const RiddaraShowcase = () => {
   };
 
   // Helper function to create gradient style for two-tone colors
-  const getColorStyle = (index) => {
+  const getColorStyle = (index: number) => {
     const car = cars[index];
     if (car.color === 'Green with black top') {
       return {
@@ -192,7 +192,7 @@ export const RiddaraShowcase = () => {
     }
   };
 
-  const selectCar = (index) => {
+  const selectCar = (index: number) => {
     setCurrentCarIndex(index);
   };
 
