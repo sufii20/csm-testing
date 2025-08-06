@@ -1,6 +1,7 @@
 // App.js or your main component
-import { useState } from 'react';
-import Navbar from './pages/navBar'; // Adjust the import path as necessary
+import React, { useState } from 'react';
+import Navbar from './pages/navBar';
+import Footer from './pages/footer'; // Adjust the import path as necessary
 
 // Import page components
 import HomePage from './pages/homePage'; // You'll need to create this
@@ -14,14 +15,14 @@ function App() {
   const [currentPage, setCurrentPage] = useState('home');
 
   // Function to handle page changes
-  const handlePageChange = (pageName: string) => {
+  const handlePageChange = (pageName) => {
     setCurrentPage(pageName);
     console.log('Navigating to:', pageName); // Debug log
   };
 
   // Function to render the current page
   const renderCurrentPage = () => {
-    switch (currentPage) {
+    switch(currentPage) {
       case 'zeekr':
         return <ZeekrPage />;
       case 'riddara':
@@ -45,11 +46,12 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen flex flex-col">
       <Navbar onPageChange={handlePageChange} currentPage={currentPage} />
-      <main>
+      <main className="flex-grow">
         {renderCurrentPage()}
       </main>
+      <Footer />
     </div>
   );
 }

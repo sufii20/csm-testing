@@ -1,5 +1,5 @@
-import { useState, useEffect } from "react";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import React, { useState, useEffect } from "react";
+import { Star, ChevronLeft, ChevronRight } from "lucide-react";
 
 // Hero banners
 import ZeekrBanner from "../assets/HeroBanner/ZeekrBanner.png";
@@ -15,7 +15,7 @@ import image4 from "../assets/CardSliderImg/image4.png";
 
 // Other assets
 import RiddaraVideo from "../assets/RiddaraVideo.mp4";
-// import ServiceImage from "../assets/Home-v2.png";
+import ServiceImage from "../assets/Home-v2.png";
 import CSMGeely from "../assets/insights/CSM-GEELY-MOU.png";
 import autoMob from "../assets/insights/auto-mob-future.png";
 import sareena from "../assets/insights/SERENA-hotel-isb.png";

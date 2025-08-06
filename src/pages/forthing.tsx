@@ -1,6 +1,6 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
-import ForthingBanner from '../assets/Forthing/HeroBanner/ForthingBanner.png';
+import ForthingBanner from '../assets/Forthing/HeroBanner/ForthingBanner.png'; 
 //slider 1
 import slidea from '../assets/Forthing/ADD/Exterior-A.png';
 import slideb from '../assets/Forthing/ADD/Exterior-B.png';
@@ -33,7 +33,7 @@ export const Forthing = () => {
     },
     {
       image: slideb,
-      title: "Modern Grille and Headlights",
+      title: "Modern Grille and Headlights", 
       description: "Stand Out With a Bold Interior Smile And Sleek LED Headlights, Combined With Advanced Read Light Clusters."
     },
     {
@@ -62,7 +62,7 @@ export const Forthing = () => {
     },
     {
       image: slideB,
-      title: "ERGONOMIC SEATS WITH LEATHER & VENTILATION OPTION",
+      title: "ERGONOMIC SEATS WITH LEATHER & VENTILATION OPTION", 
       description: "Designed For Optimal Comfort And Support, The Seats Feature High-End Finishes And Optional Ventilation To Enhance The Driving Experience In Modern Luxury."
     },
     {
@@ -91,7 +91,7 @@ export const Forthing = () => {
     },
     {
       image: slideb,
-      title: "AEB Autonomous Emergency Braking",
+      title: "AEB Autonomous Emergency Braking", 
       description: "A Autonomous Emergency Braking And Automatic Pre-The The Brakes If It Helps Find A Potential Collision, Significantly Reducing The Impact Of Automatic The Risk Of Accidents For Your Safety."
     },
     {
@@ -160,18 +160,18 @@ export const Forthing = () => {
     <div className="w-full">
       {/* Hero Banner Section */}
       <div className="relative w-full">
-        <img
-          src={ForthingBanner}
+        <img 
+          src={ForthingBanner} 
           alt="Forthing Hero Banner"
           className="w-full h-auto object-cover"
         />
-
+        
         {/* Buttons positioned at bottom right */}
         <div className="absolute bottom-8 right-8 flex space-x-4">
-          <button className="px-8 py-4 border-2 border-white text-white bg-transparent hover:bg-white hover:text-black transition-all duration-300 text-sm font-semibold tracking-wide shadow-lg hover:shadow-xl transform hover:scale-105" style={{ borderRadius: '8px' }}>
+          <button className="px-8 py-4 border-2 border-white text-white bg-transparent hover:bg-white hover:text-black transition-all duration-300 text-sm font-semibold tracking-wide shadow-lg hover:shadow-xl transform hover:scale-105" style={{borderRadius: '8px'}}>
             BOOK NOW
           </button>
-          <button className="px-8 py-4 border-2 border-black text-white bg-black hover:bg-white hover:text-black transition-all duration-300 text-sm font-semibold tracking-wide shadow-lg hover:shadow-xl transform hover:scale-105" style={{ borderRadius: '8px' }}>
+          <button className="px-8 py-4 border-2 border-black text-white bg-black hover:bg-white hover:text-black transition-all duration-300 text-sm font-semibold tracking-wide shadow-lg hover:shadow-xl transform hover:scale-105" style={{borderRadius: '8px'}}>
             BROCHURE
           </button>
         </div>
@@ -218,7 +218,7 @@ export const Forthing = () => {
           <div className="relative">
             {/* Main Slide Display - Show 2 at a time on desktop, 1 on mobile */}
             <div className="relative overflow-hidden">
-              <div
+              <div 
                 className="flex transition-transform duration-500 ease-in-out gap-6"
                 style={{ transform: `translateX(-${currentSlideIndex * (window.innerWidth < 768 ? 100 : 50)}%)` }}
               >
@@ -227,13 +227,13 @@ export const Forthing = () => {
                     <div className="bg-white rounded-lg overflow-hidden group cursor-pointer">
                       {/* Image with hover zoom effect */}
                       <div className="relative overflow-hidden">
-                        <img
-                          src={slide.image}
+                        <img 
+                          src={slide.image} 
                           alt={slide.title}
                           className="w-full h-auto object-contain transition-transform duration-500 group-hover:scale-105"
                         />
                       </div>
-
+                      
                       {/* Text Content Below Image - Left Aligned with Gray Background */}
                       <div className="p-4 md:p-6 text-left bg-gray-100">
                         <h3 className="text-base md:text-lg font-semibold text-gray-800 mb-2 md:mb-3">
@@ -250,14 +250,14 @@ export const Forthing = () => {
             </div>
 
             {/* Navigation Arrows */}
-            <button
+            <button 
               onClick={prevSlide}
               className="absolute left-4 top-1/2 transform -translate-y-1/2 z-10 p-3 bg-white rounded-full shadow-lg text-gray-600 hover:text-gray-800 hover:shadow-xl transition-all duration-300"
             >
               <ChevronLeft className="w-6 h-6" />
             </button>
-
-            <button
+            
+            <button 
               onClick={nextSlide}
               className="absolute right-4 top-1/2 transform -translate-y-1/2 z-10 p-3 bg-white rounded-full shadow-lg text-gray-600 hover:text-gray-800 hover:shadow-xl transition-all duration-300"
             >
@@ -273,25 +273,25 @@ export const Forthing = () => {
           <div className="space-y-4">
             {/* Top - Large banner image spanning full width */}
             <div className="w-full">
-              <img
-                src={ForthingBig}
+              <img 
+                src={ForthingBig} 
                 alt="Forthing Main Vehicle"
                 className="w-full h-auto object-contain"
               />
             </div>
-
+            
             {/* Bottom - Two smaller images side by side */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div className="w-full">
-                <img
-                  src={ForthingLeft}
+                <img 
+                  src={ForthingLeft} 
                   alt="Forthing Side View"
                   className="w-full h-auto object-contain"
                 />
               </div>
               <div className="w-full">
-                <img
-                  src={ForthingRight}
+                <img 
+                  src={ForthingRight} 
                   alt="Forthing Front View"
                   className="w-full h-auto object-contain"
                 />
@@ -315,7 +315,7 @@ export const Forthing = () => {
           <div className="relative">
             {/* Main Slide Display - Show 2 at a time on desktop, 1 on mobile */}
             <div className="relative overflow-hidden">
-              <div
+              <div 
                 className="flex transition-transform duration-500 ease-in-out gap-6"
                 style={{ transform: `translateX(-${currentSlideIndex2 * (window.innerWidth < 768 ? 100 : 50)}%)` }}
               >
@@ -324,13 +324,13 @@ export const Forthing = () => {
                     <div className="bg-white rounded-lg overflow-hidden group cursor-pointer">
                       {/* Image with hover zoom effect */}
                       <div className="relative overflow-hidden">
-                        <img
-                          src={slide.image}
+                        <img 
+                          src={slide.image} 
                           alt={slide.title}
                           className="w-full h-auto object-contain transition-transform duration-500 group-hover:scale-105"
                         />
                       </div>
-
+                      
                       {/* Text Content Below Image - Left Aligned with Gray Background */}
                       <div className="p-4 md:p-6 text-left bg-gray-100">
                         <h3 className="text-base md:text-lg font-semibold text-gray-800 mb-2 md:mb-3">
@@ -347,14 +347,14 @@ export const Forthing = () => {
             </div>
 
             {/* Navigation Arrows */}
-            <button
+            <button 
               onClick={prevSlide2}
               className="absolute left-4 top-1/2 transform -translate-y-1/2 z-10 p-3 bg-white rounded-full shadow-lg text-gray-600 hover:text-gray-800 hover:shadow-xl transition-all duration-300"
             >
               <ChevronLeft className="w-6 h-6" />
             </button>
-
-            <button
+            
+            <button 
               onClick={nextSlide2}
               className="absolute right-4 top-1/2 transform -translate-y-1/2 z-10 p-3 bg-white rounded-full shadow-lg text-gray-600 hover:text-gray-800 hover:shadow-xl transition-all duration-300"
             >
@@ -364,7 +364,7 @@ export const Forthing = () => {
 
           {/* Brochure Button - Bottom Right */}
           <div className="flex justify-end mt-4">
-            <button className="px-8 py-3 bg-black text-white hover:bg-gray-800 transition-all duration-300 text-sm font-semibold tracking-wide shadow-lg hover:shadow-xl transform hover:scale-105" style={{ borderRadius: '4px' }}>
+            <button className="px-8 py-3 bg-black text-white hover:bg-gray-800 transition-all duration-300 text-sm font-semibold tracking-wide shadow-lg hover:shadow-xl transform hover:scale-105" style={{borderRadius: '4px'}}>
               BROCHURE
             </button>
           </div>
@@ -389,7 +389,7 @@ export const Forthing = () => {
           <div className="relative">
             {/* Main Slide Display - Show 2 at a time on desktop, 1 on mobile */}
             <div className="relative overflow-hidden">
-              <div
+              <div 
                 className="flex transition-transform duration-500 ease-in-out gap-6"
                 style={{ transform: `translateX(-${currentSlideIndex3 * (window.innerWidth < 768 ? 100 : 50)}%)` }}
               >
@@ -398,13 +398,13 @@ export const Forthing = () => {
                     <div className="bg-white rounded-lg overflow-hidden group cursor-pointer">
                       {/* Image with hover zoom effect */}
                       <div className="relative overflow-hidden">
-                        <img
-                          src={slide.image}
+                        <img 
+                          src={slide.image} 
                           alt={slide.title}
                           className="w-full h-auto object-contain transition-transform duration-500 group-hover:scale-105"
                         />
                       </div>
-
+                      
                       {/* Text Content Below Image - Left Aligned with Gray Background */}
                       <div className="p-4 md:p-6 text-left bg-gray-100">
                         <h3 className="text-base md:text-lg font-semibold text-gray-800 mb-2 md:mb-3">
@@ -421,14 +421,14 @@ export const Forthing = () => {
             </div>
 
             {/* Navigation Arrows */}
-            <button
+            <button 
               onClick={prevSlide3}
               className="absolute left-4 top-1/2 transform -translate-y-1/2 z-10 p-3 bg-white rounded-full shadow-lg text-gray-600 hover:text-gray-800 hover:shadow-xl transition-all duration-300"
             >
               <ChevronLeft className="w-6 h-6" />
             </button>
-
-            <button
+            
+            <button 
               onClick={nextSlide3}
               className="absolute right-4 top-1/2 transform -translate-y-1/2 z-10 p-3 bg-white rounded-full shadow-lg text-gray-600 hover:text-gray-800 hover:shadow-xl transition-all duration-300"
             >
@@ -442,13 +442,13 @@ export const Forthing = () => {
       <div className="bg-white py-8 px-4">
         <div className="max-w-7xl mx-auto">
           <div className="w-full">
-            <img
-              src={ForthingSpec}
+            <img 
+              src={ForthingSpec} 
               alt="Forthing Specifications"
               className="w-full h-auto object-contain"
             />
           </div>
-
+          
           {/* Final decorative line at the bottom */}
           <div className="flex items-center justify-center pt-8">
             <div className="w-20 h-px bg-gradient-to-r from-transparent via-gray-400 to-transparent rounded-full opacity-60"></div>
