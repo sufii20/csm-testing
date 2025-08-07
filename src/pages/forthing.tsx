@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import ForthingBanner from '../assets/Forthing/HeroBanner/ForthingBanner.png'; 
 //slider 1
@@ -20,36 +20,91 @@ import ForthingLeft from '../assets/Forthing/Grid/ForthingLeft.png';
 import ForthingRight from '../assets/Forthing/Grid/ForthingRight.png';
 
 export const Forthing = () => {
+  const [currentCarIndex, setCurrentCarIndex] = useState(0);
   const [currentSlideIndex, setCurrentSlideIndex] = useState(0);
   const [currentSlideIndex2, setCurrentSlideIndex2] = useState(0);
   const [currentSlideIndex3, setCurrentSlideIndex3] = useState(0);
+  const [isDesktop, setIsDesktop] = useState(false);
+
+  // Handle responsive design
+  useEffect(() => {
+    const handleResize = () => {
+      setIsDesktop(window.innerWidth >= 768);
+    };
+
+    handleResize(); // Initial check
+    window.addEventListener('resize', handleResize);
+    
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  // Car color variants for Forthing - using your existing images as base
+  // Note: You'll need to add actual color variant images to your assets
+  const cars = [
+    {
+      image: ForthingBig, // Using your existing image as main
+      color: 'Silver Metallic',
+      bgColor: 'bg-gray-400',
+      colorCode: '#C0C0C0'
+    },
+    {
+      image: ForthingBig, // Replace with actual blue variant when available
+      color: 'Deep Blue',
+      bgColor: 'bg-blue-900',
+      colorCode: '#1e3a8a'
+    },
+    {
+      image: ForthingBig, // Replace with actual white variant when available
+      color: 'Pearl White',
+      bgColor: 'bg-white',
+      colorCode: '#FFFFFF'
+    },
+    {
+      image: ForthingBig, // Replace with actual black variant when available
+      color: 'Midnight Black',
+      bgColor: 'bg-black',
+      colorCode: '#000000'
+    },
+    {
+      image: ForthingBig, // Replace with actual red variant when available
+      color: 'Crimson Red',
+      bgColor: 'bg-red-600',
+      colorCode: '#dc2626'
+    },
+    {
+      image: ForthingBig, // Replace with actual green variant when available
+      color: 'Forest Green',
+      bgColor: 'bg-green-700',
+      colorCode: '#15803d'
+    }
+  ];
 
   // First Advanced Driving Dynamics slides data (5 slides)
   const slides = [
     {
       image: slidea,
-      title: "Big Panoramic Sunroof",
-      description: "Experience the Open Sky With The Largest Panoramic Sunroof - Perfect for a More Open Feel And Cabin Experience."
+      title: "⦁	Big Panoramic Sunroof ",
+      description: "Enjoy expansive sky views and natural light with the larger, panoramic sunroof—perfect for a more open and airy cabin experience."
     },
     {
       image: slideb,
-      title: "Modern Grille and Headlights", 
-      description: "Stand Out With a Bold Interior Smile And Sleek LED Headlights, Combined With Advanced Read Light Clusters."
+      title: "⦁	Modern Grille and Headlights", 
+      description: "Stand out with a bold modern grille and sleek LED headlights, combining striking style with enhanced road visibility."
     },
     {
       image: slidec,
-      title: "Intelligent Color Switch",
-      description: "Advanced color-changing technology adapts to different environments and driving conditions."
+      title: "⦁	Aerodynamic Side Profile",
+      description: "Showcasing a sleek and sculpted design, the aerodynamic side profile enhances both beauty and performance for a smooth, efficient drive."
     },
     {
       image: slided,
-      title: "Smart Drive Assistance",
-      description: "Cutting-edge AI-powered driving assistance for enhanced safety and performance on any terrain."
+      title: "⦁	Sport-Tuned Alloy Wheels",
+      description: "Sport-tuned alloy wheels enhance both style and performance. Designed for stability and sharp handling, they add a bold, athletic edge to every drive"
     },
     {
       image: slidee,
-      title: "Extreme Performance",
-      description: "Built for the most challenging conditions with superior engineering and robust design."
+      title: "⦁	LED Matrix Headlights & Tail Lamps",
+      description: "LED matrix headlights and tail lamps offer superior visibility and a modern look. They adapt intelligently to driving conditions, improving safety, enhancing the vehicle's futuristic style."
     }
   ];
 
@@ -58,27 +113,27 @@ export const Forthing = () => {
     {
       image: slideA,
       title: "SMART HOME SPACE",
-      description: "Step Into A Roomy, Two-Space Cabin Where Comfort And Innovation Come Together. Thoughtfully Designed For You, The Driver-Interior Offers Maximum Space And Even Smart Features Throughout Made From Ultra-Premium, Eco-Friendly Materials."
+      description: "Step into a roomy, tech-savvy cabin where comfort and innovation come together.Thoughtfully designed for you, the open interior offers maximum space and ease.Smart features throughout make every drive smooth, connected, and refined."
     },
     {
       image: slideB,
-      title: "ERGONOMIC SEATS WITH LEATHER & VENTILATION OPTION", 
-      description: "Designed For Optimal Comfort And Support, The Seats Feature High-End Finishes And Optional Ventilation To Enhance The Driving Experience In Modern Luxury."
+      title: "⦁	ERGONOMIC SEATS WITH LEATHER & VENTILATION OPTIONS", 
+      description: "Designed for optimal comfort and support, the seats feature high-quality leather finishes and optional ventilation to enhance the driving experience in all conditions."
     },
     {
       image: slideC,
-      title: "Premium Interior Design",
-      description: "Luxurious cabin with cutting-edge materials and sophisticated styling for ultimate comfort."
+      title: "Dual HD screens: infotainment + digital cluster",
+      description: "Features a high-resolution infotainment touchscreen paired with a fully digital instrument cluster, delivering clear visuals, intuitive control, and a connected driving experience."
     },
     {
       image: slideD,
-      title: "Smart Connectivity",
-      description: "Seamless integration with your digital life through advanced connectivity features."
+      title: "Shift Electronic Gear Shifting Technology",
+      description: "Experience seamless control with advanced electronic gear shifting for a sleek, modern drive."
     },
     {
       image: slideE,
-      title: "Ambient Lighting",
-      description: "Customizable ambient lighting creates the perfect atmosphere for every journey."
+      title: "Spacious trunk with split-folding rear seats",
+      description: "Spacious trunk with split-folding rear seats offers flexible storage for all your adventures."
     }
   ];
 
@@ -87,37 +142,61 @@ export const Forthing = () => {
     {
       image: slidea,
       title: "ADAS Advanced Driver Assistance System",
-      description: "ADAS Advanced Driver Assistance System Enhances Driver Safety With Intelligent Features Like Lane Departure Warning, Automatic Emergency Braking, And Smart Collision For A Smarter, More Secure Drive."
+      description: "ADAS (Advanced Driver Assistance System) enhances safety with intelligent features like lane keeping, collision warning, and adaptive cruise control for a smarter, more secure drive"
     },
     {
       image: slideb,
       title: "AEB Autonomous Emergency Braking", 
-      description: "A Autonomous Emergency Braking And Automatic Pre-The The Brakes If It Helps Find A Potential Collision, Significantly Reducing The Impact Of Automatic The Risk Of Accidents For Your Safety."
+      description: "It automatically detects obstacles and applies the brakes to help prevent or reduce the severity of collisions, ensuring greater safety on the road."
     },
     {
       image: slidec,
-      title: "Lane Departure Warning System",
-      description: "Advanced lane monitoring technology that alerts drivers when unintentional lane departures are detected, ensuring safer highway driving."
+      title: "6-Airbag Protection System",
+      description: "Forthing Friday comes with comprehensive safety with front, side, and curtain airbags, shielding occupants from multiple angles in the event of a collision"
     },
     {
       image: slided,
-      title: "Collision Avoidance Technology",
-      description: "State-of-the-art sensors and AI technology work together to predict and prevent potential collisions before they occur."
+      title: "C360° Surround View Camera",
+      description: "360° Surround View Camera delivers a real-time bird’s-eye view of your surroundings, making parking and maneuvering in tight spaces safer and easier."
     }
   ];
 
+  // Helper function to get max slide index
+  const getMaxIndex = (slidesLength) => {
+    return Math.max(0, slidesLength - (isDesktop ? 2 : 1));
+  };
+
+  // Car navigation functions
+  const nextCar = () => {
+    setCurrentCarIndex((prev) => (prev + 1) % cars.length);
+  };
+
+  const prevCar = () => {
+    setCurrentCarIndex((prev) => (prev - 1 + cars.length) % cars.length);
+  };
+
+  const selectCar = (index) => {
+    setCurrentCarIndex(index);
+  };
+
+  // Helper function to create gradient style for two-tone colors
+  const getColorStyle = (index) => {
+    const car = cars[index];
+    return {
+      backgroundColor: car.colorCode
+    };
+  };
+
   const nextSlide = () => {
     setCurrentSlideIndex((prev) => {
-      const isDesktop = window.innerWidth >= 768;
-      const maxIndex = Math.max(0, slides.length - (isDesktop ? 2 : 1));
+      const maxIndex = getMaxIndex(slides.length);
       return prev >= maxIndex ? 0 : prev + 1;
     });
   };
 
   const prevSlide = () => {
     setCurrentSlideIndex((prev) => {
-      const isDesktop = window.innerWidth >= 768;
-      const maxIndex = Math.max(0, slides.length - (isDesktop ? 2 : 1));
+      const maxIndex = getMaxIndex(slides.length);
       return prev <= 0 ? maxIndex : prev - 1;
     });
   };
@@ -125,16 +204,14 @@ export const Forthing = () => {
   // Functions for second slider
   const nextSlide2 = () => {
     setCurrentSlideIndex2((prev) => {
-      const isDesktop = window.innerWidth >= 768;
-      const maxIndex = Math.max(0, slides2.length - (isDesktop ? 2 : 1));
+      const maxIndex = getMaxIndex(slides2.length);
       return prev >= maxIndex ? 0 : prev + 1;
     });
   };
 
   const prevSlide2 = () => {
     setCurrentSlideIndex2((prev) => {
-      const isDesktop = window.innerWidth >= 768;
-      const maxIndex = Math.max(0, slides2.length - (isDesktop ? 2 : 1));
+      const maxIndex = getMaxIndex(slides2.length);
       return prev <= 0 ? maxIndex : prev - 1;
     });
   };
@@ -142,16 +219,14 @@ export const Forthing = () => {
   // Functions for security slider
   const nextSlide3 = () => {
     setCurrentSlideIndex3((prev) => {
-      const isDesktop = window.innerWidth >= 768;
-      const maxIndex = Math.max(0, securitySlides.length - (isDesktop ? 2 : 1));
+      const maxIndex = getMaxIndex(securitySlides.length);
       return prev >= maxIndex ? 0 : prev + 1;
     });
   };
 
   const prevSlide3 = () => {
     setCurrentSlideIndex3((prev) => {
-      const isDesktop = window.innerWidth >= 768;
-      const maxIndex = Math.max(0, securitySlides.length - (isDesktop ? 2 : 1));
+      const maxIndex = getMaxIndex(securitySlides.length);
       return prev <= 0 ? maxIndex : prev - 1;
     });
   };
@@ -168,12 +243,18 @@ export const Forthing = () => {
         
         {/* Buttons positioned at bottom right */}
         <div className="absolute bottom-8 right-8 flex space-x-4">
-          <button className="px-8 py-4 border-2 border-white text-white bg-transparent hover:bg-white hover:text-black transition-all duration-300 text-sm font-semibold tracking-wide shadow-lg hover:shadow-xl transform hover:scale-105" style={{borderRadius: '8px'}}>
-            BOOK NOW
-          </button>
-          <button className="px-8 py-4 border-2 border-black text-white bg-black hover:bg-white hover:text-black transition-all duration-300 text-sm font-semibold tracking-wide shadow-lg hover:shadow-xl transform hover:scale-105" style={{borderRadius: '8px'}}>
-            BROCHURE
-          </button>
+          <button
+              className="px-4 sm:px-8 py-3 sm:py-4 border-2 border-white text-white bg-transparent  hover:text-black transition-all duration-300 text-sm font-semibold tracking-wide shadow-lg hover:shadow-xl transform hover:scale-105"
+              style={{ borderRadius: "8px" }}
+            >
+              BOOK NOW
+            </button>
+            <button
+              className="px-4 sm:px-8 py-3 sm:py-4 border-2 border-white text-white bg-black   transition-all duration-300 text-sm font-semibold tracking-wide shadow-lg hover:shadow-xl transform hover:scale-105"
+              style={{ borderRadius: "8px" }}
+            >
+              BROCHURE
+            </button>
         </div>
       </div>
 
@@ -202,25 +283,77 @@ export const Forthing = () => {
         </div>
       </div>
 
-      {/* Exterior Features Title */}
-      <div className="bg-white py-4 px-4">
-        <div className="max-w-7xl mx-auto">
-          <h2 className="text-xl font-semibold text-gray-800 text-center mb-4">
-            Advanced Driving Dynamics
-          </h2>
+      {/* Car Gallery Section with Color Selector */}
+      <div className="bg-gradient-to-b from-gray-50 to-white py-8 px-4 relative min-h-[600px]">
+        <div className="max-w-7xl mx-auto relative">
+          {/* Color selector dots - positioned top right */}
+          <div className="absolute top-4 right-4 z-20 flex space-x-2">
+            {cars.map((car, index) => (
+              <button
+                key={index}
+                onClick={() => selectCar(index)}
+                className={`w-4 h-4 rounded-full transition-all duration-300 border border-gray-300 ${currentCarIndex === index ? 'ring-2 ring-gray-600 ring-offset-2' : ''
+                  }`}
+                style={getColorStyle(index)}
+                title={car.color}
+              />
+            ))}
+          </div>
+
+          {/* Navigation arrows on sides */}
+          <button
+            onClick={prevCar}
+            className="absolute left-4 top-1/2 transform -translate-y-1/2 z-10 p-2 text-gray-400 hover:text-gray-600 transition-colors"
+          >
+            <ChevronLeft className="w-6 h-6" />
+          </button>
+
+          <button
+            onClick={nextCar}
+            className="absolute right-4 top-1/2 transform -translate-y-1/2 z-10 p-2 text-gray-400 hover:text-gray-600 transition-colors"
+          >
+            <ChevronRight className="w-6 h-6" />
+          </button>
+
+          {/* Car image centered */}
+          <div className="flex justify-center items-center h-full py-12">
+            <div className="w-full max-w-4xl">
+              <img
+                src={cars[currentCarIndex].image}
+                alt={`Forthing ${cars[currentCarIndex].color} car`}
+                className="w-full h-auto object-contain transition-all duration-500"
+              />
+            </div>
+          </div>
+
+          {/* Gallery Bottom Line - Small decorative line */}
+          <div className="flex items-center justify-center mt-4 mb-8">
+            <div className="w-16 h-px bg-gradient-to-r from-transparent via-gray-400 to-transparent rounded-full opacity-60"></div>
+          </div>
         </div>
       </div>
 
-      {/* Exterior Features Slider Section */}
-      <div className="bg-white py-4 px-4">
+      {/* Advanced Driving Dynamics Section */}
+      <div className="bg-white py-16 px-4">
         <div className="max-w-7xl mx-auto">
+          {/* Section Title with Lines on Both Sides */}
+          <div className="text-center mb-12">
+            <div className="flex items-center justify-center mb-8">
+              <div className="flex-1 h-px bg-gray-400 max-w-24"></div>
+              <h2 className="px-6 text-lg font-medium text-gray-800 tracking-wider">
+                ADVANCED DRIVING DYNAMICS
+              </h2>
+              <div className="flex-1 h-px bg-gray-400 max-w-24"></div>
+            </div>
+          </div>
+
           {/* Slider Container */}
           <div className="relative">
             {/* Main Slide Display - Show 2 at a time on desktop, 1 on mobile */}
             <div className="relative overflow-hidden">
               <div 
                 className="flex transition-transform duration-500 ease-in-out gap-6"
-                style={{ transform: `translateX(-${currentSlideIndex * (window.innerWidth < 768 ? 100 : 50)}%)` }}
+                style={{ transform: `translateX(-${currentSlideIndex * (isDesktop ? 50 : 100)}%)` }}
               >
                 {slides.map((slide, index) => (
                   <div key={index} className="w-full md:w-1/2 flex-shrink-0 px-2">
@@ -304,11 +437,15 @@ export const Forthing = () => {
       {/* Interior Features Section */}
       <div className="bg-gray-50 py-16 px-4">
         <div className="max-w-7xl mx-auto">
-          {/* Section Title - Left Aligned */}
-          <div className="mb-12">
-            <h2 className="text-2xl font-semibold text-gray-800 text-left">
-              Interior Features
-            </h2>
+          {/* Section Title with Lines on Both Sides */}
+          <div className="text-center mb-12">
+            <div className="flex items-center justify-center mb-8">
+              <div className="flex-1 h-px bg-gray-400 max-w-24"></div>
+              <h2 className="px-6 text-lg font-medium text-gray-800 tracking-wider">
+                INTERIOR FEATURES
+              </h2>
+              <div className="flex-1 h-px bg-gray-400 max-w-24"></div>
+            </div>
           </div>
 
           {/* Slider Container */}
@@ -317,7 +454,7 @@ export const Forthing = () => {
             <div className="relative overflow-hidden">
               <div 
                 className="flex transition-transform duration-500 ease-in-out gap-6"
-                style={{ transform: `translateX(-${currentSlideIndex2 * (window.innerWidth < 768 ? 100 : 50)}%)` }}
+                style={{ transform: `translateX(-${currentSlideIndex2 * (isDesktop ? 50 : 100)}%)` }}
               >
                 {slides2.map((slide, index) => (
                   <div key={index} className="w-full md:w-1/2 flex-shrink-0 px-2">
@@ -364,7 +501,7 @@ export const Forthing = () => {
 
           {/* Brochure Button - Bottom Right */}
           <div className="flex justify-end mt-4">
-            <button className="px-8 py-3 bg-black text-white hover:bg-gray-800 transition-all duration-300 text-sm font-semibold tracking-wide shadow-lg hover:shadow-xl transform hover:scale-105" style={{borderRadius: '4px'}}>
+            <button className="px-8 py-3 bg-black text-white hover:bg-gray-800 transition-all duration-300 text-sm font-semibold tracking-wide shadow-lg hover:shadow-xl transform hover:scale-105 rounded">
               BROCHURE
             </button>
           </div>
@@ -374,14 +511,14 @@ export const Forthing = () => {
       {/* Security Features Section */}
       <div className="bg-white py-16 px-4">
         <div className="max-w-7xl mx-auto">
-          {/* Section Title - Centered with lines on both sides */}
-          <div className="mb-8">
-            <div className="flex items-center justify-center">
-              <div className="flex-1 h-px bg-gray-300"></div>
-              <h2 className="text-2xl font-semibold text-gray-800 px-8">
-                Security Features
+          {/* Section Title with Lines on Both Sides */}
+          <div className="text-center mb-12">
+            <div className="flex items-center justify-center mb-8">
+              <div className="flex-1 h-px bg-gray-400 max-w-24"></div>
+              <h2 className="px-6 text-lg font-medium text-gray-800 tracking-wider">
+                SECURITY FEATURES
               </h2>
-              <div className="flex-1 h-px bg-gray-300"></div>
+              <div className="flex-1 h-px bg-gray-400 max-w-24"></div>
             </div>
           </div>
 
@@ -391,7 +528,7 @@ export const Forthing = () => {
             <div className="relative overflow-hidden">
               <div 
                 className="flex transition-transform duration-500 ease-in-out gap-6"
-                style={{ transform: `translateX(-${currentSlideIndex3 * (window.innerWidth < 768 ? 100 : 50)}%)` }}
+                style={{ transform: `translateX(-${currentSlideIndex3 * (isDesktop ? 50 : 100)}%)` }}
               >
                 {securitySlides.map((slide, index) => (
                   <div key={index} className="w-full md:w-1/2 flex-shrink-0 px-2">

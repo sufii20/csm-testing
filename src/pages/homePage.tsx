@@ -1,17 +1,24 @@
 import React, { useState, useEffect } from "react";
 import { Star, ChevronLeft, ChevronRight } from "lucide-react";
 
+// Import page components
+import ZeekrPage from "./zeekr";
+import RiddaraPage from "./riddara";
+import ForthingPage from "./forthing";
+import JmevPage from "./jmev";
+
 // Hero banners
 import ZeekrBanner from "../assets/HeroBanner/ZeekrBanner.png";
 import ForthingBanner from "../assets/HeroBanner/ForthingBanner.png";
 import JMEVBanner from "../assets/HeroBanner/JMEVBanner.png";
 import RiddaraBanner from "../assets/HeroBanner/RiddaraBanner.png";
+import ZeekrBan from "../assets/insights/ZeekrBan.png";
 
 // Car slider images
-import image1 from "../assets/CardSliderImg/image1.png";
-import image2 from "../assets/CardSliderImg/image2.png";
-import image3 from "../assets/CardSliderImg/image3.png";
-import image4 from "../assets/CardSliderImg/image4.png";
+import image1 from "../assets/insights/Img1.jpg";
+import image2 from "../assets/insights/Img2.jpg";
+import image3 from "../assets/insights/Img3.jpg";
+import image4 from "../assets/insights/Img4.jpg";
 
 // Other assets
 import RiddaraVideo from "../assets/RiddaraVideo.mp4";
@@ -22,6 +29,7 @@ import sareena from "../assets/insights/SERENA-hotel-isb.png";
 import accessories from "../assets/services/accesories.png";
 import call from "../assets/services/callCenter.png";
 import merchandise from "../assets/services/MErchandise.png";
+import customer from "../assets/HeroBanner/whatsapp.jpg";
 //Interior images
 import fortingInterior from "../assets/interiorView/ForthingInterior.png";
 import jmeVInterior from "../assets/interiorView/JMeVInterior.png";
@@ -30,14 +38,15 @@ import zeekrInterior from "../assets/interiorView/ZeekrInterior.png";
 
 const Homepage = () => {
   const [currentHeroBanner, setCurrentHeroBanner] = useState(0);
-  const [currentCarSlide, setCurrentCarSlide] = useState(0);
   const [currentInteriorBanner, setCurrentInteriorBanner] = useState(0);
+  const [currentPage, setCurrentPage] = useState('home');
 
   const heroBanners = [
-    { id: 1, image: ZeekrBanner },
-    { id: 2, image: ForthingBanner },
-    { id: 3, image: JMEVBanner },
-    { id: 4, image: RiddaraBanner },
+    { id: 1, image: ZeekrBan },
+    { id: 2, image: ZeekrBanner },
+    { id: 3, image: ForthingBanner },
+    { id: 4, image: JMEVBanner },
+    { id: 5, image: RiddaraBanner },
   ];
 
   const interiorBanners = [
@@ -50,27 +59,31 @@ const Homepage = () => {
   const cars = [
     {
       id: 1,
-      image: image1,
-      brand: "ZEEKR",
+      image: image1,  
+      // brand: "ZEEKR",
       logo: "Z",
+      page: "zeekr"
     },
     {
       id: 2,
-      image: image2,
-      brand: "RIDDARA",
+      image: image4,
+      // brand: "RIDDARA",
       logo: "R",
+      page: "riddara"
     },
     {
       id: 3,
-      image: image3,
-      brand: "FORTHING",
+      image: image2,
+      // brand: "FORTHING",
       logo: "F",
+      page: "forthing"
     },
     {
       id: 4,
-      image: image4,
-      brand: "JMEV",
+      image: image3,
+      // brand: "JMEV",
       logo: "J",
+      page: "jmev"
     },
   ];
 
@@ -101,32 +114,51 @@ const Homepage = () => {
   const testimonials = [
     {
       id: 1,
-      name: "Azuish Pandey",
-      location: "Sindh, Pakistan",
+      name: "Sarah Thompson",
+      location: " Customer from United Kingdom",
       rating: 5,
-      text: "The listing Was Very Nice Than I'll Make. Everything Worked Perfect Well. We Appreciated A Simple Decision Using Page That With A Video, Full Sections. Course Stamps – Everything Was Great And We Likes Good Analytics On It.",
+      text: "Geely continues to exceed expectations with its focus on advanced technology, safety, and stylish design. The value for money is unmatched in today’s market. I’m very satisfied with my Geely vehicle.",
       image:
-        "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80",
+       customer,
     },
     {
       id: 2,
-      name: "Milano Nascimento",
-      location: "Punjab, Pakistan",
+      name: "Emily Johansson",
+      location: " Customer from Sweden",
       rating: 5,
-      text: "The Listing Was Not Upto Than I Till Build. Everything Worked Well. We Appreciated A Simple Decision Using Page That With A Video, Full Sections. Course Stamps – Everything Was Great And We Didn't Need Analytics On That.",
+      text: "The Zeekr X has completely changed my perception of compact electric vehicles. It’s stylish, smooth to drive, and packed with smart features that make daily commuting a pleasure. Zeekr has really nailed the balance between performance and practicality.",
       image:
-        "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80",
+       customer,
     },
     {
       id: 3,
-      name: "Eve Aritt",
-      location: "Islamabad, Pakistan",
+      name: "Carlos Medina",
+      location: " Customer from Spain",
       rating: 5,
-      text: "The Listing Was Too Much Than I'll Make. Everything Worked Perfect Well. We Appreciated A Simple Decision Using Page That With A Video, Full Sections. Course Stamps – Everything Was Great And We Likes Good Analytics On It.",
+      text: "I’ve been pleasantly surprised by the quality and comfort of my Forthing vehicle. It offers great value for money, with a spacious interior, modern design, and smooth driving experience. Forthing is definitely a brand to watch as it expands globall",
       image:
-        "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80",
+        customer,
+    },
+    {
+      id: 4,
+      name: "Amina Yusuf",
+      location: "Customer from UAE",
+      rating: 5,
+      text: "The JMEV Elight EV has been a fantastic addition to my daily routine. It's sleek, energy-efficient, and surprisingly powerful for its size. I appreciate how Elight is making clean transportation more accessible and stylish at the same time.",
+      image:
+       customer
     },
   ];
+
+  // Handle car image click navigation
+  const handleCarClick = (page) => {
+    setCurrentPage(page);
+  };
+
+  // Handle back to home
+  const handleBackToHome = () => {
+    setCurrentPage('home');
+  };
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -153,23 +185,24 @@ const Homepage = () => {
     );
   };
 
-  const nextCarSlide = () => {
-    setCurrentCarSlide((prev) => (prev + 1) % cars.length);
-  };
+  // Render different pages based on current page state
+  if (currentPage === 'zeekr') {
+    return <ZeekrPage onBack={handleBackToHome} />;
+  }
+  
+  if (currentPage === 'riddara') {
+    return <RiddaraPage onBack={handleBackToHome} />;
+  }
+  
+  if (currentPage === 'forthing') {
+    return <ForthingPage onBack={handleBackToHome} />;
+  }
+  
+  if (currentPage === 'jmev') {
+    return <JmevPage onBack={handleBackToHome} />;
+  }
 
-  const prevCarSlide = () => {
-    setCurrentCarSlide((prev) => (prev - 1 + cars.length) % cars.length);
-  };
-
-  const getVisibleCars = () => {
-    const visible = [];
-    for (let i = 0; i < 3; i++) {
-      const index = (currentCarSlide + i) % cars.length;
-      visible.push(cars[index]);
-    }
-    return visible;
-  };
-
+  // Default homepage render
   return (
     <div className="bg-white">
       {/* Hero Banner Section - Optimized for 1440x450 aspect ratio with extra text space */}
@@ -224,46 +257,28 @@ const Homepage = () => {
         </div>
       </section>
 
-      {/* Car Slider - Updated Design */}
-      <section className="relative py-20 bg-gray-50 overflow-hidden">
-        {/* Navigation Arrows */}
-        <button
-          onClick={prevCarSlide}
-          className="absolute left-4 md:left-6 top-1/2 transform -translate-y-1/2 z-20 bg-white/20 backdrop-blur-sm hover:bg-white/30 rounded-full p-3 md:p-4 transition-all duration-300 shadow-lg"
-        >
-          <ChevronLeft className="w-5 h-5 md:w-6 md:h-6 text-gray-700" />
-        </button>
-
-        <button
-          onClick={nextCarSlide}
-          className="absolute right-4 md:right-6 top-1/2 transform -translate-y-1/2 z-20 bg-white/20 backdrop-blur-sm hover:bg-white/30 rounded-full p-3 md:p-4 transition-all duration-300 shadow-lg"
-        >
-          <ChevronRight className="w-5 h-5 md:w-6 md:h-6 text-gray-700" />
-        </button>
-
-        {/* Slider Container */}
-        <div className="w-full overflow-hidden">
-          <div className="flex transition-transform duration-500 ease-in-out">
-            {getVisibleCars().map((car, index) => (
-              <div
-                key={`${car.id}-${currentCarSlide}-${index}`}
-                className="w-full md:w-1/3 flex-shrink-0"
-              >
-                {/* Car Card */}
-                <div className="relative h-[400px] md:h-[600px] overflow-hidden group">
-                  {/* Background Image */}
+      {/* Car Grid - Static layout showing all 4 brands with navigation */}
+      <section className="relative py-20 bg-gray-50">
+        {/* Grid Container */}
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
+            {cars.map((car) => (
+              <div key={car.id} className="w-full">
+                {/* Car Image - Now clickable */}
+                <div 
+                  className="relative h-[200px] md:h-[280px] overflow-hidden group rounded-lg cursor-pointer"
+                  onClick={() => handleCarClick(car.page)}
+                >
                   <img
                     src={car.image}
-                    alt={`Car ${car.id}`}
+                    alt={car.brand}
                     className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-300"
                   />
-
-                  {/* Learn More Button */}
-                  <div className="absolute bottom-6 md:bottom-8 left-4 md:left-8">
-                    <button className="px-6 md:px-8 py-2 md:py-3 border-2 border-white/40 bg-white/10 backdrop-blur-sm hover:bg-white/20 hover:border-white/60 transition-all duration-300 text-white font-medium tracking-wide text-sm md:text-base">
-                      Learn More
-                      <ChevronRight className="inline-block w-3 h-3 md:w-4 md:h-4 ml-2" />
-                    </button>
+                  {/* Optional: Add overlay with brand name on hover */}
+                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300 flex items-center justify-center">
+                    <span className="text-white font-bold text-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                      {car.brand}
+                    </span>
                   </div>
                 </div>
               </div>
@@ -333,20 +348,22 @@ const Homepage = () => {
         </div>
       </section>
 
-      {/* Customer Feedback */}
+      {/* Customer Feedback - Updated to 4 testimonials */}
       <section className="py-16 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <div className="flex items-center justify-center space-x-4 md:space-x-6">
               <div className="h-px bg-gray-400 w-16 md:w-32"></div>
               <h2 className="text-2xl md:text-3xl font-bold text-gray-900 tracking-wide whitespace-nowrap">
-                Our Customer Feedback
+                Global Reviews
               </h2>
               <div className="h-px bg-gray-400 w-16 md:w-32"></div>
             </div>
           </div>
+          
+          {/* Updated layout for proper sizing */}
           <div className="flex flex-col md:flex-row justify-center items-end gap-6 md:gap-8">
-            {/* Left smaller testimonial - positioned lower */}
+            {/* 1st testimonial - smaller */}
             <div className="bg-white rounded-lg shadow-lg p-5 w-full md:w-72 mb-0 md:mb-8">
               <div className="flex items-center mb-3">
                 <div className="w-10 h-10 rounded-full mr-3 overflow-hidden">
@@ -358,20 +375,17 @@ const Homepage = () => {
                 </div>
                 <div>
                   <h4 className="font-bold text-blue-800 text-sm">
-                    Orlaith Parastu
+                    {testimonials[0].name}
                   </h4>
-                  <p className="text-xs text-blue-800">Bought BYD Dolphin</p>
+                  <p className="text-xs text-blue-800">{testimonials[0].location}</p>
                 </div>
               </div>
               <p className="text-black text-xs leading-relaxed text-left">
-                The Listing Was Hot (More Than 170 Bids). Everything Worked
-                Well. We Appreciated A Simple Process.Listing Page, Chat With A
-                Seller, The Auction, Escrow Service – Everything Was Great And
-                We Didn't Need Anything On Top.
+                {testimonials[0].text}
               </p>
             </div>
 
-            {/* Center larger testimonial - full height */}
+            {/* 2nd testimonial - larger */}
             <div className="bg-white rounded-lg shadow-lg p-6 md:p-8 w-full md:w-96">
               <div className="flex items-center mb-4">
                 <div className="w-12 md:w-14 h-12 md:h-14 rounded-full mr-4 overflow-hidden">
@@ -383,23 +397,20 @@ const Homepage = () => {
                 </div>
                 <div>
                   <h4 className="font-bold text-blue-800 text-base md:text-lg">
-                    Melina Nesterenko
+                    {testimonials[1].name}
                   </h4>
-                  <p className="text-sm text-blue-800">Bought Tesla Model 3</p>
+                  <p className="text-sm text-blue-800">{testimonials[1].location}</p>
                 </div>
               </div>
               <p className="text-black text-sm leading-relaxed text-left">
-                The Listing Was Hot (More Than 170 Bids). Everything Worked
-                Well. We Appreciated A Simple Process.Listing Page, Chat With A
-                Seller, The Auction, Escrow Service – Everything Was Great And
-                We Didn't Need Anything On Top.
+                {testimonials[1].text}
               </p>
             </div>
 
-            {/* Right smaller testimonial - positioned lower */}
-            <div className="bg-white rounded-lg shadow-lg p-5 w-full md:w-72 mb-0 md:mb-8">
-              <div className="flex items-center mb-3">
-                <div className="w-10 h-10 rounded-full mr-3 overflow-hidden">
+            {/* 3rd testimonial - larger (same as 2nd) */}
+            <div className="bg-white rounded-lg shadow-lg p-6 md:p-8 w-full md:w-96">
+              <div className="flex items-center mb-4">
+                <div className="w-12 md:w-14 h-12 md:h-14 rounded-full mr-4 overflow-hidden">
                   <img
                     src={testimonials[2].image}
                     alt={testimonials[2].name}
@@ -407,15 +418,36 @@ const Homepage = () => {
                   />
                 </div>
                 <div>
-                  <h4 className="font-bold text-blue-800 text-sm">Eve Artie</h4>
-                  <p className="text-xs text-blue-800">Bought A Riddara</p>
+                  <h4 className="font-bold text-blue-800 text-base md:text-lg">
+                    {testimonials[2].name}
+                  </h4>
+                  <p className="text-sm text-blue-800">{testimonials[2].location}</p>
+                </div>
+              </div>
+              <p className="text-black text-sm leading-relaxed text-left">
+                {testimonials[2].text}
+              </p>
+            </div>
+
+            {/* 4th testimonial - smaller (same as 1st) */}
+            <div className="bg-white rounded-lg shadow-lg p-5 w-full md:w-72 mb-0 md:mb-8">
+              <div className="flex items-center mb-3">
+                <div className="w-10 h-10 rounded-full mr-3 overflow-hidden">
+                  <img
+                    src={testimonials[3].image}
+                    alt={testimonials[3].name}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                <div>
+                  <h4 className="font-bold text-blue-800 text-sm">
+                    {testimonials[3].name}
+                  </h4>
+                  <p className="text-xs text-blue-800">{testimonials[3].location}</p>
                 </div>
               </div>
               <p className="text-black text-xs leading-relaxed text-left">
-                The Listing Was Hot (More Than 170 Bids). Everything Worked
-                Well. We Appreciated A Simple Process.Listing Page, Chat With A
-                Seller, The Auction, Escrow Service – Everything Was Great And
-                We Didn't Need Anything On Top.
+                {testimonials[3].text}
               </p>
             </div>
           </div>

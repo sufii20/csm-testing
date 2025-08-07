@@ -9,6 +9,7 @@ import ZeekrPage from './pages/zeekr';
 import RiddaraPage from './pages/riddara';
 import ForthingPage from './pages/forthing';
 import JmevPage from './pages/jmev';
+import EVTestDrive from './pages/testDrive';
 
 function App() {
   // State to track current page
@@ -56,4 +57,4 @@ function App() {
   );
 }
 
-export default App;
+export default App; 

@@ -21,36 +21,61 @@ const TopIconButton: React.FC<TopIconButtonProps> = ({ icon, onClick }) => (
 
 const EVTestDrive: React.FC = () => {
   const [selectedCar, setSelectedCar] = useState<string>('');
+  const [selectedExteriorColor, setSelectedExteriorColor] = useState<string>('');
+  const [selectedInteriorColor, setSelectedInteriorColor] = useState<string>('');
+  const [selectedBrand, setSelectedBrand] = useState<string>('RIDQANA');
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
-    email: '',
-    phone: '',
-    street: '',
-    zipCode: '',
-    city: '',
+    fatherHusbandName: '',
+    gender: '',
+    dateOfBirth: '',
+    primaryPhone: '',
+    secondaryPhone: '',
     state: '',
-    additionalInfo: '',
-    individualCompany: 'Individual',
-    cngTestDrive: '',
-    existingCustomer: '',
-    atnNumber: '',
+    city: '',
+    addressCNIC: '',
+    individualCorporate: '',
+    cng: '',
+    cngFrontImage: null,
+    cngBackImage: null,
+    statusFilter: '',
+    salesTaxRegistration: '',
+    ntnNumber: '',
     comments: '',
     termsAccepted: false
   });
 
   const cars = [
-    { id: 'RQS-2000-Air', name: 'RQS 2WD Air', subtitle: 'Body Type - Truck', image: car1 },
-    { id: 'RQS-6000-Pro', name: 'RQS AWD Pro', subtitle: 'Body Type - Truck', image: car2 },
-    { id: 'RQS-6000-Ultra', name: 'RQS AWD Ultra', subtitle: 'Body Type - Truck', image: car3 }
+    { id: 'RQS-2WD-Air', name: 'RQS 2WD Air', subtitle: 'Body Type - Truck', image: car1 },
+    { id: 'RQS-AWD-Pro', name: 'RQS AWD Pro', subtitle: 'Body Type - Truck', image: car2 },
+    { id: 'RQS-AWD-Ultra', name: 'RQS AWD Ultra', subtitle: 'Body Type - Truck', image: car3 }
+  ];
+
+  const exteriorColors = [
+    { id: 'green', name: 'Green', image: 'https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=200&h=150&fit=crop' },
+    { id: 'blue', name: 'Blue', image: 'https://images.unsplash.com/photo-1605559424843-9e4c228bf1c2?w=200&h=150&fit=crop' },
+    { id: 'grey', name: 'Grey', image: 'https://images.unsplash.com/photo-1552519507-da3b142c6e3d?w=200&h=150&fit=crop' },
+    { id: 'white', name: 'White', image: 'https://images.unsplash.com/photo-1563720223185-11003d516935?w=200&h=150&fit=crop' }
+  ];
+
+  const interiorColors = [
+    { id: 'black', name: 'Black', image: 'https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=200&h=150&fit=crop' },
+    { id: 'brown', name: 'Brown', image: 'https://images.unsplash.com/photo-1605559424843-9e4c228bf1c2?w=200&h=150&fit=crop' },
+    { id: 'green', name: 'Green', image: 'https://images.unsplash.com/photo-1552519507-da3b142c6e3d?w=200&h=150&fit=crop' }
   ];
 
   const handleInputChange = (field: string, value: string | boolean) => {
     setFormData(prev => ({ ...prev, [field]: value }));
   };
   
-  const handleTestDriveClick = () => {
-    console.log('Test drive requested');
+  const handleSubmit = () => {
+    console.log('Form submitted', {
+      selectedCar,
+      selectedExteriorColor,
+      selectedInteriorColor,
+      formData
+    });
   };
 
   const handleIconClick = (iconName: string) => {
@@ -94,11 +119,11 @@ const EVTestDrive: React.FC = () => {
         <div className="relative z-20 flex items-center justify-center h-full">
           <div className="text-center text-white max-w-2xl px-6">
             <h1 className="text-4xl md:text-5xl font-bold tracking-wider mb-8 drop-shadow-lg">
-              REQUEST A TEST DRIVE
+              BOOK YOUR DREAM CAR
             </h1>
             
             <p className="text-lg md:text-xl leading-relaxed mb-12 opacity-90 drop-shadow-md max-w-lg mx-auto">
-              Pick your favorite EV and schedule a test drive at a time and place that's convenient for you.
+              Pick your favorite EV and make it yours with proper convenience and ease.
             </p>
           </div>
         </div>
@@ -128,16 +153,68 @@ const EVTestDrive: React.FC = () => {
               <h2 className="text-2xl font-bold text-gray-800">CHOOSE YOUR CAR</h2>
             </div>
             <div className="ml-28 flex justify-center">
-              <button className="bg-black text-white px-8 py-3 text-sm font-semibold rounded-l-md">
+              <button 
+                onClick={() => setSelectedBrand('ZEEKR')}
+                className={`px-8 py-3 text-sm font-semibold rounded-l-md ${
+                  selectedBrand === 'ZEEKR' ? 'bg-black text-white' : 'bg-gray-300 text-gray-700 hover:bg-gray-400'
+                }`}
+              >
+                ZEEKR
+              </button>
+              <button 
+                onClick={() => setSelectedBrand('RIDQANA')}
+                className={`px-8 py-3 text-sm font-semibold ${
+                  selectedBrand === 'RIDQANA' ? 'bg-black text-white' : 'bg-gray-300 text-gray-700 hover:bg-gray-400'
+                }`}
+              >
                 RIDQANA
               </button>
-              <button className="bg-gray-300 text-gray-700 px-8 py-3 text-sm font-semibold hover:bg-gray-400 rounded-r-md">
+              <button 
+                onClick={() => setSelectedBrand('FORTHING')}
+                className={`px-8 py-3 text-sm font-semibold ${
+                  selectedBrand === 'FORTHING' ? 'bg-black text-white' : 'bg-gray-300 text-gray-700 hover:bg-gray-400'
+                }`}
+              >
                 FORTHING
               </button>
+              <button 
+                onClick={() => setSelectedBrand('JAEV')}
+                className={`px-8 py-3 text-sm font-semibold rounded-r-md ${
+                  selectedBrand === 'JAEV' ? 'bg-black text-white' : 'bg-gray-300 text-gray-700 hover:bg-gray-400'
+                }`}
+              >
+                JAEV
+              </button>
+            </div>
+
+            {/* Select Variant */}
+            <div className="ml-28 mt-12">
+              <h3 className="text-xl font-bold text-gray-800 text-center mb-6">SELECT VARIANT *</h3>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                {cars.map((car) => (
+                  <div 
+                    key={car.id}
+                    className={`bg-white p-4 rounded-lg shadow-md cursor-pointer transition-all duration-300 ${
+                      selectedCar === car.id ? 'ring-2 ring-blue-500 bg-blue-50' : 'hover:shadow-lg'
+                    }`}
+                    onClick={() => setSelectedCar(car.id)}
+                  >
+                    <div className="mb-4">
+                      <img 
+                        src={car.image} 
+                        alt={car.name}
+                        className="w-full h-24 object-contain"
+                      />
+                    </div>
+                    <h4 className="font-bold text-gray-800 text-center text-lg mb-2">{car.name}</h4>
+                    <p className="text-gray-600 text-sm text-center">{car.subtitle}</p>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
 
-          {/* Step 2: Select Variant */}
+          {/* Step 2: Exterior Color */}
           <div className="bg-gray-200/50 p-8 rounded-lg mb-8 relative">
             {/* Step 2 watermark */}
             <div className="absolute left-4 top-1/2 transform -translate-y-1/2 -rotate-90">
@@ -146,29 +223,51 @@ const EVTestDrive: React.FC = () => {
                 <span className="text-gray-300/40 text-8xl font-bold">2</span>
               </div>
             </div>
-            <div className="ml-28 flex items-center justify-center mb-8">
-              <h2 className="text-2xl font-bold text-gray-800">SELECT VARIANT</h2>
-            </div>
-            <div className="ml-28 grid grid-cols-1 md:grid-cols-3 gap-4">
-              {cars.map((car) => (
-                <div 
-                  key={car.id}
-                  className={`bg-white p-4 rounded-lg shadow-md cursor-pointer transition-all duration-300 ${
-                    selectedCar === car.id ? 'ring-2 ring-blue-500 bg-blue-50' : 'hover:shadow-lg'
-                  }`}
-                  onClick={() => setSelectedCar(car.id)}
-                >
-                  <div className="mb-4">
-                    <img 
-                      src={car.image} 
-                      alt={car.name}
-                      className="w-full h-24 object-contain"
-                    />
+            <div className="ml-28">
+              <h3 className="text-xl font-bold text-gray-800 text-center mb-6">EXTERIOR COLOR *</h3>
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                {exteriorColors.map((color) => (
+                  <div 
+                    key={color.id}
+                    className={`bg-white p-4 rounded-lg shadow-md cursor-pointer transition-all duration-300 ${
+                      selectedExteriorColor === color.id ? 'ring-2 ring-blue-500 bg-blue-50' : 'hover:shadow-lg'
+                    }`}
+                    onClick={() => setSelectedExteriorColor(color.id)}
+                  >
+                    <div className="mb-4">
+                      <img 
+                        src={color.image} 
+                        alt={color.name}
+                        className="w-full h-20 object-cover rounded"
+                      />
+                    </div>
+                    <p className="text-gray-800 text-center font-semibold">{color.name}</p>
                   </div>
-                  <h3 className="font-bold text-gray-800 text-center text-lg mb-2">{car.name}</h3>
-                  <p className="text-gray-600 text-sm text-center">{car.subtitle}</p>
-                </div>
-              ))}
+                ))}
+              </div>
+
+              {/* Interior Color */}
+              <h3 className="text-xl font-bold text-gray-800 text-center mb-6 mt-12">INTERIOR COLOR *</h3>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                {interiorColors.map((color) => (
+                  <div 
+                    key={color.id}
+                    className={`bg-white p-4 rounded-lg shadow-md cursor-pointer transition-all duration-300 ${
+                      selectedInteriorColor === color.id ? 'ring-2 ring-blue-500 bg-blue-50' : 'hover:shadow-lg'
+                    }`}
+                    onClick={() => setSelectedInteriorColor(color.id)}
+                  >
+                    <div className="mb-4">
+                      <img 
+                        src={color.image} 
+                        alt={color.name}
+                        className="w-full h-20 object-cover rounded"
+                      />
+                    </div>
+                    <p className="text-gray-800 text-center font-semibold">{color.name}</p>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
 
@@ -177,8 +276,8 @@ const EVTestDrive: React.FC = () => {
             {/* Step 3 watermark */}
             <div className="absolute left-4 top-1/2 transform -translate-y-1/2 -rotate-90">
               <div className="flex items-center">
-                <span className="text-gray-300/40 text-2xl font-bold tracking-widest mr-2">STEP</span>
-                <span className="text-gray-300/40 text-8xl font-bold">3</span>
+                <span className="text-gray-400/40 text-2xl font-bold tracking-widest mr-2">STEP</span>
+                <span className="text-gray-400/40 text-5xl font-bold">3</span>
               </div>
             </div>
             <div className="ml-28">
@@ -187,13 +286,13 @@ const EVTestDrive: React.FC = () => {
                   {/* First Name */}
                   <div>
                     <label className="block text-sm font-semibold text-gray-700 mb-2">
-                      First Name <span className="text-red-500">*</span>
+                      First Name *
                     </label>
                     <input
                       type="text"
                       value={formData.firstName}
                       onChange={(e) => handleInputChange('firstName', e.target.value)}
-                      className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm"
+                      className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm"
                       required
                     />
                   </div>
@@ -201,13 +300,13 @@ const EVTestDrive: React.FC = () => {
                   {/* Last Name */}
                   <div>
                     <label className="block text-sm font-semibold text-gray-700 mb-2">
-                      Last Name <span className="text-red-500">*</span>
+                      Last Name *
                     </label>
                     <input
                       type="text"
                       value={formData.lastName}
                       onChange={(e) => handleInputChange('lastName', e.target.value)}
-                      className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm"
+                      className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm"
                       required
                     />
                   </div>
@@ -215,11 +314,13 @@ const EVTestDrive: React.FC = () => {
                   {/* Father/Husband Name */}
                   <div>
                     <label className="block text-sm font-semibold text-gray-700 mb-2">
-                      Father/Husband Name <span className="text-red-500">*</span>
+                      Father/Husband Name *
                     </label>
                     <input
                       type="text"
-                      className="w-full p-4 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm"
+                      value={formData.fatherHusbandName}
+                      onChange={(e) => handleInputChange('fatherHusbandName', e.target.value)}
+                      className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm"
                       required
                     />
                   </div>
@@ -227,43 +328,47 @@ const EVTestDrive: React.FC = () => {
                   {/* Gender */}
                   <div>
                     <label className="block text-sm font-semibold text-gray-700 mb-2">
-                      Gender <span className="text-red-500">*</span>
+                      Gender *
                     </label>
                     <select
-                      className="w-full p-4 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm bg-white"
+                      value={formData.gender}
+                      onChange={(e) => handleInputChange('gender', e.target.value)}
+                      className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm bg-white"
                     >
-                      <option></option>
-                      <option>Male</option>
-                      <option>Female</option>
-                      <option>Other</option>
+                      <option value=""></option>
+                      <option value="Male">Male</option>
+                      <option value="Female">Female</option>
+                      <option value="Other">Other</option>
                     </select>
                   </div>
 
                   {/* Date of Birth */}
                   <div>
                     <label className="block text-sm font-semibold text-gray-700 mb-2">
-                      Date of Birth <span className="text-red-500">*</span>
+                      Date of Birth *
                     </label>
                     <input
                       type="date"
-                      className="w-full p-4 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm"
+                      value={formData.dateOfBirth}
+                      onChange={(e) => handleInputChange('dateOfBirth', e.target.value)}
+                      className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm"
                     />
                   </div>
 
                   {/* Primary Phone */}
                   <div>
                     <label className="block text-sm font-semibold text-gray-700 mb-2">
-                      Primary Phone <span className="text-red-500">*</span>
+                      Primary Phone *
                     </label>
                     <div className="flex">
-                      <select className="w-20 p-4 border border-gray-300 rounded-l-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm bg-white">
+                      <select className="w-20 p-3 border border-gray-300 rounded-l-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm bg-white">
                         <option>+92</option>
                       </select>
                       <input
                         type="tel"
-                        value={formData.phone}
-                        onChange={(e) => handleInputChange('phone', e.target.value)}
-                        className="flex-1 p-4 border border-l-0 border-gray-300 rounded-r-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm"
+                        value={formData.primaryPhone}
+                        onChange={(e) => handleInputChange('primaryPhone', e.target.value)}
+                        className="flex-1 p-3 border border-l-0 border-gray-300 rounded-r-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm"
                         required
                       />
                     </div>
@@ -272,15 +377,17 @@ const EVTestDrive: React.FC = () => {
                   {/* Secondary Phone */}
                   <div>
                     <label className="block text-sm font-semibold text-gray-700 mb-2">
-                      Secondary Phone <span className="text-red-500">*</span>
+                      Secondary Phone *
                     </label>
                     <div className="flex">
-                      <select className="w-20 p-4 border border-gray-300 rounded-l-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm bg-white">
+                      <select className="w-20 p-3 border border-gray-300 rounded-l-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm bg-white">
                         <option>+92</option>
                       </select>
                       <input
                         type="tel"
-                        className="flex-1 p-4 border border-l-0 border-gray-300 rounded-r-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm"
+                        value={formData.secondaryPhone}
+                        onChange={(e) => handleInputChange('secondaryPhone', e.target.value)}
+                        className="flex-1 p-3 border border-l-0 border-gray-300 rounded-r-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm"
                       />
                     </div>
                   </div>
@@ -288,31 +395,27 @@ const EVTestDrive: React.FC = () => {
                   {/* State/Province */}
                   <div>
                     <label className="block text-sm font-semibold text-gray-700 mb-2">
-                      State/Province <span className="text-red-500">*</span>
+                      State/Province *
                     </label>
-                    <select
+                    <input
+                      type="text"
                       value={formData.state}
                       onChange={(e) => handleInputChange('state', e.target.value)}
-                      className="w-full p-4 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm bg-white"
-                    >
-                      <option></option>
-                      <option>Punjab</option>
-                      <option>Sindh</option>
-                      <option>KPK</option>
-                      <option>Balochistan</option>
-                    </select>
+                      className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm"
+                      required
+                    />
                   </div>
 
                   {/* City */}
                   <div>
                     <label className="block text-sm font-semibold text-gray-700 mb-2">
-                      City <span className="text-red-500">*</span>
+                      City *
                     </label>
                     <input
                       type="text"
                       value={formData.city}
                       onChange={(e) => handleInputChange('city', e.target.value)}
-                      className="w-full p-4 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm"
+                      className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm"
                       required
                     />
                   </div>
@@ -320,24 +423,28 @@ const EVTestDrive: React.FC = () => {
                   {/* Address as per CNIC */}
                   <div>
                     <label className="block text-sm font-semibold text-gray-700 mb-2">
-                      Address as per CNIC <span className="text-red-500">*</span>
+                      Address as per CNIC *
                     </label>
                     <select
-                      className="w-full p-4 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm bg-white"
+                      value={formData.addressCNIC}
+                      onChange={(e) => handleInputChange('addressCNIC', e.target.value)}
+                      className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm bg-white"
                     >
-                      <option>Select Location</option>
+                      <option value="">Select Location</option>
+                      <option value="current">Current Address</option>
+                      <option value="permanent">Permanent Address</option>
                     </select>
                   </div>
 
                   {/* Individual/Corporate */}
                   <div>
                     <label className="block text-sm font-semibold text-gray-700 mb-2">
-                      Individual/Corporate <span className="text-red-500">*</span>
+                      Individual/Corporate *
                     </label>
                     <select
-                      value={formData.individualCompany}
-                      onChange={(e) => handleInputChange('individualCompany', e.target.value)}
-                      className="w-full p-4 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm bg-white"
+                      value={formData.individualCorporate}
+                      onChange={(e) => handleInputChange('individualCorporate', e.target.value)}
+                      className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm bg-white"
                     >
                       <option value="">Select</option>
                       <option value="Individual">Individual</option>
@@ -348,12 +455,12 @@ const EVTestDrive: React.FC = () => {
                   {/* CNG */}
                   <div>
                     <label className="block text-sm font-semibold text-gray-700 mb-2">
-                      CNG <span className="text-red-500">*</span>
+                      CNG *
                     </label>
                     <select
-                      value={formData.cngTestDrive}
-                      onChange={(e) => handleInputChange('cngTestDrive', e.target.value)}
-                      className="w-full p-4 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm bg-white"
+                      value={formData.cng}
+                      onChange={(e) => handleInputChange('cng', e.target.value)}
+                      className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm bg-white"
                     >
                       <option value="">Select</option>
                       <option value="Yes">Yes</option>
@@ -364,9 +471,9 @@ const EVTestDrive: React.FC = () => {
                   {/* CNG front Image */}
                   <div>
                     <label className="block text-sm font-semibold text-gray-700 mb-2">
-                      CNG front Image <span className="text-red-500">*</span>
+                      CNG front Image *
                     </label>
-                    <button className="w-full p-4 border border-gray-300 rounded-md bg-gray-50 text-left text-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm hover:bg-gray-100">
+                    <button className="w-full p-3 border border-gray-300 rounded-md bg-gray-50 text-left text-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm hover:bg-gray-100">
                       Upload/ Select
                     </button>
                   </div>
@@ -374,9 +481,9 @@ const EVTestDrive: React.FC = () => {
                   {/* CNG back Image */}
                   <div>
                     <label className="block text-sm font-semibold text-gray-700 mb-2">
-                      CNG back Image <span className="text-red-500">*</span>
+                      CNG back Image *
                     </label>
-                    <button className="w-full p-4 border border-gray-300 rounded-md bg-gray-50 text-left text-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm hover:bg-gray-100">
+                    <button className="w-full p-3 border border-gray-300 rounded-md bg-gray-50 text-left text-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm hover:bg-gray-100">
                       Upload/ Select
                     </button>
                   </div>
@@ -387,35 +494,39 @@ const EVTestDrive: React.FC = () => {
                       Status (filter non-filter)
                     </label>
                     <select
-                      className="w-full p-4 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm bg-white"
+                      value={formData.statusFilter}
+                      onChange={(e) => handleInputChange('statusFilter', e.target.value)}
+                      className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm bg-white"
                     >
-                      <option>Yes or No</option>
-                      <option>Yes</option>
-                      <option>No</option>
+                      <option value="">Yes or No</option>
+                      <option value="Yes">Yes</option>
+                      <option value="No">No</option>
                     </select>
                   </div>
 
                   {/* Sales Tax Registration */}
                   <div>
                     <label className="block text-sm font-semibold text-gray-700 mb-2">
-                      Sales Tax Registration <span className="text-red-500">*</span>
+                      Sales Tax Registration *
                     </label>
                     <input
                       type="text"
-                      className="w-full p-4 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm"
+                      value={formData.salesTaxRegistration}
+                      onChange={(e) => handleInputChange('salesTaxRegistration', e.target.value)}
+                      className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm"
                     />
                   </div>
 
                   {/* NTN Number */}
                   <div>
                     <label className="block text-sm font-semibold text-gray-700 mb-2">
-                      NTN Number <span className="text-red-500">*</span>
+                      NTN Number *
                     </label>
                     <input
                       type="text"
-                      value={formData.atnNumber}
-                      onChange={(e) => handleInputChange('atnNumber', e.target.value)}
-                      className="w-full p-4 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm"
+                      value={formData.ntnNumber}
+                      onChange={(e) => handleInputChange('ntnNumber', e.target.value)}
+                      className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm"
                     />
                   </div>
                 </div>
@@ -429,7 +540,7 @@ const EVTestDrive: React.FC = () => {
                     value={formData.comments}
                     onChange={(e) => handleInputChange('comments', e.target.value)}
                     rows={4}
-                    className="w-full p-4 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm"
+                    className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm"
                     placeholder=""
                   />
                 </div>
@@ -449,16 +560,30 @@ const EVTestDrive: React.FC = () => {
                   </label>
                 </div>
 
-                {/* Submit Button - Aligned to the left */}
+                {/* Submit Button */}
                 <div className="mt-8 flex justify-start">
                   <button
-                    onClick={handleTestDriveClick}
+                    onClick={handleSubmit}
                     className="bg-black text-white px-12 py-4 rounded-md font-semibold hover:bg-gray-800 transition-colors duration-300 text-sm"
                   >
                     Submit
                   </button>
                 </div>
               </div>
+            </div>
+          </div>
+
+        </div>
+        
+        {/* Footer */}
+        <div className="bg-gray-200 mt-16 py-8">
+          <div className="max-w-6xl mx-auto px-6 flex justify-between items-center text-sm text-gray-600">
+            <div>© 2024 Capital Smart Motors</div>
+            <div className="flex gap-6">
+              <a href="#" className="hover:text-gray-800">Terms of Service</a>
+              <a href="#" className="hover:text-gray-800">Privacy Policy</a>
+              <a href="#" className="hover:text-gray-800">Trust & Safety</a>
+              <a href="#" className="hover:text-gray-800">Law Enforcement</a>
             </div>
           </div>
         </div>
