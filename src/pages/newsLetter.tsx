@@ -1,4 +1,4 @@
-import React from "react";
+// import React from "react";
 import LogoMain from "../assets/Logo-main.svg";
 
 export const Newsletter = () => {

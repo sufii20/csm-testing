@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { ChevronLeft, ChevronRight, ArrowLeft } from 'lucide-react';
 import ForthingBanner from '../assets/Forthing/HeroBanner/ForthingBanner.png'; 
 //slider 1
 import slidea from '../assets/Forthing/ADD/Exterior-A.png';
@@ -19,7 +19,12 @@ import ForthingBig from '../assets/Forthing/Grid/ForthingBig.png';
 import ForthingLeft from '../assets/Forthing/Grid/ForthingLeft.png';
 import ForthingRight from '../assets/Forthing/Grid/ForthingRight.png';
 
-export const Forthing = () => {
+// Define the props interface
+interface ForthingProps {
+  onBack: () => void;
+}
+
+export const Forthing: React.FC<ForthingProps> = ({ onBack }) => {
   const [currentCarIndex, setCurrentCarIndex] = useState(0);
   const [currentSlideIndex, setCurrentSlideIndex] = useState(0);
   const [currentSlideIndex2, setCurrentSlideIndex2] = useState(0);
@@ -157,12 +162,12 @@ export const Forthing = () => {
     {
       image: slided,
       title: "C360° Surround View Camera",
-      description: "360° Surround View Camera delivers a real-time bird’s-eye view of your surroundings, making parking and maneuvering in tight spaces safer and easier."
+      description: "360° Surround View Camera delivers a real-time bird's-eye view of your surroundings, making parking and maneuvering in tight spaces safer and easier."
     }
   ];
 
   // Helper function to get max slide index
-  const getMaxIndex = (slidesLength) => {
+  const getMaxIndex = (slidesLength: number) => {
     return Math.max(0, slidesLength - (isDesktop ? 2 : 1));
   };
 
@@ -175,12 +180,12 @@ export const Forthing = () => {
     setCurrentCarIndex((prev) => (prev - 1 + cars.length) % cars.length);
   };
 
-  const selectCar = (index) => {
+  const selectCar = (index: number) => {
     setCurrentCarIndex(index);
   };
 
   // Helper function to create gradient style for two-tone colors
-  const getColorStyle = (index) => {
+  const getColorStyle = (index: number) => {
     const car = cars[index];
     return {
       backgroundColor: car.colorCode
@@ -233,6 +238,15 @@ export const Forthing = () => {
 
   return (
     <div className="w-full">
+      {/* Back to Home Button - Fixed position at top left */}
+      <button
+        onClick={onBack}
+        className="fixed top-6 left-6 z-50 flex items-center space-x-2 px-4 py-2 bg-white/90 backdrop-blur-sm hover:bg-white shadow-lg hover:shadow-xl rounded-lg transition-all duration-300 border border-gray-200"
+      >
+        <ArrowLeft className="w-5 h-5 text-gray-700" />
+        <span className="text-sm font-medium text-gray-700">Back to Home</span>
+      </button>
+
       {/* Hero Banner Section */}
       <div className="relative w-full">
         <img 

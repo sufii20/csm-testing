@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { Star, ChevronLeft, ChevronRight } from "lucide-react";
+import  { useState, useEffect } from "react";
+import {  ChevronLeft, ChevronRight } from "lucide-react";
 
 // Import page components
 import ZeekrPage from "./zeekr";
@@ -22,7 +22,7 @@ import image4 from "../assets/insights/Img4.jpg";
 
 // Other assets
 import RiddaraVideo from "../assets/RiddaraVideo.mp4";
-import ServiceImage from "../assets/Home-v2.png";
+// import ServiceImage from "../assets/Home-v2.png";
 import CSMGeely from "../assets/insights/CSM-GEELY-MOU.png";
 import autoMob from "../assets/insights/auto-mob-future.png";
 import sareena from "../assets/insights/SERENA-hotel-isb.png";
@@ -117,7 +117,7 @@ const Homepage = () => {
       name: "Sarah Thompson",
       location: " Customer from United Kingdom",
       rating: 5,
-      text: "Geely continues to exceed expectations with its focus on advanced technology, safety, and stylish design. The value for money is unmatched in today’s market. I’m very satisfied with my Geely vehicle.",
+      text: "Geely continues to exceed expectations with its focus on advanced technology, safety, and stylish design. The value for money is unmatched in today's market. I'm very satisfied with my Geely vehicle.",
       image:
        customer,
     },
@@ -126,7 +126,7 @@ const Homepage = () => {
       name: "Emily Johansson",
       location: " Customer from Sweden",
       rating: 5,
-      text: "The Zeekr X has completely changed my perception of compact electric vehicles. It’s stylish, smooth to drive, and packed with smart features that make daily commuting a pleasure. Zeekr has really nailed the balance between performance and practicality.",
+      text: "The Zeekr X has completely changed my perception of compact electric vehicles. It's stylish, smooth to drive, and packed with smart features that make daily commuting a pleasure. Zeekr has really nailed the balance between performance and practicality.",
       image:
        customer,
     },
@@ -135,7 +135,7 @@ const Homepage = () => {
       name: "Carlos Medina",
       location: " Customer from Spain",
       rating: 5,
-      text: "I’ve been pleasantly surprised by the quality and comfort of my Forthing vehicle. It offers great value for money, with a spacious interior, modern design, and smooth driving experience. Forthing is definitely a brand to watch as it expands globall",
+      text: "I've been pleasantly surprised by the quality and comfort of my Forthing vehicle. It offers great value for money, with a spacious interior, modern design, and smooth driving experience. Forthing is definitely a brand to watch as it expands globall",
       image:
         customer,
     },
@@ -144,14 +144,14 @@ const Homepage = () => {
       name: "Amina Yusuf",
       location: "Customer from UAE",
       rating: 5,
-      text: "The JMEV Elight EV has been a fantastic addition to my daily routine. It's sleek, energy-efficient, and surprisingly powerful for its size. I appreciate how Elight is making clean transportation more accessible and stylish at the same time.",
+      text: "The JMEV Elight EV has been a fantastic addition to my daily routine. It's sleek, energy-efficient, and surprisingly powerful for its size. I appreciate how Elight is making clean transportation more accessible and stylish at the same time.",
       image:
        customer
     },
   ];
 
   // Handle car image click navigation
-  const handleCarClick = (page) => {
+  const handleCarClick = (page:any) => {
     setCurrentPage(page);
   };
 
@@ -187,19 +187,19 @@ const Homepage = () => {
 
   // Render different pages based on current page state
   if (currentPage === 'zeekr') {
-    return <ZeekrPage onBack={handleBackToHome} />;
+    return <ZeekrPage {...({ onBack: handleBackToHome } as any)} />;
   }
   
   if (currentPage === 'riddara') {
-    return <RiddaraPage onBack={handleBackToHome} />;
+    return <RiddaraPage {...({ onBack: handleBackToHome } as any)} />;
   }
   
   if (currentPage === 'forthing') {
-    return <ForthingPage onBack={handleBackToHome} />;
+    return <ForthingPage {...({ onBack: handleBackToHome } as any)} />;
   }
   
   if (currentPage === 'jmev') {
-    return <JmevPage onBack={handleBackToHome} />;
+    return <JmevPage {...({ onBack: handleBackToHome } as any)} />;
   }
 
   // Default homepage render
@@ -271,13 +271,11 @@ const Homepage = () => {
                 >
                   <img
                     src={car.image}
-                    alt={car.brand}
                     className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-300"
                   />
                   {/* Optional: Add overlay with brand name on hover */}
                   <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300 flex items-center justify-center">
                     <span className="text-white font-bold text-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                      {car.brand}
                     </span>
                   </div>
                 </div>

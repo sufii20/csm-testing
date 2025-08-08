@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { ChevronLeft, ChevronRight, ArrowLeft } from 'lucide-react';
 
 import JMEVBanner from '../assets/HeroBanner/JMEVBanner.png';
 // Car color variants
@@ -32,16 +32,34 @@ import FeatureLeft from '../assets/JMEV_page/Grid/FeatureLeft.png';
 import FeatureRight from '../assets/JMEV_page/Grid/FeatureRight.png';
 import JmevSpecs from '../assets/JMEV_page/JmevSpecs.png';
 
-export const JMEV = () => {
-  const [currentCarIndex, setCurrentCarIndex] = useState(0);
-  const [currentSlideIndex, setCurrentSlideIndex] = useState(0);
-  const [currentSlideIndex2, setCurrentSlideIndex2] = useState(0);
-  const [currentSlideIndex3, setCurrentSlideIndex3] = useState(0);
-  const [isDesktop, setIsDesktop] = useState(false);
+// Define interfaces for type safety
+interface CarVariant {
+  image: string;
+  color: string;
+  bgColor: string;
+  colorCode: string;
+}
+
+interface SlideData {
+  image: string;
+  title: string;
+  description: string;
+}
+
+interface JMEVProps {
+  onBack: () => void;
+}
+
+const JMEV: React.FC<JMEVProps> = ({ onBack }) => {
+  const [currentCarIndex, setCurrentCarIndex] = useState<number>(0);
+  const [currentSlideIndex, setCurrentSlideIndex] = useState<number>(0);
+  const [currentSlideIndex2, setCurrentSlideIndex2] = useState<number>(0);
+  const [currentSlideIndex3, setCurrentSlideIndex3] = useState<number>(0);
+  const [isDesktop, setIsDesktop] = useState<boolean>(false);
 
   // Handle responsive design
   useEffect(() => {
-    const handleResize = () => {
+    const handleResize = (): void => {
       setIsDesktop(window.innerWidth >= 768);
     };
 
@@ -52,7 +70,7 @@ export const JMEV = () => {
   }, []);
 
   // Car color variants for JMEV
-  const cars = [
+  const cars: CarVariant[] = [
     {
       image: greenCar,
       color: 'Green with black top',
@@ -84,7 +102,7 @@ export const JMEV = () => {
       colorCode: '#FFFFFF'
     },
     {
-      image: blackCar, // Using white car as placeholder for black
+      image: blackCar,
       color: 'Black',
       bgColor: 'bg-black',
       colorCode: '#000000'
@@ -98,11 +116,11 @@ export const JMEV = () => {
   ];
 
   // First Advanced Driving Dynamics slides data (5 slides)
-  const slides = [
+  const slides: SlideData[] = [
     {
       image: slidea,
       title: "Nearly 2m² large panoramic nano skylight",
-      description: "Double-layer laminated silver-coated glass is used to filter up to 98% of ultraviolet rays, so you don't have to worry about being bothered by sunlight  in the car."
+      description: "Double-layer laminated silver-coated glass is used to filter up to 98% of ultraviolet rays, so you don't have to worry about being bothered by sunlight in the car."
     },
     {
       image: slideb,
@@ -127,7 +145,7 @@ export const JMEV = () => {
   ];
 
   // Interior Features slides data (5 slides)
-  const slides2 = [
+  const slides2: SlideData[] = [
     {
       image: InteriorA,
       title: "SMART HOME SPACE",
@@ -136,7 +154,7 @@ export const JMEV = () => {
     {
       image: InteriorB,
       title: "6-way Power Seat", 
-      description: "The driver’s seat is electrically adjustable in 6 directions and the driver can switch the comfortable driving and riding spaces at will to meet the space needs of the driver and passengers for free and pleasant travel."
+      description: "The driver's seat is electrically adjustable in 6 directions and the driver can switch the comfortable driving and riding spaces at will to meet the space needs of the driver and passengers for free and pleasant travel."
     },
     {
       image: InteriorC,
@@ -156,7 +174,7 @@ export const JMEV = () => {
   ];
 
   // Security Features slides data
-  const securitySlides = [
+  const securitySlides: SlideData[] = [
     {
       image: slideA,
       title: "SUPREME PROTECTION",
@@ -185,25 +203,25 @@ export const JMEV = () => {
   ];
 
   // Slider navigation functions
-  const getMaxIndex = (slidesLength) => {
+  const getMaxIndex = (slidesLength: number): number => {
     return Math.max(0, slidesLength - (isDesktop ? 2 : 1));
   };
 
   // Car navigation functions
-  const nextCar = () => {
+  const nextCar = (): void => {
     setCurrentCarIndex((prev) => (prev + 1) % cars.length);
   };
 
-  const prevCar = () => {
+  const prevCar = (): void => {
     setCurrentCarIndex((prev) => (prev - 1 + cars.length) % cars.length);
   };
 
-  const selectCar = (index) => {
+  const selectCar = (index: number): void => {
     setCurrentCarIndex(index);
   };
 
   // Helper function to create gradient style for two-tone colors
-  const getColorStyle = (index) => {
+  const getColorStyle = (index: number): React.CSSProperties => {
     const car = cars[index];
     if (car.color === 'Green with black top') {
       return {
@@ -220,42 +238,44 @@ export const JMEV = () => {
     }
   };
 
-  const nextSlide = () => {
+
+
+  const nextSlide = (): void => {
     setCurrentSlideIndex((prev) => {
       const maxIndex = getMaxIndex(slides.length);
       return prev >= maxIndex ? 0 : prev + 1;
     });
   };
 
-  const prevSlide = () => {
+  const prevSlide = (): void => {
     setCurrentSlideIndex((prev) => {
       const maxIndex = getMaxIndex(slides.length);
       return prev <= 0 ? maxIndex : prev - 1;
     });
   };
 
-  const nextSlide2 = () => {
+  const nextSlide2 = (): void => {
     setCurrentSlideIndex2((prev) => {
       const maxIndex = getMaxIndex(slides2.length);
       return prev >= maxIndex ? 0 : prev + 1;
     });
   };
 
-  const prevSlide2 = () => {
+  const prevSlide2 = (): void => {
     setCurrentSlideIndex2((prev) => {
       const maxIndex = getMaxIndex(slides2.length);
       return prev <= 0 ? maxIndex : prev - 1;
     });
   };
 
-  const nextSlide3 = () => {
+  const nextSlide3 = (): void => {
     setCurrentSlideIndex3((prev) => {
       const maxIndex = getMaxIndex(securitySlides.length);
       return prev >= maxIndex ? 0 : prev + 1;
     });
   };
 
-  const prevSlide3 = () => {
+  const prevSlide3 = (): void => {
     setCurrentSlideIndex3((prev) => {
       const maxIndex = getMaxIndex(securitySlides.length);
       return prev <= 0 ? maxIndex : prev - 1;
@@ -264,6 +284,15 @@ export const JMEV = () => {
 
   return (
     <div className="w-full">
+      {/* Back to Home Button - Fixed position at top left */}
+      <button
+        onClick={onBack}
+        className="fixed top-6 left-6 z-50 flex items-center space-x-2 px-4 py-2 bg-white/90 backdrop-blur-sm hover:bg-white shadow-lg hover:shadow-xl rounded-lg transition-all duration-300 border border-gray-200"
+      >
+        <ArrowLeft className="w-5 h-5 text-gray-700" />
+        <span className="text-sm font-medium text-gray-700">Back to Home</span>
+      </button>
+
       {/* Hero Banner Section */}
       <div className="relative w-full">
         <img 
@@ -275,17 +304,19 @@ export const JMEV = () => {
         {/* Buttons positioned at bottom right */}
         <div className="absolute bottom-8 right-8 flex space-x-4">
           <button
-              className="px-4 sm:px-8 py-3 sm:py-4 border-2 border-white text-white bg-transparent  hover:text-black transition-all duration-300 text-sm font-semibold tracking-wide shadow-lg hover:shadow-xl transform hover:scale-105"
-              style={{ borderRadius: "8px" }}
-            >
-              BOOK NOW
-            </button>
-            <button
-              className="px-4 sm:px-8 py-3 sm:py-4 border-2 border-white text-white bg-black   transition-all duration-300 text-sm font-semibold tracking-wide shadow-lg hover:shadow-xl transform hover:scale-105"
-              style={{ borderRadius: "8px" }}
-            >
-              BROCHURE
-            </button>
+            className="px-4 sm:px-8 py-3 sm:py-4 border-2 border-white text-white bg-transparent hover:bg-white hover:text-black transition-all duration-300 text-sm font-semibold tracking-wide shadow-lg hover:shadow-xl transform hover:scale-105"
+            style={{ borderRadius: "8px" }}
+            type="button"
+          >
+            BOOK NOW
+          </button>
+          <button
+            className="px-4 sm:px-8 py-3 sm:py-4 border-2 border-white text-white bg-black hover:bg-gray-800 transition-all duration-300 text-sm font-semibold tracking-wide shadow-lg hover:shadow-xl transform hover:scale-105"
+            style={{ borderRadius: "8px" }}
+            type="button"
+          >
+            BROCHURE
+          </button>
         </div>
       </div>
 
@@ -327,6 +358,7 @@ export const JMEV = () => {
                   }`}
                 style={getColorStyle(index)}
                 title={car.color}
+                type="button"
               />
             ))}
           </div>
@@ -335,6 +367,7 @@ export const JMEV = () => {
           <button
             onClick={prevCar}
             className="absolute left-4 top-1/2 transform -translate-y-1/2 z-10 p-2 text-gray-400 hover:text-gray-600 transition-colors"
+            type="button"
           >
             <ChevronLeft className="w-6 h-6" />
           </button>
@@ -342,6 +375,7 @@ export const JMEV = () => {
           <button
             onClick={nextCar}
             className="absolute right-4 top-1/2 transform -translate-y-1/2 z-10 p-2 text-gray-400 hover:text-gray-600 transition-colors"
+            type="button"
           >
             <ChevronRight className="w-6 h-6" />
           </button>
@@ -412,6 +446,7 @@ export const JMEV = () => {
             <button 
               onClick={prevSlide}
               className="absolute left-4 top-1/2 transform -translate-y-1/2 z-10 p-3 bg-white rounded-full shadow-lg text-gray-600 hover:text-gray-800 hover:shadow-xl transition-all duration-300"
+              type="button"
             >
               <ChevronLeft className="w-6 h-6" />
             </button>
@@ -419,6 +454,7 @@ export const JMEV = () => {
             <button 
               onClick={nextSlide}
               className="absolute right-4 top-1/2 transform -translate-y-1/2 z-10 p-3 bg-white rounded-full shadow-lg text-gray-600 hover:text-gray-800 hover:shadow-xl transition-all duration-300"
+              type="button"
             >
               <ChevronRight className="w-6 h-6" />
             </button>
@@ -464,11 +500,9 @@ export const JMEV = () => {
           {/* Section Title with Lines on Both Sides */}
           <div className="text-center mb-12">
             <div className="flex items-center justify-left mb-8">
-              {/* <div className="flex-1 h-px bg-gray-400 max-w-24"></div> */}
               <h2 className="px-6 text-lg font-medium text-gray-800 tracking-wider">
                 INTERIOR FEATURES
               </h2>
-              {/* <div className="flex-1 h-px bg-gray-400 max-w-24"></div> */}
             </div>
           </div>
 
@@ -506,6 +540,7 @@ export const JMEV = () => {
             <button 
               onClick={prevSlide2}
               className="absolute left-4 top-1/2 transform -translate-y-1/2 z-10 p-3 bg-white rounded-full shadow-lg text-gray-600 hover:text-gray-800 hover:shadow-xl transition-all duration-300"
+              type="button"
             >
               <ChevronLeft className="w-6 h-6" />
             </button>
@@ -513,13 +548,17 @@ export const JMEV = () => {
             <button 
               onClick={nextSlide2}
               className="absolute right-4 top-1/2 transform -translate-y-1/2 z-10 p-3 bg-white rounded-full shadow-lg text-gray-600 hover:text-gray-800 hover:shadow-xl transition-all duration-300"
+              type="button"
             >
               <ChevronRight className="w-6 h-6" />
             </button>
           </div>
 
           <div className="flex justify-end mt-4">
-            <button className="px-8 py-3 bg-black text-white hover:bg-gray-800 transition-all duration-300 text-sm font-semibold tracking-wide shadow-lg hover:shadow-xl transform hover:scale-105 rounded">
+            <button 
+              className="px-8 py-3 bg-black text-white hover:bg-gray-800 transition-all duration-300 text-sm font-semibold tracking-wide shadow-lg hover:shadow-xl transform hover:scale-105 rounded"
+              type="button"
+            >
               BROCHURE
             </button>
           </div>
@@ -574,6 +613,7 @@ export const JMEV = () => {
             <button 
               onClick={prevSlide3}
               className="absolute left-4 top-1/2 transform -translate-y-1/2 z-10 p-3 bg-white rounded-full shadow-lg text-gray-600 hover:text-gray-800 hover:shadow-xl transition-all duration-300"
+              type="button"
             >
               <ChevronLeft className="w-6 h-6" />
             </button>
@@ -581,6 +621,7 @@ export const JMEV = () => {
             <button 
               onClick={nextSlide3}
               className="absolute right-4 top-1/2 transform -translate-y-1/2 z-10 p-3 bg-white rounded-full shadow-lg text-gray-600 hover:text-gray-800 hover:shadow-xl transition-all duration-300"
+              type="button"
             >
               <ChevronRight className="w-6 h-6" />
             </button>
@@ -588,14 +629,13 @@ export const JMEV = () => {
         </div>
       </div>
 
-
       {/* Final Specifications Section */}
       <div className="bg-white py-8 px-4">
         <div className="max-w-7xl mx-auto">
           <div className="w-full">
             <img 
               src={JmevSpecs} 
-              alt="Forthing Specifications"
+              alt="JMEV Specifications"
               className="w-full h-auto object-contain"
             />
           </div>

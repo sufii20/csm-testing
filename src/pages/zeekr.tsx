@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import  { useState } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import ForthingBanner from '../assets/Forthing/HeroBanner/ForthingBanner.png'; 
 //slider 1

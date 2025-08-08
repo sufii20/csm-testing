@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { ChevronLeft, ChevronRight } from "lucide-react";
-import RiddaraFullBanner from "../assets/RiddaraFullBanner.png";
+import { ChevronLeft, ChevronRight, ArrowLeft } from "lucide-react";
+// import RiddaraFullBanner from "../assets/RiddaraFullBanner.png";
 import whiteCar from "../assets/car_white_top.webp";
 import blueCar from "../assets/car_blue.webp";
 import greyCar from "../assets/car_gray.webp";
@@ -29,7 +29,12 @@ import cameraTech from "../assets/CameraTech.png";
 import DriveAssist from "../assets/DriveAssist.png";
 import ModernTrunk from "../assets/ModernTrunk.png";
 
-export const RiddaraShowcase = () => {
+// Define the props interface
+interface RiddaraProps {
+  onBack: () => void;
+}
+
+export const RiddaraShowcase: React.FC<RiddaraProps> = ({ onBack }) => {
   const [currentCarIndex, setCurrentCarIndex] = useState(0);
   const [currentSlideIndex, setCurrentSlideIndex] = useState(0);
   const [currentSlideIndex2, setCurrentSlideIndex2] = useState(0);
@@ -192,7 +197,7 @@ export const RiddaraShowcase = () => {
     setCurrentCarIndex((prev) => (prev - 1 + cars.length) % cars.length);
   };
 
-  const getColorStyle = (index) => {
+  const getColorStyle = (index: number) => {
     const car = cars[index];
     if (car.color === "Green with black top") {
       return {
@@ -209,12 +214,21 @@ export const RiddaraShowcase = () => {
     }
   };
 
-  const selectCar = (index) => {
+  const selectCar = (index: number) => {
     setCurrentCarIndex(index);
   };
 
   return (
     <div className="w-full">
+      {/* Back to Home Button - Fixed position at top left */}
+      <button
+        onClick={onBack}
+        className="fixed top-6 left-6 z-50 flex items-center space-x-2 px-4 py-2 bg-white/90 backdrop-blur-sm hover:bg-white shadow-lg hover:shadow-xl rounded-lg transition-all duration-300 border border-gray-200"
+      >
+        <ArrowLeft className="w-5 h-5 text-gray-700" />
+        <span className="text-sm font-medium text-gray-700">Back to Home</span>
+      </button>
+
       {/* Hero Banner Section */}
       <div
         className="relative h-screen bg-cover bg-center bg-no-repeat"
@@ -457,9 +471,13 @@ export const RiddaraShowcase = () => {
       <div className="bg-gray-50 py-8 sm:py-16 px-4">
         <div className="max-w-7xl mx-auto">
           <div className="mb-8 sm:mb-12">
-            <h2 className="text-xl sm:text-2xl font-semibold text-gray-800 text-left">
-              Interior Features
-            </h2>
+            <div className="flex items-center justify-center mb-6 sm:mb-8">
+              <div className="flex-1 h-px bg-gray-400 max-w-8 sm:max-w-24"></div>
+              <h2 className="px-3 sm:px-6 text-sm sm:text-lg font-medium text-gray-800 tracking-wider">
+                INTERIOR FEATURES
+              </h2>
+              <div className="flex-1 h-px bg-gray-400 max-w-8 sm:max-w-24"></div>
+            </div>
           </div>
 
           <div className="relative">
