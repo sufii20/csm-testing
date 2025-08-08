@@ -2,7 +2,9 @@
 import { useState } from "react";
 import Navbar from "./pages/navBar";
 import Footer from "./pages/footer";
-import type { PageType } from "./pages/types"; // Import from shared types
+import type { PageType } from "./pages/types"; 
+import Review from "./pages/Review";
+import ContactForm from "./pages/contactUs";
 
 // Import page components
 import HomePage from "./pages/homePage";
@@ -11,7 +13,11 @@ import RiddaraPage from "./pages/riddara";
 import ForthingPage from "./pages/forthing";
 import JmevPage from "./pages/jmev";
 import Newsletter from "./pages/newsLetter";
-// import EVTestDrive from './pages/testDrive';
+import EVTestDrive from './pages/testDrive';
+import AboutPage from "./pages/aboutUs";
+import News from "./pages/newsAndInsights";
+import TestDrive from "./pages/test";
+import StoreLocation from "./pages/location";
 
 function App() {
   // State to track current page - properly typed
@@ -41,33 +47,13 @@ function App() {
       case "jmev":
         return <JmevPage onBack={handleBackToHome} />;
       case "about":
-        return (
-          <div className="p-8">
-            <h1 className="text-2xl font-bold">About Us Page</h1>
-            <p className="mt-4">Learn more about Capital Smart Motors and our commitment to electric vehicles.</p>
-          </div>
-        );
+        return <AboutPage />;
       case "news":
-        return (
-          <div className="p-8">
-            <h1 className="text-2xl font-bold">News & Insights Page</h1>
-            <p className="mt-4">Stay updated with the latest news and insights from the electric vehicle industry.</p>
-          </div>
-        );
-      case "locations":
-        return (
-          <div className="p-8">
-            <h1 className="text-2xl font-bold">Our Locations</h1>
-            <p className="mt-4">Find our showrooms and service centers near you.</p>
-          </div>
-        );
-      case "contact":
-        return (
-          <div className="p-8">
-            <h1 className="text-2xl font-bold">Contact Us</h1>
-            <p className="mt-4">Get in touch with our team for any inquiries or support.</p>
-          </div>
-        );
+        return <News />;
+        case "contact":
+        return <ContactForm />;
+        case "locations":
+        return <StoreLocation />;
       case "home":
       case "homepage": // Handle both 'home' and 'homepage' to show the same component
       default:
