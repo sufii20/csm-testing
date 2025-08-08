@@ -44,9 +44,9 @@ const Homepage = () => {
   const heroBanners = [
     { id: 1, image: ZeekrBan },
     { id: 2, image: ZeekrBanner },
-    { id: 3, image: ForthingBanner },
-    { id: 4, image: JMEVBanner },
-    { id: 5, image: RiddaraBanner },
+    { id: 3, image: RiddaraBanner },
+    { id: 4, image: ForthingBanner },
+    { id: 5, image: JMEVBanner },
   ];
 
   const interiorBanners = [

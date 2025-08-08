@@ -100,7 +100,7 @@ const ContactForm: React.FC = () => {
                 name="name"
                 value={formData.name}
                 onChange={handleInputChange}
-                placeholder="Sadia Ali"
+                placeholder="Enter your name"
                 className="w-full bg-transparent border-b border-black pb-1 text-black placeholder-gray-500 focus:outline-none focus:border-gray-600"
               />
             </div>
@@ -108,13 +108,14 @@ const ContactForm: React.FC = () => {
             {/* Email / Phone No. */}
             <div>
               <label className="block text-sm font-medium text-black mb-2 italic">
-                Email / Phone No.
+                Email / Phone No. *
               </label>
               <input
                 type="text"
                 name="emailPhone"
                 value={formData.emailPhone}
                 onChange={handleInputChange}
+                placeholder="Enter your email or phone number"
                 className="w-full bg-transparent border-b border-black pb-1 text-black focus:outline-none focus:border-gray-600"
               />
             </div>
@@ -122,13 +123,14 @@ const ContactForm: React.FC = () => {
             {/* Invoice No. */}
             <div>
               <label className="block text-sm font-medium text-black mb-2 italic">
-                Invoice No.
+                Invoice No. *
               </label>
               <input
                 type="text"
                 name="invoiceNo"
                 value={formData.invoiceNo}
                 onChange={handleInputChange}
+                placeholder="Enter your invoice number"
                 className="w-full bg-transparent border-b border-black pb-1 text-black focus:outline-none focus:border-gray-600"
               />
             </div>
@@ -143,6 +145,7 @@ const ContactForm: React.FC = () => {
                 name="city"
                 value={formData.city}
                 onChange={handleInputChange}
+                placeholder="Enter your city"
                 className="w-full bg-transparent border-b border-black pb-1 text-black focus:outline-none focus:border-gray-600"
               />
             </div>
@@ -156,6 +159,7 @@ const ContactForm: React.FC = () => {
                 name="message"
                 value={formData.message}
                 onChange={handleInputChange}
+                placeholder="Explain your query in detail"
                 rows={3}
                 className="w-full bg-transparent border-b border-black pb-1 text-black resize-none focus:outline-none focus:border-gray-600"
               />

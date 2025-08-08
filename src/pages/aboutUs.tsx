@@ -1,14 +1,14 @@
-import React, { useState, useEffect } from 'react';
+ import React, { useState } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 // Import your assets
 import AboutBanner1 from '../assets/AboutUs/Hero.png';
 import AboutBanner2 from '../assets/AboutUs/Mission.png';
 import AboutBanner3 from '../assets/AboutUs/Vision.png';
-import Leader1 from '../assets/AboutUs/Management/CEO.png';
-import Leader2 from '../assets/AboutUs/Management/CM.png';
-import Leader3 from '../assets/AboutUs/Management/COO.png';
-import Leader4 from '../assets/AboutUs/Management/VCM.png';
+import Leader1 from '../assets/AboutUs/Management/CM.png';
+import Leader2 from '../assets/AboutUs/Management/VCM.png';
+import Leader3 from '../assets/AboutUs/Management/CEO.png';
+import Leader4 from '../assets/AboutUs/Management/COO.png';
 import Review1 from '../assets/AboutUs/sustain/imageA.jpg';
 import Review2 from '../assets/AboutUs/sustain/imageB.png';
 import Review3 from '../assets/AboutUs/sustain/imageC.png';
@@ -148,32 +148,33 @@ export const AboutUs: React.FC = () => {
 
       {/* Leadership Section */}
       <div className="max-w-8xl mx-auto py-16 px-4">
-        <SectionHeading title="Leadership" />
-        <div className="space-y-16">
-          {leaders.map((leader, idx) => (
-            <div key={idx} className="flex flex-col md:flex-row items-center md:items-start gap-96">
-              <div className="md:ml-16">
-                <img 
-                  src={leader.img} 
-                  alt={leader.name} 
-                  className="w-64 h-64 rounded-lg object-cover shadow-lg mx-auto md:mx-0" 
-                />
-              </div>
-              <div className="text-center md:text-left md:-ml-64">
-                <h3 className="text-3xl font-bold text-gray-900 mb-2 underline underline-offset-4 decoration-2 decoration-gray-400">
-                  {leader.name}
-                </h3>
-                <p className="text-xl text-gray-600 mb-6">{leader.position}</p>
-                <p className="text-lg text-gray-700 leading-relaxed max-w-2xl">
-                  Experienced leader with extensive background in automotive industry and sustainable development. 
-                  Committed to driving innovation and excellence in clean energy solutions. Leading the organization 
-                  towards sustainable growth and technological advancement in the automotive sector.
-                </p>
-              </div>
-            </div>
-          ))}
+  <SectionHeading title="Leadership" />
+  <div className="space-y-16">
+    {leaders.map((leader, idx) => (
+      <div key={idx} className="flex flex-col md:flex-row items-center gap-8 max-w-4xl mx-auto">
+        <div className="flex-shrink-0 w-full md:w-1/3">
+          <img 
+            src={leader.img} 
+            alt={leader.name} 
+            className="w-[454px] h-auto rounded-lg object-cover" 
+          />
+        </div>
+        <div className="text-left md:ml-8 w-full md:w-2/3">
+          <h3 className="text-2xl font-bold text-gray-900 mb-2 underline underline-offset-4 decoration-2 decoration-gray-400">
+            {leader.name}
+          </h3>
+          <p className="text-lg text-gray-600 mb-6">{leader.position}</p>
+          <p className="text-base text-gray-700 leading-relaxed">
+            Experienced leader with extensive background in automotive industry and sustainable development. 
+            Committed to driving innovation and excellence in clean energy solutions. Leading the organization 
+            towards sustainable growth and technological advancement in the automotive sector.
+          </p>
         </div>
       </div>
+    ))}
+  </div>
+</div>
+
 
       {/* Reviews Section */}
       <section className="py-16 bg-gray-50">

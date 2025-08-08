@@ -105,11 +105,12 @@ const StoreLocations: React.FC = () => {
               <img
                 src={store.image}
                 alt="Map location"
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover cursor-pointer hover:opacity-90 transition-opacity"
+                onClick={() => window.open('https://maps.app.goo.gl/titZ4NXQMffkzXtA8', '_blank')}
               />
               <button 
                 onClick={() => window.open('https://maps.app.goo.gl/titZ4NXQMffkzXtA8', '_blank')}
-                className="absolute bottom-1 left-4 bg-black text-white px-4 py-2 rounded text-sm font-medium hover:bg-gray-800 transition-colors"
+                className="absolute bottom-16 left-[-146px] bg-black text-white px-4 py-2 rounded text-sm font-medium hover:bg-gray-800 transition-colors"
               >
                 Get Direction
               </button>

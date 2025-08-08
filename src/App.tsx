@@ -3,7 +3,7 @@ import { useState } from "react";
 import Navbar from "./pages/navBar";
 import Footer from "./pages/footer";
 import type { PageType } from "./pages/types"; 
-import Review from "./pages/Review";
+// import Review from "./pages/Review";
 import ContactForm from "./pages/contactUs";
 
 // Import page components
@@ -13,10 +13,10 @@ import RiddaraPage from "./pages/riddara";
 import ForthingPage from "./pages/forthing";
 import JmevPage from "./pages/jmev";
 import Newsletter from "./pages/newsLetter";
-import EVTestDrive from './pages/testDrive';
+// import EVTestDrive from './pages/testDrive';
 import AboutPage from "./pages/aboutUs";
 import News from "./pages/newsAndInsights";
-import TestDrive from "./pages/test";
+// import TestDrive from "./pages/test";
 import StoreLocation from "./pages/location";
 
 function App() {
