@@ -1,30 +1,29 @@
-import React, { useState, useEffect } from 'react';
-import { ChevronLeft, ChevronRight, ArrowLeft } from 'lucide-react';
-import ForthingBanner from '../assets/Forthing/HeroBanner/ForthingBanner.png'; 
+import React, { useState, useEffect } from "react";
+import { ChevronLeft, ChevronRight, ArrowLeft } from "lucide-react";
+import ForthingBanner from "../assets/Forthing/HeroBanner/ForthingBanner.png";
 
-
-import whiteCar from "../assets//forthing/colorSelect/carWhite.png";
-import blueCar from "../assets//forthing/colorSelect/carBlue.png";
-import greyCar from "../assets//forthing/colorSelect/carGrey.png";
-import greenCar from "../assets//forthing/colorSelect/carGreen.png";
-import blackCar from "../assets//forthing/colorSelect/carBlack.png";
+import whiteCar from "../assets/Forthing/HeroBanner/colorSelect/carWhite.png";
+import blueCar from "../assets/Forthing/HeroBanner/colorSelect/carBlue.png";
+import greyCar from "../assets/Forthing/HeroBanner/colorSelect/carGrey.png";
+import greenCar from "../assets/Forthing/HeroBanner/colorSelect/carGreen.png";
+import blackCar from "../assets/Forthing/HeroBanner/colorSelect/carBlack.png";
 //slider 1
-import slidea from '../assets/Forthing/ADD/Exterior-A.png';
-import slideb from '../assets/Forthing/ADD/Exterior-B.png';
-import slidec from '../assets/Forthing/ADD/Exterior-C.png';
-import slided from '../assets/Forthing/ADD/Exterior-D.png';
-import slidee from '../assets/Forthing/ADD/Exterior-E.jpg';
+import slidea from "../assets/Forthing/ADD/Exterior-A.png";
+import slideb from "../assets/Forthing/ADD/Exterior-B.png";
+import slidec from "../assets/Forthing/ADD/Exterior-C.png";
+import slided from "../assets/Forthing/ADD/Exterior-D.png";
+import slidee from "../assets/Forthing/ADD/Exterior-E.jpg";
 //slider2 images
-import slideA from '../assets/Forthing/InteriorFeatures/Interior-A.png';
-import slideB from '../assets/Forthing/InteriorFeatures/Interior-B.png';
-import slideC from '../assets/Forthing/InteriorFeatures/Interior-C.png';
-import slideD from '../assets/Forthing/InteriorFeatures/Interior-D.png';
-import slideE from '../assets/Forthing/InteriorFeatures/Interior-E.png';
+import slideA from "../assets/Forthing/InteriorFeatures/Interior-A.png";
+import slideB from "../assets/Forthing/InteriorFeatures/Interior-B.png";
+import slideC from "../assets/Forthing/InteriorFeatures/Interior-C.png";
+import slideD from "../assets/Forthing/InteriorFeatures/Interior-D.png";
+import slideE from "../assets/Forthing/InteriorFeatures/Interior-E.png";
 //banner and additional images
-import ForthingSpec from '../assets/Forthing/ForthingSpecs.png';
-import ForthingBig from '../assets/Forthing/Grid/ForthingBig.png';
-import ForthingLeft from '../assets/Forthing/Grid/ForthingLeft.png';
-import ForthingRight from '../assets/Forthing/Grid/ForthingRight.png';
+import ForthingSpec from "../assets/Forthing/ForthingSpecs.png";
+import ForthingBig from "../assets/Forthing/Grid/ForthingBig.png";
+import ForthingLeft from "../assets/Forthing/Grid/ForthingLeft.png";
+import ForthingRight from "../assets/Forthing/Grid/ForthingRight.png";
 
 // Define the props interface
 interface ForthingProps {
@@ -45,9 +44,9 @@ export const Forthing: React.FC<ForthingProps> = ({ onBack }) => {
     };
 
     handleResize(); // Initial check
-    window.addEventListener('resize', handleResize);
-    
-    return () => window.removeEventListener('resize', handleResize);
+    window.addEventListener("resize", handleResize);
+
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   // Car color variants for Forthing - using your existing images as base
@@ -55,35 +54,35 @@ export const Forthing: React.FC<ForthingProps> = ({ onBack }) => {
   const cars = [
     {
       image: greyCar, // Using your existing image as main
-      color: 'Silver Metallic',
-      bgColor: 'bg-gray-400',
-      colorCode: '#C0C0C0'
+      color: "Silver Metallic",
+      bgColor: "bg-gray-400",
+      colorCode: "#C0C0C0",
     },
     {
       image: blueCar, // Replace with actual blue variant when available
-      color: 'Deep Blue',
-      bgColor: 'bg-blue-900',
-      colorCode: '#1e3a8a'
+      color: "Deep Blue",
+      bgColor: "bg-blue-900",
+      colorCode: "#1e3a8a",
     },
     {
       image: whiteCar, // Replace with actual white variant when available
-      color: 'Pearl White',
-      bgColor: 'bg-white',
-      colorCode: '#FFFFFF'
+      color: "Pearl White",
+      bgColor: "bg-white",
+      colorCode: "#FFFFFF",
     },
     {
       image: blackCar, // Replace with actual black variant when available
-      color: 'Midnight Black',
-      bgColor: 'bg-black',
-      colorCode: '#000000'
+      color: "Midnight Black",
+      bgColor: "bg-black",
+      colorCode: "#000000",
     },
-    
+
     {
       image: greenCar, // Replace with actual green variant when available
-      color: 'Forest Green',
-      bgColor: 'bg-green-700',
-      colorCode: '#15803d'
-    }
+      color: "Forest Green",
+      bgColor: "bg-green-700",
+      colorCode: "#15803d",
+    },
   ];
 
   // First Advanced Driving Dynamics slides data (5 slides)
@@ -91,28 +90,33 @@ export const Forthing: React.FC<ForthingProps> = ({ onBack }) => {
     {
       image: slidea,
       title: "⦁	Big Panoramic Sunroof ",
-      description: "Enjoy expansive sky views and natural light with the larger, panoramic sunroof—perfect for a more open and airy cabin experience."
+      description:
+        "Enjoy expansive sky views and natural light with the larger, panoramic sunroof—perfect for a more open and airy cabin experience.",
     },
     {
       image: slideb,
-      title: "⦁	Modern Grille and Headlights", 
-      description: "Stand out with a bold modern grille and sleek LED headlights, combining striking style with enhanced road visibility."
+      title: "⦁	Modern Grille and Headlights",
+      description:
+        "Stand out with a bold modern grille and sleek LED headlights, combining striking style with enhanced road visibility.",
     },
     {
       image: slidec,
       title: "⦁	Aerodynamic Side Profile",
-      description: "Showcasing a sleek and sculpted design, the aerodynamic side profile enhances both beauty and performance for a smooth, efficient drive."
+      description:
+        "Showcasing a sleek and sculpted design, the aerodynamic side profile enhances both beauty and performance for a smooth, efficient drive.",
     },
     {
       image: slided,
       title: "⦁	Sport-Tuned Alloy Wheels",
-      description: "Sport-tuned alloy wheels enhance both style and performance. Designed for stability and sharp handling, they add a bold, athletic edge to every drive"
+      description:
+        "Sport-tuned alloy wheels enhance both style and performance. Designed for stability and sharp handling, they add a bold, athletic edge to every drive",
     },
     {
       image: slidee,
       title: "⦁	LED Matrix Headlights & Tail Lamps",
-      description: "LED matrix headlights and tail lamps offer superior visibility and a modern look. They adapt intelligently to driving conditions, improving safety, enhancing the vehicle's futuristic style."
-    }
+      description:
+        "LED matrix headlights and tail lamps offer superior visibility and a modern look. They adapt intelligently to driving conditions, improving safety, enhancing the vehicle's futuristic style.",
+    },
   ];
 
   // Interior Features slides data (5 slides) - Using exact text from image
@@ -120,28 +124,33 @@ export const Forthing: React.FC<ForthingProps> = ({ onBack }) => {
     {
       image: slideA,
       title: "SMART HOME SPACE",
-      description: "Step into a roomy, tech-savvy cabin where comfort and innovation come together.Thoughtfully designed for you, the open interior offers maximum space and ease.Smart features throughout make every drive smooth, connected, and refined."
+      description:
+        "Step into a roomy, tech-savvy cabin where comfort and innovation come together.Thoughtfully designed for you, the open interior offers maximum space and ease.Smart features throughout make every drive smooth, connected, and refined.",
     },
     {
       image: slideB,
-      title: "⦁	ERGONOMIC SEATS WITH LEATHER & VENTILATION OPTIONS", 
-      description: "Designed for optimal comfort and support, the seats feature high-quality leather finishes and optional ventilation to enhance the driving experience in all conditions."
+      title: "⦁	ERGONOMIC SEATS WITH LEATHER & VENTILATION OPTIONS",
+      description:
+        "Designed for optimal comfort and support, the seats feature high-quality leather finishes and optional ventilation to enhance the driving experience in all conditions.",
     },
     {
       image: slideC,
       title: "Dual HD screens: infotainment + digital cluster",
-      description: "Features a high-resolution infotainment touchscreen paired with a fully digital instrument cluster, delivering clear visuals, intuitive control, and a connected driving experience."
+      description:
+        "Features a high-resolution infotainment touchscreen paired with a fully digital instrument cluster, delivering clear visuals, intuitive control, and a connected driving experience.",
     },
     {
       image: slideD,
       title: "Shift Electronic Gear Shifting Technology",
-      description: "Experience seamless control with advanced electronic gear shifting for a sleek, modern drive."
+      description:
+        "Experience seamless control with advanced electronic gear shifting for a sleek, modern drive.",
     },
     {
       image: slideE,
       title: "Spacious trunk with split-folding rear seats",
-      description: "Spacious trunk with split-folding rear seats offers flexible storage for all your adventures."
-    }
+      description:
+        "Spacious trunk with split-folding rear seats offers flexible storage for all your adventures.",
+    },
   ];
 
   // Security Features slides data - using your imports
@@ -149,23 +158,27 @@ export const Forthing: React.FC<ForthingProps> = ({ onBack }) => {
     {
       image: slidea,
       title: "ADAS Advanced Driver Assistance System",
-      description: "ADAS (Advanced Driver Assistance System) enhances safety with intelligent features like lane keeping, collision warning, and adaptive cruise control for a smarter, more secure drive"
+      description:
+        "ADAS (Advanced Driver Assistance System) enhances safety with intelligent features like lane keeping, collision warning, and adaptive cruise control for a smarter, more secure drive",
     },
     {
       image: slideb,
-      title: "AEB Autonomous Emergency Braking", 
-      description: "It automatically detects obstacles and applies the brakes to help prevent or reduce the severity of collisions, ensuring greater safety on the road."
+      title: "AEB Autonomous Emergency Braking",
+      description:
+        "It automatically detects obstacles and applies the brakes to help prevent or reduce the severity of collisions, ensuring greater safety on the road.",
     },
     {
       image: slidec,
       title: "6-Airbag Protection System",
-      description: "Forthing Friday comes with comprehensive safety with front, side, and curtain airbags, shielding occupants from multiple angles in the event of a collision"
+      description:
+        "Forthing Friday comes with comprehensive safety with front, side, and curtain airbags, shielding occupants from multiple angles in the event of a collision",
     },
     {
       image: slided,
       title: "C360° Surround View Camera",
-      description: "360° Surround View Camera delivers a real-time bird's-eye view of your surroundings, making parking and maneuvering in tight spaces safer and easier."
-    }
+      description:
+        "360° Surround View Camera delivers a real-time bird's-eye view of your surroundings, making parking and maneuvering in tight spaces safer and easier.",
+    },
   ];
 
   // Helper function to get max slide index
@@ -190,7 +203,7 @@ export const Forthing: React.FC<ForthingProps> = ({ onBack }) => {
   const getColorStyle = (index: number) => {
     const car = cars[index];
     return {
-      backgroundColor: car.colorCode
+      backgroundColor: car.colorCode,
     };
   };
 
@@ -251,26 +264,26 @@ export const Forthing: React.FC<ForthingProps> = ({ onBack }) => {
 
       {/* Hero Banner Section */}
       <div className="relative w-full">
-        <img 
-          src={ForthingBanner} 
+        <img
+          src={ForthingBanner}
           alt="Forthing Hero Banner"
           className="w-full h-auto object-cover"
         />
-        
+
         {/* Buttons positioned at bottom right */}
         <div className="absolute bottom-8 right-8 flex space-x-4">
           <button
-              className="px-4 sm:px-8 py-3 sm:py-4 border-2 border-white text-white bg-transparent  hover:text-black transition-all duration-300 text-sm font-semibold tracking-wide shadow-lg hover:shadow-xl transform hover:scale-105"
-              style={{ borderRadius: "8px" }}
-            >
-              BOOK NOW
-            </button>
-            <button
-              className="px-4 sm:px-8 py-3 sm:py-4 border-2 border-white text-white bg-black   transition-all duration-300 text-sm font-semibold tracking-wide shadow-lg hover:shadow-xl transform hover:scale-105"
-              style={{ borderRadius: "8px" }}
-            >
-              BROCHURE
-            </button>
+            className="px-4 sm:px-8 py-3 sm:py-4 border-2 border-white text-white bg-transparent  hover:text-black transition-all duration-300 text-sm font-semibold tracking-wide shadow-lg hover:shadow-xl transform hover:scale-105"
+            style={{ borderRadius: "8px" }}
+          >
+            BOOK NOW
+          </button>
+          <button
+            className="px-4 sm:px-8 py-3 sm:py-4 border-2 border-white text-white bg-black   transition-all duration-300 text-sm font-semibold tracking-wide shadow-lg hover:shadow-xl transform hover:scale-105"
+            style={{ borderRadius: "8px" }}
+          >
+            BROCHURE
+          </button>
         </div>
       </div>
 
@@ -280,18 +293,30 @@ export const Forthing: React.FC<ForthingProps> = ({ onBack }) => {
           <div className="flex justify-center items-center">
             <div className="flex items-center bg-transparent rounded-lg p-4 shadow-sm">
               <div className="flex flex-col items-center px-6">
-                <p className="text-xs text-gray-400 mb-1 uppercase tracking-wider">UP TO</p>
-                <h3 className="text-xl font-light text-gray-700 mb-1">1100 Km*</h3>
+                <p className="text-xs text-gray-400 mb-1 uppercase tracking-wider">
+                  UP TO
+                </p>
+                <h3 className="text-xl font-light text-gray-700 mb-1">
+                  1100 Km*
+                </h3>
                 <p className="text-gray-500 text-xs">Driving Range</p>
               </div>
               <div className="flex flex-col items-center px-6 border-l border-r border-gray-300 mx-4">
-                <p className="text-xs text-gray-400 mb-1 uppercase tracking-wider">AS FAST AS</p>
-                <h3 className="text-xl font-light text-gray-700 mb-1">10.9 Sec*</h3>
+                <p className="text-xs text-gray-400 mb-1 uppercase tracking-wider">
+                  AS FAST AS
+                </p>
+                <h3 className="text-xl font-light text-gray-700 mb-1">
+                  10.9 Sec*
+                </h3>
                 <p className="text-gray-500 text-xs">To Reach 100</p>
               </div>
               <div className="flex flex-col items-center px-6">
-                <p className="text-xs text-gray-400 mb-1 uppercase tracking-wider">UP TO</p>
-                <h3 className="text-xl font-light text-gray-700 mb-1">31.94 KWh*</h3>
+                <p className="text-xs text-gray-400 mb-1 uppercase tracking-wider">
+                  UP TO
+                </p>
+                <h3 className="text-xl font-light text-gray-700 mb-1">
+                  31.94 KWh*
+                </h3>
                 <p className="text-gray-500 text-xs">Capacity</p>
               </div>
             </div>
@@ -308,8 +333,11 @@ export const Forthing: React.FC<ForthingProps> = ({ onBack }) => {
               <button
                 key={index}
                 onClick={() => selectCar(index)}
-                className={`w-4 h-4 rounded-full transition-all duration-300 border border-gray-300 ${currentCarIndex === index ? 'ring-2 ring-gray-600 ring-offset-2' : ''
-                  }`}
+                className={`w-4 h-4 rounded-full transition-all duration-300 border border-gray-300 ${
+                  currentCarIndex === index
+                    ? "ring-2 ring-gray-600 ring-offset-2"
+                    : ""
+                }`}
                 style={getColorStyle(index)}
                 title={car.color}
               />
@@ -367,22 +395,29 @@ export const Forthing: React.FC<ForthingProps> = ({ onBack }) => {
           <div className="relative">
             {/* Main Slide Display - Show 2 at a time on desktop, 1 on mobile */}
             <div className="relative overflow-hidden">
-              <div 
+              <div
                 className="flex transition-transform duration-500 ease-in-out gap-6"
-                style={{ transform: `translateX(-${currentSlideIndex * (isDesktop ? 50 : 100)}%)` }}
+                style={{
+                  transform: `translateX(-${
+                    currentSlideIndex * (isDesktop ? 50 : 100)
+                  }%)`,
+                }}
               >
                 {slides.map((slide, index) => (
-                  <div key={index} className="w-full md:w-1/2 flex-shrink-0 px-2">
+                  <div
+                    key={index}
+                    className="w-full md:w-1/2 flex-shrink-0 px-2"
+                  >
                     <div className="bg-white rounded-lg overflow-hidden group cursor-pointer">
                       {/* Image with hover zoom effect */}
                       <div className="relative overflow-hidden">
-                        <img 
-                          src={slide.image} 
+                        <img
+                          src={slide.image}
                           alt={slide.title}
                           className="w-full h-auto object-contain transition-transform duration-500 group-hover:scale-105"
                         />
                       </div>
-                      
+
                       {/* Text Content Below Image - Left Aligned with Gray Background */}
                       <div className="p-4 md:p-6 text-left bg-gray-100">
                         <h3 className="text-base md:text-lg font-semibold text-gray-800 mb-2 md:mb-3">
@@ -399,14 +434,14 @@ export const Forthing: React.FC<ForthingProps> = ({ onBack }) => {
             </div>
 
             {/* Navigation Arrows */}
-            <button 
+            <button
               onClick={prevSlide}
               className="absolute left-4 top-1/2 transform -translate-y-1/2 z-10 p-3 bg-white rounded-full shadow-lg text-gray-600 hover:text-gray-800 hover:shadow-xl transition-all duration-300"
             >
               <ChevronLeft className="w-6 h-6" />
             </button>
-            
-            <button 
+
+            <button
               onClick={nextSlide}
               className="absolute right-4 top-1/2 transform -translate-y-1/2 z-10 p-3 bg-white rounded-full shadow-lg text-gray-600 hover:text-gray-800 hover:shadow-xl transition-all duration-300"
             >
@@ -422,25 +457,25 @@ export const Forthing: React.FC<ForthingProps> = ({ onBack }) => {
           <div className="space-y-4">
             {/* Top - Large banner image spanning full width */}
             <div className="w-full">
-              <img 
-                src={ForthingBig} 
+              <img
+                src={ForthingBig}
                 alt="Forthing Main Vehicle"
                 className="w-full h-auto object-contain"
               />
             </div>
-            
+
             {/* Bottom - Two smaller images side by side */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div className="w-full">
-                <img 
-                  src={ForthingLeft} 
+                <img
+                  src={ForthingLeft}
                   alt="Forthing Side View"
                   className="w-full h-auto object-contain"
                 />
               </div>
               <div className="w-full">
-                <img 
-                  src={ForthingRight} 
+                <img
+                  src={ForthingRight}
                   alt="Forthing Front View"
                   className="w-full h-auto object-contain"
                 />
@@ -468,22 +503,29 @@ export const Forthing: React.FC<ForthingProps> = ({ onBack }) => {
           <div className="relative">
             {/* Main Slide Display - Show 2 at a time on desktop, 1 on mobile */}
             <div className="relative overflow-hidden">
-              <div 
+              <div
                 className="flex transition-transform duration-500 ease-in-out gap-6"
-                style={{ transform: `translateX(-${currentSlideIndex2 * (isDesktop ? 50 : 100)}%)` }}
+                style={{
+                  transform: `translateX(-${
+                    currentSlideIndex2 * (isDesktop ? 50 : 100)
+                  }%)`,
+                }}
               >
                 {slides2.map((slide, index) => (
-                  <div key={index} className="w-full md:w-1/2 flex-shrink-0 px-2">
+                  <div
+                    key={index}
+                    className="w-full md:w-1/2 flex-shrink-0 px-2"
+                  >
                     <div className="bg-white rounded-lg overflow-hidden group cursor-pointer">
                       {/* Image with hover zoom effect */}
                       <div className="relative overflow-hidden">
-                        <img 
-                          src={slide.image} 
+                        <img
+                          src={slide.image}
                           alt={slide.title}
                           className="w-full h-auto object-contain transition-transform duration-500 group-hover:scale-105"
                         />
                       </div>
-                      
+
                       {/* Text Content Below Image - Left Aligned with Gray Background */}
                       <div className="p-4 md:p-6 text-left bg-gray-100">
                         <h3 className="text-base md:text-lg font-semibold text-gray-800 mb-2 md:mb-3">
@@ -500,14 +542,14 @@ export const Forthing: React.FC<ForthingProps> = ({ onBack }) => {
             </div>
 
             {/* Navigation Arrows */}
-            <button 
+            <button
               onClick={prevSlide2}
               className="absolute left-4 top-1/2 transform -translate-y-1/2 z-10 p-3 bg-white rounded-full shadow-lg text-gray-600 hover:text-gray-800 hover:shadow-xl transition-all duration-300"
             >
               <ChevronLeft className="w-6 h-6" />
             </button>
-            
-            <button 
+
+            <button
               onClick={nextSlide2}
               className="absolute right-4 top-1/2 transform -translate-y-1/2 z-10 p-3 bg-white rounded-full shadow-lg text-gray-600 hover:text-gray-800 hover:shadow-xl transition-all duration-300"
             >
@@ -542,22 +584,29 @@ export const Forthing: React.FC<ForthingProps> = ({ onBack }) => {
           <div className="relative">
             {/* Main Slide Display - Show 2 at a time on desktop, 1 on mobile */}
             <div className="relative overflow-hidden">
-              <div 
+              <div
                 className="flex transition-transform duration-500 ease-in-out gap-6"
-                style={{ transform: `translateX(-${currentSlideIndex3 * (isDesktop ? 50 : 100)}%)` }}
+                style={{
+                  transform: `translateX(-${
+                    currentSlideIndex3 * (isDesktop ? 50 : 100)
+                  }%)`,
+                }}
               >
                 {securitySlides.map((slide, index) => (
-                  <div key={index} className="w-full md:w-1/2 flex-shrink-0 px-2">
+                  <div
+                    key={index}
+                    className="w-full md:w-1/2 flex-shrink-0 px-2"
+                  >
                     <div className="bg-white rounded-lg overflow-hidden group cursor-pointer">
                       {/* Image with hover zoom effect */}
                       <div className="relative overflow-hidden">
-                        <img 
-                          src={slide.image} 
+                        <img
+                          src={slide.image}
                           alt={slide.title}
                           className="w-full h-auto object-contain transition-transform duration-500 group-hover:scale-105"
                         />
                       </div>
-                      
+
                       {/* Text Content Below Image - Left Aligned with Gray Background */}
                       <div className="p-4 md:p-6 text-left bg-gray-100">
                         <h3 className="text-base md:text-lg font-semibold text-gray-800 mb-2 md:mb-3">
@@ -574,14 +623,14 @@ export const Forthing: React.FC<ForthingProps> = ({ onBack }) => {
             </div>
 
             {/* Navigation Arrows */}
-            <button 
+            <button
               onClick={prevSlide3}
               className="absolute left-4 top-1/2 transform -translate-y-1/2 z-10 p-3 bg-white rounded-full shadow-lg text-gray-600 hover:text-gray-800 hover:shadow-xl transition-all duration-300"
             >
               <ChevronLeft className="w-6 h-6" />
             </button>
-            
-            <button 
+
+            <button
               onClick={nextSlide3}
               className="absolute right-4 top-1/2 transform -translate-y-1/2 z-10 p-3 bg-white rounded-full shadow-lg text-gray-600 hover:text-gray-800 hover:shadow-xl transition-all duration-300"
             >
@@ -595,13 +644,13 @@ export const Forthing: React.FC<ForthingProps> = ({ onBack }) => {
       <div className="bg-white py-8 px-4">
         <div className="max-w-7xl mx-auto">
           <div className="w-full">
-            <img 
-              src={ForthingSpec} 
+            <img
+              src={ForthingSpec}
               alt="Forthing Specifications"
               className="w-full h-auto object-contain"
             />
           </div>
-          
+
           {/* Final decorative line at the bottom */}
           <div className="flex items-center justify-center pt-8">
             <div className="w-20 h-px bg-gradient-to-r from-transparent via-gray-400 to-transparent rounded-full opacity-60"></div>

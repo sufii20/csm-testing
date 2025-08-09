@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Twitter, Facebook, Linkedin, Mail } from 'lucide-react';
+import React, { useState } from "react";
+import { Twitter, Facebook, Linkedin, Mail } from "lucide-react";
 
 interface FormData {
   name: string;
@@ -11,24 +11,26 @@ interface FormData {
 
 const ContactForm: React.FC = () => {
   const [formData, setFormData] = useState<FormData>({
-    name: '',
-    emailPhone: '',
-    invoiceNo: '',
-    city: '',
-    message: ''
+    name: "",
+    emailPhone: "",
+    invoiceNo: "",
+    city: "",
+    message: "",
   });
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleInputChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     const { name, value } = e.target;
-    setFormData(prev => ({
+    setFormData((prev) => ({
       ...prev,
-      [name]: value
+      [name]: value,
     }));
   };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Form submitted:', formData);
+    console.log("Form submitted:", formData);
   };
 
   return (
@@ -38,12 +40,13 @@ const ContactForm: React.FC = () => {
         {/* GET IN TOUCH WITH US strip - positioned at the right edge */}
         <div className="absolute top-24 right-0 bg-black text-white py-2 px-16 z-10">
           <div className="text-xs font-light tracking-wider whitespace-nowrap">
-            GET IN TOUCH WITH US • GET IN TOUCH WITH US • GET IN TOUCH WITH US • GET IN TOUCH WITH US • GET IN TOUCH WITH US • GET IN TOUCH WITH US •
+            GET IN TOUCH WITH US • GET IN TOUCH WITH US • GET IN TOUCH WITH US •
+            GET IN TOUCH WITH US • GET IN TOUCH WITH US • GET IN TOUCH WITH US •
           </div>
         </div>
-        
+
         {/* Contact Information - positioned much lower */}
-        <div className="pt-19 pl-12 pr-8" style={{ marginTop: '180px' }}>
+        <div className="pt-19 pl-12 pr-8" style={{ marginTop: "180px" }}>
           {/* First Row - Email and Phone */}
           <div className="grid grid-cols-2 gap-20 mb-16">
             <div>
@@ -63,18 +66,31 @@ const ContactForm: React.FC = () => {
           <div className="grid grid-cols-2 gap-20">
             <div>
               <h3 className="text-lg font-bold mb-1 uppercase">ADDRESS</h3>
-              <p className="text-gray-600 text-sm">Main Bedian road near DHA Ph#VI, Lahore, Pakistan</p>
+              <p className="text-gray-600 text-sm">
+                Main Bedian road near DHA Ph#VI, Lahore, Pakistan
+              </p>
             </div>
             <div>
-              <h3 className="text-lg font-bold mb-1 uppercase">WE ARE SOCIAL</h3>
+              <h3 className="text-lg font-bold mb-1 uppercase">
+                WE ARE SOCIAL
+              </h3>
               <div className="flex space-x-2">
-                <a href="#" className="w-6 h-6 border border-gray-400 flex items-center justify-center hover:bg-gray-100 transition-colors">
+                <a
+                  href="#"
+                  className="w-6 h-6 border border-gray-400 flex items-center justify-center hover:bg-gray-100 transition-colors"
+                >
                   <Twitter size={12} className="text-gray-600" />
                 </a>
-                <a href="#" className="w-6 h-6 border border-gray-400 flex items-center justify-center hover:bg-gray-100 transition-colors">
+                <a
+                  href="#"
+                  className="w-6 h-6 border border-gray-400 flex items-center justify-center hover:bg-gray-100 transition-colors"
+                >
                   <Facebook size={12} className="text-gray-600" />
                 </a>
-                <a href="#" className="w-6 h-6 border border-gray-400 flex items-center justify-center hover:bg-gray-100 transition-colors">
+                <a
+                  href="#"
+                  className="w-6 h-6 border border-gray-400 flex items-center justify-center hover:bg-gray-100 transition-colors"
+                >
                   <Linkedin size={12} className="text-gray-600" />
                 </a>
               </div>
@@ -88,7 +104,7 @@ const ContactForm: React.FC = () => {
         <div className="max-w-md pt-8">
           <h2 className="text-2xl font-bold text-black mb-1">WE'D LOVE TO</h2>
           <h2 className="text-2xl font-bold text-black mb-8">HEAR FROM YOU.</h2>
-          
+
           <div className="space-y-6">
             {/* Name */}
             <div>

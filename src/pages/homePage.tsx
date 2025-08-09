@@ -1,5 +1,5 @@
-import  { useState, useEffect } from "react";
-import {  ChevronLeft, ChevronRight } from "lucide-react";
+import { useState, useEffect } from "react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 // Import page components
 import ZeekrPage from "./zeekr";
@@ -39,7 +39,7 @@ import zeekrInterior from "../assets/interiorView/ZeekrInterior.png";
 const Homepage = () => {
   const [currentHeroBanner, setCurrentHeroBanner] = useState(0);
   const [currentInteriorBanner, setCurrentInteriorBanner] = useState(0);
-  const [currentPage, setCurrentPage] = useState('home');
+  const [currentPage, setCurrentPage] = useState("home");
 
   const heroBanners = [
     { id: 1, image: ZeekrBan },
@@ -59,31 +59,31 @@ const Homepage = () => {
   const cars = [
     {
       id: 1,
-      image: image1,  
+      image: image1,
       // brand: "ZEEKR",
       logo: "Z",
-      page: "zeekr"
+      page: "zeekr",
     },
     {
       id: 2,
       image: image4,
       // brand: "RIDDARA",
       logo: "R",
-      page: "riddara"
+      page: "riddara",
     },
     {
       id: 3,
       image: image2,
       // brand: "FORTHING",
       logo: "F",
-      page: "forthing"
+      page: "forthing",
     },
     {
       id: 4,
       image: image3,
       // brand: "JMEV",
       logo: "J",
-      page: "jmev"
+      page: "jmev",
     },
   ];
 
@@ -118,8 +118,7 @@ const Homepage = () => {
       location: " Customer from United Kingdom",
       rating: 5,
       text: "Geely continues to exceed expectations with its focus on advanced technology, safety, and stylish design. The value for money is unmatched in today's market. I'm very satisfied with my Geely vehicle.",
-      image:
-       customer,
+      image: customer,
     },
     {
       id: 2,
@@ -127,8 +126,7 @@ const Homepage = () => {
       location: " Customer from Sweden",
       rating: 5,
       text: "The Zeekr X has completely changed my perception of compact electric vehicles. It's stylish, smooth to drive, and packed with smart features that make daily commuting a pleasure. Zeekr has really nailed the balance between performance and practicality.",
-      image:
-       customer,
+      image: customer,
     },
     {
       id: 3,
@@ -136,8 +134,7 @@ const Homepage = () => {
       location: " Customer from Spain",
       rating: 5,
       text: "I've been pleasantly surprised by the quality and comfort of my Forthing vehicle. It offers great value for money, with a spacious interior, modern design, and smooth driving experience. Forthing is definitely a brand to watch as it expands globall",
-      image:
-        customer,
+      image: customer,
     },
     {
       id: 4,
@@ -145,19 +142,18 @@ const Homepage = () => {
       location: "Customer from UAE",
       rating: 5,
       text: "The JMEV Elight EV has been a fantastic addition to my daily routine. It's sleek, energy-efficient, and surprisingly powerful for its size. I appreciate how Elight is making clean transportation more accessible and stylish at the same time.",
-      image:
-       customer
+      image: customer,
     },
   ];
 
   // Handle car image click navigation
-  const handleCarClick = (page:any) => {
+  const handleCarClick = (page: any) => {
     setCurrentPage(page);
   };
 
   // Handle back to home
   const handleBackToHome = () => {
-    setCurrentPage('home');
+    setCurrentPage("home");
   };
 
   useEffect(() => {
@@ -186,19 +182,19 @@ const Homepage = () => {
   };
 
   // Render different pages based on current page state
-  if (currentPage === 'zeekr') {
+  if (currentPage === "zeekr") {
     return <ZeekrPage {...({ onBack: handleBackToHome } as any)} />;
   }
-  
-  if (currentPage === 'riddara') {
+
+  if (currentPage === "riddara") {
     return <RiddaraPage {...({ onBack: handleBackToHome } as any)} />;
   }
-  
-  if (currentPage === 'forthing') {
+
+  if (currentPage === "forthing") {
     return <ForthingPage {...({ onBack: handleBackToHome } as any)} />;
   }
-  
-  if (currentPage === 'jmev') {
+
+  if (currentPage === "jmev") {
     return <JmevPage {...({ onBack: handleBackToHome } as any)} />;
   }
 
@@ -265,7 +261,7 @@ const Homepage = () => {
             {cars.map((car) => (
               <div key={car.id} className="w-full">
                 {/* Car Image - Now clickable */}
-                <div 
+                <div
                   className="relative h-[200px] md:h-[280px] overflow-hidden group rounded-lg cursor-pointer"
                   onClick={() => handleCarClick(car.page)}
                 >
@@ -275,8 +271,7 @@ const Homepage = () => {
                   />
                   {/* Optional: Add overlay with brand name on hover */}
                   <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300 flex items-center justify-center">
-                    <span className="text-white font-bold text-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    </span>
+                    <span className="text-white font-bold text-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
                   </div>
                 </div>
               </div>
@@ -358,7 +353,7 @@ const Homepage = () => {
               <div className="h-px bg-gray-400 w-16 md:w-32"></div>
             </div>
           </div>
-          
+
           {/* Updated layout for proper sizing */}
           <div className="flex flex-col md:flex-row justify-center items-end gap-6 md:gap-8">
             {/* 1st testimonial - smaller */}
@@ -375,7 +370,9 @@ const Homepage = () => {
                   <h4 className="font-bold text-blue-800 text-sm">
                     {testimonials[0].name}
                   </h4>
-                  <p className="text-xs text-blue-800">{testimonials[0].location}</p>
+                  <p className="text-xs text-blue-800">
+                    {testimonials[0].location}
+                  </p>
                 </div>
               </div>
               <p className="text-black text-xs leading-relaxed text-left">
@@ -397,7 +394,9 @@ const Homepage = () => {
                   <h4 className="font-bold text-blue-800 text-base md:text-lg">
                     {testimonials[1].name}
                   </h4>
-                  <p className="text-sm text-blue-800">{testimonials[1].location}</p>
+                  <p className="text-sm text-blue-800">
+                    {testimonials[1].location}
+                  </p>
                 </div>
               </div>
               <p className="text-black text-sm leading-relaxed text-left">
@@ -419,7 +418,9 @@ const Homepage = () => {
                   <h4 className="font-bold text-blue-800 text-base md:text-lg">
                     {testimonials[2].name}
                   </h4>
-                  <p className="text-sm text-blue-800">{testimonials[2].location}</p>
+                  <p className="text-sm text-blue-800">
+                    {testimonials[2].location}
+                  </p>
                 </div>
               </div>
               <p className="text-black text-sm leading-relaxed text-left">
@@ -441,7 +442,9 @@ const Homepage = () => {
                   <h4 className="font-bold text-blue-800 text-sm">
                     {testimonials[3].name}
                   </h4>
-                  <p className="text-xs text-blue-800">{testimonials[3].location}</p>
+                  <p className="text-xs text-blue-800">
+                    {testimonials[3].location}
+                  </p>
                 </div>
               </div>
               <p className="text-black text-xs leading-relaxed text-left">
@@ -529,5 +532,3 @@ const Homepage = () => {
 };
 
 export default Homepage;
-
-

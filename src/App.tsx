@@ -3,7 +3,6 @@ import { useState } from "react";
 import Navbar from "./pages/navBar";
 import Footer from "./pages/footer";
 import type { PageType } from "./pages/types"; 
-// import Review from "./pages/Review";
 import ContactForm from "./pages/contactUs";
 
 // Import page components
@@ -13,10 +12,10 @@ import RiddaraPage from "./pages/riddara";
 import ForthingPage from "./pages/forthing";
 import JmevPage from "./pages/jmev";
 import Newsletter from "./pages/newsLetter";
-// import EVTestDrive from './pages/testDrive';
+import MainApp from './pages/testDrive'; // This should be your MainApp component that includes both EVTestDrive and OrderReview
 import AboutPage from "./pages/aboutUs";
 import News from "./pages/newsAndInsights";
-// import TestDrive from "./pages/test";
+import TestDrive from "./pages/test";
 import StoreLocation from "./pages/location";
 
 function App() {
@@ -50,14 +49,17 @@ function App() {
         return <AboutPage />;
       case "news":
         return <News />;
-        case "contact":
+      case "contact":
         return <ContactForm />;
-        case "locations":
+      case "locations":
         return <StoreLocation />;
+        
+      // case "MainApp": // Uncomment if you want to use MainApp directly
+        // return <MainApp />; // Use MainApp for test drive functionality
       case "home":
       case "homepage": // Handle both 'home' and 'homepage' to show the same component
       default:
-        return <HomePage />;
+        return <MainApp />; // Changed from EVTestDrive to HomePage for the actual home page
     }
   };
 
