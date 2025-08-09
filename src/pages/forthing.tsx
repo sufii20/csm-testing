@@ -1,6 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { ChevronLeft, ChevronRight, ArrowLeft } from 'lucide-react';
 import ForthingBanner from '../assets/Forthing/HeroBanner/ForthingBanner.png'; 
+
+
+import whiteCar from "../assets//forthing/colorSelect/carWhite.png";
+import blueCar from "../assets//forthing/colorSelect/carBlue.png";
+import greyCar from "../assets//forthing/colorSelect/carGrey.png";
+import greenCar from "../assets//forthing/colorSelect/carGreen.png";
+import blackCar from "../assets//forthing/colorSelect/carBlack.png";
 //slider 1
 import slidea from '../assets/Forthing/ADD/Exterior-A.png';
 import slideb from '../assets/Forthing/ADD/Exterior-B.png';
@@ -47,37 +54,32 @@ export const Forthing: React.FC<ForthingProps> = ({ onBack }) => {
   // Note: You'll need to add actual color variant images to your assets
   const cars = [
     {
-      image: ForthingBig, // Using your existing image as main
+      image: greyCar, // Using your existing image as main
       color: 'Silver Metallic',
       bgColor: 'bg-gray-400',
       colorCode: '#C0C0C0'
     },
     {
-      image: ForthingBig, // Replace with actual blue variant when available
+      image: blueCar, // Replace with actual blue variant when available
       color: 'Deep Blue',
       bgColor: 'bg-blue-900',
       colorCode: '#1e3a8a'
     },
     {
-      image: ForthingBig, // Replace with actual white variant when available
+      image: whiteCar, // Replace with actual white variant when available
       color: 'Pearl White',
       bgColor: 'bg-white',
       colorCode: '#FFFFFF'
     },
     {
-      image: ForthingBig, // Replace with actual black variant when available
+      image: blackCar, // Replace with actual black variant when available
       color: 'Midnight Black',
       bgColor: 'bg-black',
       colorCode: '#000000'
     },
+    
     {
-      image: ForthingBig, // Replace with actual red variant when available
-      color: 'Crimson Red',
-      bgColor: 'bg-red-600',
-      colorCode: '#dc2626'
-    },
-    {
-      image: ForthingBig, // Replace with actual green variant when available
+      image: greenCar, // Replace with actual green variant when available
       color: 'Forest Green',
       bgColor: 'bg-green-700',
       colorCode: '#15803d'

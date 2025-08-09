@@ -336,7 +336,7 @@ const Homepage = () => {
               className="w-full h-full object-cover"
               autoPlay
               loop
-              muted
+              // muted
               playsInline
             />
             <div className="absolute inset-0 bg-black/30 flex items-center justify-center">

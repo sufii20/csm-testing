@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { ChevronLeft, ChevronRight, ArrowLeft } from "lucide-react";
 // import RiddaraFullBanner from "../assets/RiddaraFullBanner.png";
-import whiteCar from "../assets/car_white_top.webp";
+import whiteCar from "../assets/car_white.webp";
 import blueCar from "../assets/car_blue.webp";
 import greyCar from "../assets/car_gray.webp";
-import greenCar from "../assets/car_green_top.webp";
+import greenCar from "../assets/car_green.webp";
+import blackCar from "../assets/car_black.webp";
+import greenBCar from "../assets/car_green_top.webp";
+import whiteBCar from "../assets/car_white_top.webp";
 //slider 1
 import slidea from "../assets/ExtSlideA.png";
 import slideb from "../assets/ExSlideB.png";
@@ -52,7 +55,7 @@ export const RiddaraShowcase: React.FC<RiddaraProps> = ({ onBack }) => {
 
   const cars = [
     {
-      image: greenCar,
+      image: greenBCar,
       color: "Green with black top",
       bgColor: "bg-gradient-to-b from-black to-green-700",
       colorCode: "#65775D",
@@ -70,7 +73,7 @@ export const RiddaraShowcase: React.FC<RiddaraProps> = ({ onBack }) => {
       colorCode: "#ACB3C0",
     },
     {
-      image: whiteCar,
+      image: whiteBCar,
       color: "White with black top",
       bgColor: "bg-gradient-to-b from-black to-white",
       colorCode: "#FFFFFF",
@@ -82,7 +85,7 @@ export const RiddaraShowcase: React.FC<RiddaraProps> = ({ onBack }) => {
       colorCode: "#FFFFFF",
     },
     {
-      image: whiteCar,
+      image: blackCar,
       color: "Black",
       bgColor: "bg-black",
       colorCode: "#000000",
