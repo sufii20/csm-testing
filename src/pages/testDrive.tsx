@@ -1220,7 +1220,7 @@ const OrderReview: React.FC<{
                   className="flex items-center px-4 py-2 border border-gray-300 rounded hover:bg-gray-50 transition-colors"
                 >
                   <Upload className="w-4 h-4 mr-2" />
-                  Upload Payment Slip
+                  Upload Pay order Slip
                 </button>
                 {uploadedFile && (
                   <span className="text-sm text-gray-600">

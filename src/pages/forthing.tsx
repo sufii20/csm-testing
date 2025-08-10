@@ -24,6 +24,9 @@ import ForthingSpec from "../assets/Forthing/ForthingSpecs.png";
 import ForthingBig from "../assets/Forthing/Grid/ForthingBig.png";
 import ForthingLeft from "../assets/Forthing/Grid/ForthingLeft.png";
 import ForthingRight from "../assets/Forthing/Grid/ForthingRight.png";
+// Import TestDrive for test drive navigation
+import TestDrive from '../pages/test';
+import MainApp from "../pages/testDrive";
 
 // Define the props interface
 interface ForthingProps {
@@ -36,6 +39,8 @@ export const Forthing: React.FC<ForthingProps> = ({ onBack }) => {
   const [currentSlideIndex2, setCurrentSlideIndex2] = useState(0);
   const [currentSlideIndex3, setCurrentSlideIndex3] = useState(0);
   const [isDesktop, setIsDesktop] = useState(false);
+  const [showTestDrive, setShowTestDrive] = useState(false);
+  const [showTestDrivePage, setShowTestDrivePage] = useState(false);
 
   // Handle responsive design
   useEffect(() => {
@@ -48,6 +53,64 @@ export const Forthing: React.FC<ForthingProps> = ({ onBack }) => {
 
     return () => window.removeEventListener("resize", handleResize);
   }, []);
+
+  // Navigation function for Book Now button
+  const handleBookNow = (): void => {
+    setShowTestDrive(true);
+  };
+
+  // Navigation function for Test Drive button
+  const handleTestDrive = (): void => {
+    setShowTestDrivePage(true);
+  };
+
+  // Function to go back from test drive to Forthing page
+  const handleBackFromTestDrive = (): void => {
+    setShowTestDrive(false);
+  };
+
+  // Function to go back from test drive page to Forthing page
+  const handleBackFromTestDrivePage = (): void => {
+    setShowTestDrivePage(false);
+  };
+
+  // If showing test drive component, render it with transparent back button overlay (same as JMEV)
+  if (showTestDrive) {
+    return (
+      <div className="relative w-full h-screen">
+        {/* Render MainApp without onBack prop */}
+        <MainApp />
+        
+        {/* Transparent back button overlay */}
+        <button
+          onClick={handleBackFromTestDrive}
+          className="fixed top-6 left-6 z-[999] flex items-center space-x-2 px-4 py-2 bg-white/90 backdrop-blur-sm hover:bg-white shadow-lg hover:shadow-xl rounded-lg transition-all duration-300 border border-gray-200"
+        >
+          <ArrowLeft className="w-5 h-5 text-gray-700" />
+          <span className="text-sm font-medium text-gray-700">Back to Forthing</span>
+        </button>
+      </div>
+    );
+  }
+
+  // If showing test drive page, render it with transparent back button overlay
+  if (showTestDrivePage) {
+    return (
+      <div className="relative w-full h-screen">
+        {/* Render TestDrive component */}
+        <TestDrive />
+        
+        {/* Transparent back button overlay */}
+        <button
+          onClick={handleBackFromTestDrivePage}
+          className="fixed top-6 left-6 z-[999] flex items-center space-x-2 px-4 py-2 bg-white/90 backdrop-blur-sm hover:bg-white shadow-lg hover:shadow-xl rounded-lg transition-all duration-300 border border-gray-200"
+        >
+          <ArrowLeft className="w-5 h-5 text-gray-700" />
+          <span className="text-sm font-medium text-gray-700">Back to Forthing</span>
+        </button>
+      </div>
+    );
+  }
 
   // Car color variants for Forthing - using your existing images as base
   // Note: You'll need to add actual color variant images to your assets
@@ -270,10 +333,23 @@ export const Forthing: React.FC<ForthingProps> = ({ onBack }) => {
           className="w-full h-auto object-cover"
         />
 
+        {/* Test Drive Button positioned at bottom left */}
+        <div className="absolute bottom-8 left-8">
+          <button
+            onClick={handleTestDrive}
+            className="px-3 sm:px-5 py-2 sm:py-3 border-2 border-white text-white bg-transparent hover:bg-white hover:text-black transition-all duration-300 text-xs sm:text-sm font-semibold tracking-wide shadow-lg hover:shadow-xl transform hover:scale-105"
+            style={{ borderRadius: "8px" }}
+            type="button"
+          >
+            TEST DRIVE
+          </button>
+        </div>
+
         {/* Buttons positioned at bottom right */}
         <div className="absolute bottom-8 right-8 flex space-x-4">
           <button
-            className="px-4 sm:px-8 py-3 sm:py-4 border-2 border-white text-white bg-transparent  hover:text-black transition-all duration-300 text-sm font-semibold tracking-wide shadow-lg hover:shadow-xl transform hover:scale-105"
+            onClick={handleBookNow}
+            className="px-4 sm:px-8 py-3 sm:py-4 border-2 border-white text-white bg-transparent hover:bg-white hover:text-black transition-all duration-300 text-sm font-semibold tracking-wide shadow-lg hover:shadow-xl transform hover:scale-105"
             style={{ borderRadius: "8px" }}
           >
             BOOK NOW
@@ -286,7 +362,6 @@ export const Forthing: React.FC<ForthingProps> = ({ onBack }) => {
           </button>
         </div>
       </div>
-
       {/* Specifications Section */}
       <div className="bg-white py-4 px-8">
         <div className="max-w-4xl mx-auto">

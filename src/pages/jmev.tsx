@@ -31,6 +31,9 @@ import FeatureBig from '../assets/JMEV_page/Grid/FeatureBig.png';
 import FeatureLeft from '../assets/JMEV_page/Grid/FeatureLeft.png';
 import FeatureRight from '../assets/JMEV_page/Grid/FeatureRight.png';
 import JmevSpecs from '../assets/JMEV_page/JmevSpecs.png';
+// Import TestDrive for test drive navigation
+import TestDrive from '../pages/test';
+import MainApp from '../pages/testDrive'; // Import MainApp for test drive navigation
 
 // Define interfaces for type safety
 interface CarVariant {
@@ -56,6 +59,8 @@ const JMEV: React.FC<JMEVProps> = ({ onBack }) => {
   const [currentSlideIndex2, setCurrentSlideIndex2] = useState<number>(0);
   const [currentSlideIndex3, setCurrentSlideIndex3] = useState<number>(0);
   const [isDesktop, setIsDesktop] = useState<boolean>(false);
+  const [showTestDrive, setShowTestDrive] = useState<boolean>(false);
+  const [showTestDrivePage, setShowTestDrivePage] = useState<boolean>(false);
 
   // Handle responsive design
   useEffect(() => {
@@ -68,6 +73,64 @@ const JMEV: React.FC<JMEVProps> = ({ onBack }) => {
     
     return () => window.removeEventListener('resize', handleResize);
   }, []);
+
+  // Navigation function for Book Now button
+  const handleBookNow = (): void => {
+    setShowTestDrive(true);
+  };
+
+  // Navigation function for Test Drive button
+  const handleTestDrive = (): void => {
+    setShowTestDrivePage(true);
+  };
+
+  // Function to go back from test drive to JMEV page
+  const handleBackFromTestDrive = (): void => {
+    setShowTestDrive(false);
+  };
+
+  // Function to go back from test drive page to JMEV page
+  const handleBackFromTestDrivePage = (): void => {
+    setShowTestDrivePage(false);
+  };
+
+  // If showing test drive component, render it with transparent back button overlay
+  if (showTestDrive) {
+    return (
+      <div className="relative w-full h-screen">
+        {/* Render MainApp without onBack prop */}
+        <MainApp />
+        
+        {/* Transparent back button overlay */}
+        <button
+          onClick={handleBackFromTestDrive}
+          className="fixed top-6 left-6 z-[999] flex items-center space-x-2 px-4 py-2 bg-white/90 backdrop-blur-sm hover:bg-white shadow-lg hover:shadow-xl rounded-lg transition-all duration-300 border border-gray-200"
+        >
+          <ArrowLeft className="w-5 h-5 text-gray-700" />
+          <span className="text-sm font-medium text-gray-700">Back to JMEV</span>
+        </button>
+      </div>
+    );
+  }
+
+  // If showing test drive page, render it with transparent back button overlay
+  if (showTestDrivePage) {
+    return (
+      <div className="relative w-full h-screen">
+        {/* Render TestDrive component */}
+        <TestDrive />
+        
+        {/* Transparent back button overlay */}
+        <button
+          onClick={handleBackFromTestDrivePage}
+          className="fixed top-6 left-6 z-[999] flex items-center space-x-2 px-4 py-2 bg-white/90 backdrop-blur-sm hover:bg-white shadow-lg hover:shadow-xl rounded-lg transition-all duration-300 border border-gray-200"
+        >
+          <ArrowLeft className="w-5 h-5 text-gray-700" />
+          <span className="text-sm font-medium text-gray-700">Back to JMEV</span>
+        </button>
+      </div>
+    );
+  }
 
   // Car color variants for JMEV
   const cars: CarVariant[] = [
@@ -238,8 +301,6 @@ const JMEV: React.FC<JMEVProps> = ({ onBack }) => {
     }
   };
 
-
-
   const nextSlide = (): void => {
     setCurrentSlideIndex((prev) => {
       const maxIndex = getMaxIndex(slides.length);
@@ -301,9 +362,22 @@ const JMEV: React.FC<JMEVProps> = ({ onBack }) => {
           className="w-full h-auto object-cover"
         />
         
+        {/* Test Drive Button positioned at bottom left */}
+        <div className="absolute bottom-8 left-8">
+          <button
+            onClick={handleTestDrive}
+            className="px-3 sm:px-5 py-2 sm:py-3 border-2 border-white text-white bg-transparent hover:bg-white hover:text-black transition-all duration-300 text-xs sm:text-sm font-semibold tracking-wide shadow-lg hover:shadow-xl transform hover:scale-105"
+            style={{ borderRadius: "8px" }}
+            type="button"
+          >
+            TEST DRIVE
+          </button>
+        </div>
+        
         {/* Buttons positioned at bottom right */}
         <div className="absolute bottom-8 right-8 flex space-x-4">
           <button
+            onClick={handleBookNow}
             className="px-4 sm:px-8 py-3 sm:py-4 border-2 border-white text-white bg-transparent hover:bg-white hover:text-black transition-all duration-300 text-sm font-semibold tracking-wide shadow-lg hover:shadow-xl transform hover:scale-105"
             style={{ borderRadius: "8px" }}
             type="button"
