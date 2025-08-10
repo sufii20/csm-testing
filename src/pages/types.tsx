@@ -1,5 +1,5 @@
 // types.ts
-export type PageType = 'home' | 'homepage' | 'about' | 'zeekr' | 'riddara' | 'forthing' | 'jmev' | 'news' | 'locations' | 'contact';
+// export type PageType = 'home' | 'homepage' | 'about' | 'zeekr' | 'riddara' | 'forthing' | 'jmev' | 'news' | 'locations' | 'contact';
 
 // Brand structure
 export interface Brand {
@@ -16,3 +16,23 @@ export interface NavbarProps {
 export interface PageComponentProps {
   onBack?: () => void;
 }
+
+
+
+
+
+
+
+// types.ts
+export type PageType = 
+  | "home"
+  | "homepage"
+  | "zeekr"
+  | "riddara"
+  | "forthing"
+  | "jmev"
+  | "about"
+  | "career"
+  | "news"
+  | "contact"
+  | "locations";

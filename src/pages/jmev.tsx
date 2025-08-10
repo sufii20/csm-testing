@@ -1,40 +1,41 @@
-import React, { useState, useEffect } from 'react';
-import { ChevronLeft, ChevronRight, ArrowLeft } from 'lucide-react';
+import React, { useState, useEffect } from "react";
+import { ChevronLeft, ChevronRight, ArrowLeft } from "lucide-react";
 
-import JMEVBanner from '../assets/HeroBanner/JMEVBanner.png';
+import JMEVBanner from "../assets/HeroBanner/JMEVBanner.png";
 // Car color variants
-import blackCar from '../assets/JMEV_page/ColorSelector/black.png';
-import blueCar from '../assets/JMEV_page/ColorSelector/blue.png';
-import whiteCar from '../assets/JMEV_page/ColorSelector/white.png';
-import greenCar from '../assets/JMEV_page/ColorSelector/green.png';
-import purpleCar from '../assets/JMEV_page/ColorSelector/Purple.png';
+import blackCar from "../assets/JMEV_page/ColorSelector/black.png";
+import blueCar from "../assets/JMEV_page/ColorSelector/blue.png";
+import whiteCar from "../assets/JMEV_page/ColorSelector/white.png";
+import greenCar from "../assets/JMEV_page/ColorSelector/green.png";
+import purpleCar from "../assets/JMEV_page/ColorSelector/Purple.png";
 //slider 2
-import slideA from '../assets/JMEV_page/ADAS/ADAS-A.png';
-import slideB from '../assets/JMEV_page/ADAS/ADAS-B.png';
-import slideC from '../assets/JMEV_page/ADAS/ADAS-C.png';
-import slideD from '../assets/JMEV_page/ADAS/ADAS-D.png';
-import slideE from '../assets/JMEV_page/ADAS/ADAS-E.png';
+import slideA from "../assets/JMEV_page/ADAS/ADAS-A.png";
+import slideB from "../assets/JMEV_page/ADAS/ADAS-B.png";
+import slideC from "../assets/JMEV_page/ADAS/ADAS-C.png";
+import slideD from "../assets/JMEV_page/ADAS/ADAS-D.png";
+import slideE from "../assets/JMEV_page/ADAS/ADAS-E.png";
 //slider1 images
-import slidea from '../assets/JMEV_page/ADD/Exterior-A.png';
-import slideb from '../assets/JMEV_page/ADD/Exterior-B.png';
-import slidec from '../assets/JMEV_page/ADD/Exterior-C.png';
-import slided from '../assets/JMEV_page/ADD/Exterior-D.png';
-import slidee from '../assets/JMEV_page/ADD/Exterior-E.png';
+import slidea from "../assets/JMEV_page/ADD/Exterior-A.png";
+import slideb from "../assets/JMEV_page/ADD/Exterior-B.png";
+import slidec from "../assets/JMEV_page/ADD/Exterior-C.png";
+import slided from "../assets/JMEV_page/ADD/Exterior-D.png";
+import slidee from "../assets/JMEV_page/ADD/Exterior-E.png";
 //slider3 images
-import InteriorA from '../assets/JMEV_page/InteriorFeatures/Interior-A.png';
-import InteriorB from '../assets/JMEV_page/InteriorFeatures/Interior-B.png';
-import InteriorC from '../assets/JMEV_page/InteriorFeatures/Interior-C.png';
-import InteriorD from '../assets/JMEV_page/InteriorFeatures/Interior-D.png';
-import InteriorE from '../assets/JMEV_page/InteriorFeatures/Interior-E.png';
+import InteriorA from "../assets/JMEV_page/InteriorFeatures/Interior-A.png";
+import InteriorB from "../assets/JMEV_page/InteriorFeatures/Interior-B.png";
+import InteriorC from "../assets/JMEV_page/InteriorFeatures/Interior-C.png";
+import InteriorD from "../assets/JMEV_page/InteriorFeatures/Interior-D.png";
+import InteriorE from "../assets/JMEV_page/InteriorFeatures/Interior-E.png";
 //banner and additional images
-import FeatureBig from '../assets/JMEV_page/Grid/FeatureBig.png';
-import FeatureLeft from '../assets/JMEV_page/Grid/FeatureLeft.png';
-import FeatureRight from '../assets/JMEV_page/Grid/FeatureRight.png';
-import JmevSpecs from '../assets/JMEV_page/JmevSpecs.png';
+import FeatureBig from "../assets/JMEV_page/Grid/FeatureBig.png";
+import FeatureLeft from "../assets/JMEV_page/Grid/FeatureLeft.png";
+import FeatureRight from "../assets/JMEV_page/Grid/FeatureRight.png";
+import JmevSpecs from "../assets/JMEV_page/JmevSpecs.png";
 // Import TestDrive for test drive navigation
-import TestDrive from '../pages/test';
-import MainApp from '../pages/testDrive'; // Import MainApp for test drive navigation
-
+import TestDrive from "../pages/test";
+import MainApp from "../pages/testDrive1"; // Import MainApp for test drive navigation
+import Newsletter from "../pages/newsLetter";
+// import Footer from "../pages/footer";
 // Define interfaces for type safety
 interface CarVariant {
   image: string;
@@ -69,9 +70,9 @@ const JMEV: React.FC<JMEVProps> = ({ onBack }) => {
     };
 
     handleResize(); // Initial check
-    window.addEventListener('resize', handleResize);
-    
-    return () => window.removeEventListener('resize', handleResize);
+    window.addEventListener("resize", handleResize);
+
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   // Navigation function for Book Now button
@@ -100,14 +101,16 @@ const JMEV: React.FC<JMEVProps> = ({ onBack }) => {
       <div className="relative w-full h-screen">
         {/* Render MainApp without onBack prop */}
         <MainApp />
-        
+
         {/* Transparent back button overlay */}
         <button
           onClick={handleBackFromTestDrive}
-          className="fixed top-6 left-6 z-[999] flex items-center space-x-2 px-4 py-2 bg-white/90 backdrop-blur-sm hover:bg-white shadow-lg hover:shadow-xl rounded-lg transition-all duration-300 border border-gray-200"
+          className="fixed top-24 left-6 z-[999] flex items-center space-x-2 px-4 py-2 bg-white/90 backdrop-blur-sm hover:bg-white shadow-lg hover:shadow-xl rounded-lg transition-all duration-300 border border-gray-200"
         >
           <ArrowLeft className="w-5 h-5 text-gray-700" />
-          <span className="text-sm font-medium text-gray-700">Back to JMEV</span>
+          <span className="text-sm font-medium text-gray-700">
+            Back to JMEV
+          </span>
         </button>
       </div>
     );
@@ -119,14 +122,16 @@ const JMEV: React.FC<JMEVProps> = ({ onBack }) => {
       <div className="relative w-full h-screen">
         {/* Render TestDrive component */}
         <TestDrive />
-        
+
         {/* Transparent back button overlay */}
         <button
           onClick={handleBackFromTestDrivePage}
-          className="fixed top-6 left-6 z-[999] flex items-center space-x-2 px-4 py-2 bg-white/90 backdrop-blur-sm hover:bg-white shadow-lg hover:shadow-xl rounded-lg transition-all duration-300 border border-gray-200"
+          className="fixed top-24 left-6 z-[999] flex items-center space-x-2 px-4 py-2 bg-white/90 backdrop-blur-sm hover:bg-white shadow-lg hover:shadow-xl rounded-lg transition-all duration-300 border border-gray-200"
         >
           <ArrowLeft className="w-5 h-5 text-gray-700" />
-          <span className="text-sm font-medium text-gray-700">Back to JMEV</span>
+          <span className="text-sm font-medium text-gray-700">
+            Back to JMEV
+          </span>
         </button>
       </div>
     );
@@ -136,46 +141,46 @@ const JMEV: React.FC<JMEVProps> = ({ onBack }) => {
   const cars: CarVariant[] = [
     {
       image: greenCar,
-      color: 'Green with black top',
-      bgColor: 'bg-gradient-to-b from-black to-green-700',
-      colorCode: '#65775D'
+      color: "Green with black top",
+      bgColor: "bg-gradient-to-b from-black to-green-700",
+      colorCode: "#65775D",
     },
     {
       image: blueCar,
-      color: 'Blue',
-      bgColor: 'bg-blue-900',
-      colorCode: '#227ba4ff'
+      color: "Blue",
+      bgColor: "bg-blue-900",
+      colorCode: "#227ba4ff",
     },
     {
       image: purpleCar,
-      color: 'Purple',
-      bgColor: 'bg-gray-400',
-      colorCode: '#ACB3C0'
+      color: "Purple",
+      bgColor: "bg-gray-400",
+      colorCode: "#ACB3C0",
     },
     {
       image: whiteCar,
-      color: 'White with black top',
-      bgColor: 'bg-gradient-to-b from-black to-white',
-      colorCode: '#FFFFFF'
+      color: "White with black top",
+      bgColor: "bg-gradient-to-b from-black to-white",
+      colorCode: "#FFFFFF",
     },
     {
       image: whiteCar,
-      color: 'White',
-      bgColor: 'bg-white',
-      colorCode: '#FFFFFF'
+      color: "White",
+      bgColor: "bg-white",
+      colorCode: "#FFFFFF",
     },
     {
       image: blackCar,
-      color: 'Black',
-      bgColor: 'bg-black',
-      colorCode: '#000000'
+      color: "Black",
+      bgColor: "bg-black",
+      colorCode: "#000000",
     },
     {
       image: greenCar,
-      color: 'Green',
-      bgColor: 'bg-green-700',
-      colorCode: '#65775D'
-    }
+      color: "Green",
+      bgColor: "bg-green-700",
+      colorCode: "#65775D",
+    },
   ];
 
   // First Advanced Driving Dynamics slides data (5 slides)
@@ -183,28 +188,34 @@ const JMEV: React.FC<JMEVProps> = ({ onBack }) => {
     {
       image: slidea,
       title: "Nearly 2m² large panoramic nano skylight",
-      description: "Double-layer laminated silver-coated glass is used to filter up to 98% of ultraviolet rays, so you don't have to worry about being bothered by sunlight in the car."
+      description:
+        "Double-layer laminated silver-coated glass is used to filter up to 98% of ultraviolet rays, so you don't have to worry about being bothered by sunlight in the car.",
     },
     {
       image: slideb,
-      title: "70% High strength steel skeleton", 
-      description: "The only one in its class that uses 44 hot-formed steel plates with a strength of up to 1500MPa, with a high-strength steel ratio of over 71%, to build a high-strength cage."
+      title: "70% High strength steel skeleton",
+      description:
+        "The only one in its class that uses 44 hot-formed steel plates with a strength of up to 1500MPa, with a high-strength steel ratio of over 71%, to build a high-strength cage.",
     },
     {
       image: slidec,
       title: "Galaxy platform pure electric base modular design",
-      description: "the new pure electric A-class vehicle platform is modularly designed, and the underlying logic is designed for comfortable living."
+      description:
+        "the new pure electric A-class vehicle platform is modularly designed, and the underlying logic is designed for comfortable living.",
     },
     {
       image: slided,
       title: "3 Driving Modes",
-      description: "Three driving modes deal with the challenges of all road conditions in real time Economic mode: Better economic electric energy,Motion mode: More positive power response,Standard mode: Both economic power and electric energy."
+      description:
+        "Three driving modes deal with the challenges of all road conditions in real time Economic mode: Better economic electric energy,Motion mode: More positive power response,Standard mode: Both economic power and electric energy.",
     },
     {
       image: slidee,
-      title: "Exterior Features: McPherson rear multi-link independent suspension",
-      description: "The design of the front McPherson rear multi-link independent suspension provides a comfortable driving experience. Drive forward in comfort with driving control at ease."
-    }
+      title:
+        "Exterior Features: McPherson rear multi-link independent suspension",
+      description:
+        "The design of the front McPherson rear multi-link independent suspension provides a comfortable driving experience. Drive forward in comfort with driving control at ease.",
+    },
   ];
 
   // Interior Features slides data (5 slides)
@@ -212,28 +223,33 @@ const JMEV: React.FC<JMEVProps> = ({ onBack }) => {
     {
       image: InteriorA,
       title: "SMART HOME SPACE",
-      description: "Experience a spacious, intelligent cockpit where comfort meets innovation.Designed around you, the expansive cabin maximizes space and comfort.With intelligent innovation at its core, every journey feels effortlessly refined"
+      description:
+        "Experience a spacious, intelligent cockpit where comfort meets innovation.Designed around you, the expansive cabin maximizes space and comfort.With intelligent innovation at its core, every journey feels effortlessly refined",
     },
     {
       image: InteriorB,
-      title: "6-way Power Seat", 
-      description: "The driver's seat is electrically adjustable in 6 directions and the driver can switch the comfortable driving and riding spaces at will to meet the space needs of the driver and passengers for free and pleasant travel."
+      title: "6-way Power Seat",
+      description:
+        "The driver's seat is electrically adjustable in 6 directions and the driver can switch the comfortable driving and riding spaces at will to meet the space needs of the driver and passengers for free and pleasant travel.",
     },
     {
       image: InteriorC,
       title: "14.6-inch multimedia touch screen ",
-      description: "The central console features a 14.6-inch multimedia touchscreen that makes driving an easier and more pleasant experience."
+      description:
+        "The central console features a 14.6-inch multimedia touchscreen that makes driving an easier and more pleasant experience.",
     },
     {
       image: InteriorD,
       title: "Intelligent Thermal Management System",
-      description: "Use the first waste heat A/C system for EV in China to effectively improve the energy consumption index and increase the endurance mileage by 30% compared with of ordinary RTC heating A/C (heat pump A/C optional)."
+      description:
+        "Use the first waste heat A/C system for EV in China to effectively improve the energy consumption index and increase the endurance mileage by 30% compared with of ordinary RTC heating A/C (heat pump A/C optional).",
     },
     {
       image: InteriorE,
       title: "360 AVM visual system",
-      description: "Accurate identification of the surrounding environment and support of 100+ parking scenarios, including incomplete parking lines and parking spaces on curves, with an all-around view enable the blind spot disappear and the field of vision return."
-    }
+      description:
+        "Accurate identification of the surrounding environment and support of 100+ parking scenarios, including incomplete parking lines and parking spaces on curves, with an all-around view enable the blind spot disappear and the field of vision return.",
+    },
   ];
 
   // Security Features slides data
@@ -241,28 +257,33 @@ const JMEV: React.FC<JMEVProps> = ({ onBack }) => {
     {
       image: slideA,
       title: "SUPREME PROTECTION",
-      description: "Superior durability and proven reliability are validated across multiple dimensions of testing."
+      description:
+        "Superior durability and proven reliability are validated across multiple dimensions of testing.",
     },
     {
       image: slideB,
-      title: "Comprehensive Airbag Protection", 
-      description: "JMEV ElIgh offers full-range airbag coverage for driver and passengers.Enhanced safety from all angles ensures peace of mind on every journey."
+      title: "Comprehensive Airbag Protection",
+      description:
+        "JMEV ElIgh offers full-range airbag coverage for driver and passengers.Enhanced safety from all angles ensures peace of mind on every journey.",
     },
     {
       image: slideC,
       title: "Overcoming All-Scenario Challenges",
-      description: "JMEV ElIgh adapts to all road conditions with smart drive modes and efficient performance. Its advanced tech and lightweight body ensure confident, smooth driving anytime, anywhere."
+      description:
+        "JMEV ElIgh adapts to all road conditions with smart drive modes and efficient performance. Its advanced tech and lightweight body ensure confident, smooth driving anytime, anywhere.",
     },
     {
       image: slideD,
       title: "Level 2.5 Intelligent Driving Assistance",
-      description: "JMEV ELIgh features Level 2.5 intelligent driving for smarter, safer journeys.It supports lane keeping, adaptive cruise, and real-time road monitoring"
+      description:
+        "JMEV ELIgh features Level 2.5 intelligent driving for smarter, safer journeys.It supports lane keeping, adaptive cruise, and real-time road monitoring",
     },
-     {
+    {
       image: slideE,
       title: "Michelin tyre*",
-      description: "Aluminum alloy wheels paired with Michelin high-performance tires deliver a perfect blend of grip, comfort, and a sleek, sporty look."
-    }
+      description:
+        "Aluminum alloy wheels paired with Michelin high-performance tires deliver a perfect blend of grip, comfort, and a sleek, sporty look.",
+    },
   ];
 
   // Slider navigation functions
@@ -286,17 +307,17 @@ const JMEV: React.FC<JMEVProps> = ({ onBack }) => {
   // Helper function to create gradient style for two-tone colors
   const getColorStyle = (index: number): React.CSSProperties => {
     const car = cars[index];
-    if (car.color === 'Green with black top') {
+    if (car.color === "Green with black top") {
       return {
-        background: `linear-gradient(to bottom, #000000, ${car.colorCode})`
+        background: `linear-gradient(to bottom, #000000, ${car.colorCode})`,
       };
-    } else if (car.color === 'White with black top') {
+    } else if (car.color === "White with black top") {
       return {
-        background: `linear-gradient(to bottom, #000000, ${car.colorCode})`
+        background: `linear-gradient(to bottom, #000000, ${car.colorCode})`,
       };
     } else {
       return {
-        backgroundColor: car.colorCode
+        backgroundColor: car.colorCode,
       };
     }
   };
@@ -345,10 +366,10 @@ const JMEV: React.FC<JMEVProps> = ({ onBack }) => {
 
   return (
     <div className="w-full">
-      {/* Back to Home Button - Fixed position at top left */}
+      {/* Back to Home Button - Fixed position moved down 3 inches (72px) */}
       <button
         onClick={onBack}
-        className="fixed top-6 left-6 z-50 flex items-center space-x-2 px-4 py-2 bg-white/90 backdrop-blur-sm hover:bg-white shadow-lg hover:shadow-xl rounded-lg transition-all duration-300 border border-gray-200"
+        className="fixed top-24 left-6 z-50 flex items-center space-x-2 px-4 py-2 bg-white/90 backdrop-blur-sm hover:bg-white shadow-lg hover:shadow-xl rounded-lg transition-all duration-300 border border-gray-200"
       >
         <ArrowLeft className="w-5 h-5 text-gray-700" />
         <span className="text-sm font-medium text-gray-700">Back to Home</span>
@@ -356,12 +377,12 @@ const JMEV: React.FC<JMEVProps> = ({ onBack }) => {
 
       {/* Hero Banner Section */}
       <div className="relative w-full">
-        <img 
-          src={JMEVBanner} 
+        <img
+          src={JMEVBanner}
           alt="JMEV Hero Banner"
           className="w-full h-auto object-cover"
         />
-        
+
         {/* Test Drive Button positioned at bottom left */}
         <div className="absolute bottom-8 left-8">
           <button
@@ -373,7 +394,7 @@ const JMEV: React.FC<JMEVProps> = ({ onBack }) => {
             TEST DRIVE
           </button>
         </div>
-        
+
         {/* Buttons positioned at bottom right */}
         <div className="absolute bottom-8 right-8 flex space-x-4">
           <button
@@ -400,17 +421,25 @@ const JMEV: React.FC<JMEVProps> = ({ onBack }) => {
           <div className="flex justify-center items-center">
             <div className="flex items-center bg-transparent rounded-lg p-4 shadow-sm">
               <div className="flex flex-col items-center px-6">
-                <p className="text-xs text-gray-400 mb-1 uppercase tracking-wider">UP TO</p>
-                <h3 className="text-xl font-light text-gray-700 mb-1">500 Km*</h3>
+                <p className="text-xs text-gray-400 mb-1 uppercase tracking-wider">
+                  UP TO
+                </p>
+                <h3 className="text-xl font-light text-gray-700 mb-1">
+                  500 Km*
+                </h3>
                 <p className="text-gray-500 text-xs">Driving Range</p>
               </div>
               <div className="flex flex-col items-center px-6 border-l border-r border-gray-300 mx-4">
-                <p className="text-xs text-gray-400 mb-1 uppercase tracking-wider">Ultra Low</p>
+                <p className="text-xs text-gray-400 mb-1 uppercase tracking-wider">
+                  Ultra Low
+                </p>
                 <h3 className="text-xl font-light text-gray-700 mb-1">0.26</h3>
                 <p className="text-gray-500 text-xs">Wind Resistance</p>
               </div>
               <div className="flex flex-col items-center px-6">
-                <p className="text-xs text-gray-400 mb-1 uppercase tracking-wider">Intelligent</p>
+                <p className="text-xs text-gray-400 mb-1 uppercase tracking-wider">
+                  Intelligent
+                </p>
                 <h3 className="text-xl font-light text-gray-700 mb-1">L 2.5</h3>
                 <p className="text-gray-500 text-xs">Driving Assistant</p>
               </div>
@@ -428,8 +457,11 @@ const JMEV: React.FC<JMEVProps> = ({ onBack }) => {
               <button
                 key={index}
                 onClick={() => selectCar(index)}
-                className={`w-4 h-4 rounded-full transition-all duration-300 border border-gray-300 ${currentCarIndex === index ? 'ring-2 ring-gray-600 ring-offset-2' : ''
-                  }`}
+                className={`w-4 h-4 rounded-full transition-all duration-300 border border-gray-300 ${
+                  currentCarIndex === index
+                    ? "ring-2 ring-gray-600 ring-offset-2"
+                    : ""
+                }`}
                 style={getColorStyle(index)}
                 title={car.color}
                 type="button"
@@ -488,21 +520,28 @@ const JMEV: React.FC<JMEVProps> = ({ onBack }) => {
 
           <div className="relative">
             <div className="relative overflow-hidden">
-              <div 
+              <div
                 className="flex transition-transform duration-500 ease-in-out gap-6"
-                style={{ transform: `translateX(-${currentSlideIndex * (isDesktop ? 50 : 100)}%)` }}
+                style={{
+                  transform: `translateX(-${
+                    currentSlideIndex * (isDesktop ? 50 : 100)
+                  }%)`,
+                }}
               >
                 {slides.map((slide, index) => (
-                  <div key={index} className="w-full md:w-1/2 flex-shrink-0 px-2">
+                  <div
+                    key={index}
+                    className="w-full md:w-1/2 flex-shrink-0 px-2"
+                  >
                     <div className="bg-white rounded-lg overflow-hidden group cursor-pointer">
                       <div className="relative overflow-hidden">
-                        <img 
-                          src={slide.image} 
+                        <img
+                          src={slide.image}
                           alt={slide.title}
                           className="w-full h-auto object-contain transition-transform duration-500 group-hover:scale-105"
                         />
                       </div>
-                      
+
                       <div className="p-4 md:p-6 text-left bg-gray-100">
                         <h3 className="text-base md:text-lg font-semibold text-gray-800 mb-2 md:mb-3">
                           {slide.title}
@@ -517,15 +556,15 @@ const JMEV: React.FC<JMEVProps> = ({ onBack }) => {
               </div>
             </div>
 
-            <button 
+            <button
               onClick={prevSlide}
               className="absolute left-4 top-1/2 transform -translate-y-1/2 z-10 p-3 bg-white rounded-full shadow-lg text-gray-600 hover:text-gray-800 hover:shadow-xl transition-all duration-300"
               type="button"
             >
               <ChevronLeft className="w-6 h-6" />
             </button>
-            
-            <button 
+
+            <button
               onClick={nextSlide}
               className="absolute right-4 top-1/2 transform -translate-y-1/2 z-10 p-3 bg-white rounded-full shadow-lg text-gray-600 hover:text-gray-800 hover:shadow-xl transition-all duration-300"
               type="button"
@@ -541,24 +580,24 @@ const JMEV: React.FC<JMEVProps> = ({ onBack }) => {
         <div className="max-w-7xl mx-auto">
           <div className="space-y-4">
             <div className="w-full">
-              <img 
-                src={FeatureBig} 
+              <img
+                src={FeatureBig}
                 alt="JMEV Main Vehicle"
                 className="w-full h-auto object-contain"
               />
             </div>
-            
+
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div className="w-full">
-                <img 
-                  src={FeatureLeft} 
+                <img
+                  src={FeatureLeft}
                   alt="JMEV Side View"
                   className="w-full h-auto object-contain"
                 />
               </div>
               <div className="w-full">
-                <img 
-                  src={FeatureRight} 
+                <img
+                  src={FeatureRight}
                   alt="JMEV Front View"
                   className="w-full h-auto object-contain"
                 />
@@ -582,21 +621,28 @@ const JMEV: React.FC<JMEVProps> = ({ onBack }) => {
 
           <div className="relative">
             <div className="relative overflow-hidden">
-              <div 
+              <div
                 className="flex transition-transform duration-500 ease-in-out gap-6"
-                style={{ transform: `translateX(-${currentSlideIndex2 * (isDesktop ? 50 : 100)}%)` }}
+                style={{
+                  transform: `translateX(-${
+                    currentSlideIndex2 * (isDesktop ? 50 : 100)
+                  }%)`,
+                }}
               >
                 {slides2.map((slide, index) => (
-                  <div key={index} className="w-full md:w-1/2 flex-shrink-0 px-2">
+                  <div
+                    key={index}
+                    className="w-full md:w-1/2 flex-shrink-0 px-2"
+                  >
                     <div className="bg-white rounded-lg overflow-hidden group cursor-pointer">
                       <div className="relative overflow-hidden">
-                        <img 
-                          src={slide.image} 
+                        <img
+                          src={slide.image}
                           alt={slide.title}
                           className="w-full h-auto object-contain transition-transform duration-500 group-hover:scale-105"
                         />
                       </div>
-                      
+
                       <div className="p-4 md:p-6 text-left bg-gray-100">
                         <h3 className="text-base md:text-lg font-semibold text-gray-800 mb-2 md:mb-3">
                           {slide.title}
@@ -611,15 +657,15 @@ const JMEV: React.FC<JMEVProps> = ({ onBack }) => {
               </div>
             </div>
 
-            <button 
+            <button
               onClick={prevSlide2}
               className="absolute left-4 top-1/2 transform -translate-y-1/2 z-10 p-3 bg-white rounded-full shadow-lg text-gray-600 hover:text-gray-800 hover:shadow-xl transition-all duration-300"
               type="button"
             >
               <ChevronLeft className="w-6 h-6" />
             </button>
-            
-            <button 
+
+            <button
               onClick={nextSlide2}
               className="absolute right-4 top-1/2 transform -translate-y-1/2 z-10 p-3 bg-white rounded-full shadow-lg text-gray-600 hover:text-gray-800 hover:shadow-xl transition-all duration-300"
               type="button"
@@ -629,7 +675,7 @@ const JMEV: React.FC<JMEVProps> = ({ onBack }) => {
           </div>
 
           <div className="flex justify-end mt-4">
-            <button 
+            <button
               className="px-8 py-3 bg-black text-white hover:bg-gray-800 transition-all duration-300 text-sm font-semibold tracking-wide shadow-lg hover:shadow-xl transform hover:scale-105 rounded"
               type="button"
             >
@@ -655,21 +701,28 @@ const JMEV: React.FC<JMEVProps> = ({ onBack }) => {
 
           <div className="relative">
             <div className="relative overflow-hidden">
-              <div 
+              <div
                 className="flex transition-transform duration-500 ease-in-out gap-6"
-                style={{ transform: `translateX(-${currentSlideIndex3 * (isDesktop ? 50 : 100)}%)` }}
+                style={{
+                  transform: `translateX(-${
+                    currentSlideIndex3 * (isDesktop ? 50 : 100)
+                  }%)`,
+                }}
               >
                 {securitySlides.map((slide, index) => (
-                  <div key={index} className="w-full md:w-1/2 flex-shrink-0 px-2">
+                  <div
+                    key={index}
+                    className="w-full md:w-1/2 flex-shrink-0 px-2"
+                  >
                     <div className="bg-white rounded-lg overflow-hidden group cursor-pointer">
                       <div className="relative overflow-hidden">
-                        <img 
-                          src={slide.image} 
+                        <img
+                          src={slide.image}
                           alt={slide.title}
                           className="w-full h-auto object-contain transition-transform duration-500 group-hover:scale-105"
                         />
                       </div>
-                      
+
                       <div className="p-4 md:p-6 text-left bg-gray-100">
                         <h3 className="text-base md:text-lg font-semibold text-gray-800 mb-2 md:mb-3">
                           {slide.title}
@@ -684,15 +737,15 @@ const JMEV: React.FC<JMEVProps> = ({ onBack }) => {
               </div>
             </div>
 
-            <button 
+            <button
               onClick={prevSlide3}
               className="absolute left-4 top-1/2 transform -translate-y-1/2 z-10 p-3 bg-white rounded-full shadow-lg text-gray-600 hover:text-gray-800 hover:shadow-xl transition-all duration-300"
               type="button"
             >
               <ChevronLeft className="w-6 h-6" />
             </button>
-            
-            <button 
+
+            <button
               onClick={nextSlide3}
               className="absolute right-4 top-1/2 transform -translate-y-1/2 z-10 p-3 bg-white rounded-full shadow-lg text-gray-600 hover:text-gray-800 hover:shadow-xl transition-all duration-300"
               type="button"
@@ -707,19 +760,25 @@ const JMEV: React.FC<JMEVProps> = ({ onBack }) => {
       <div className="bg-white py-8 px-4">
         <div className="max-w-7xl mx-auto">
           <div className="w-full">
-            <img 
-              src={JmevSpecs} 
+            <img
+              src={JmevSpecs}
               alt="JMEV Specifications"
               className="w-full h-auto object-contain"
             />
           </div>
-          
+
           {/* Final decorative line at the bottom */}
           <div className="flex items-center justify-center pt-8">
             <div className="w-20 h-px bg-gradient-to-r from-transparent via-gray-400 to-transparent rounded-full opacity-60"></div>
           </div>
         </div>
       </div>
+
+      {/* Newsletter Section */}
+      <Newsletter />
+      <div className="border-t border-gray-300" />
+      {/* Footer Section */}
+      {/* <Footer /> */}
     </div>
   );
 };

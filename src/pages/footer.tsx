@@ -1,10 +1,12 @@
 import React from 'react';
 import logoMain from '../assets/logo-main.svg';
+import type { PageType } from './types'; // Adjust this path based on where your types file is
 
 // Types
 interface FooterLink {
   label: string;
   href: string;
+  page?: PageType; // Add optional page property for internal navigation
 }
 
 interface FooterColumn {
@@ -17,31 +19,36 @@ interface SocialLink {
   icon: React.ReactNode;
 }
 
-const Footer: React.FC = () => {
-  // Footer data
+// Props interface for Footer component
+interface FooterProps {
+  onPageChange: (page: PageType) => void;
+}
+
+const Footer: React.FC<FooterProps> = ({ onPageChange }) => {
+  // Footer data with page mappings
   const footerColumns: FooterColumn[] = [
     {
       links: [
-        { label: 'About Us', href: '#' },
-        { label: 'Mission Statement', href: '#' },
-        { label: 'Vision Statement', href: '#' },
-        { label: 'Store Locator', href: '#' },
+        { label: 'About Us', href: '#', page: 'about' },
+        { label: 'Mission Statement', href: '#', page: 'about' },
+        { label: 'Vision Statement', href: '#', page: 'about' },
+        { label: 'Store Locator', href: '#', page: 'locations' },
       ],
     },
     {
       links: [
-        { label: 'Contact Us', href: '#' },
-        { label: 'Customer Feedback', href: '#' },
-        { label: 'Careers', href: '#' },
-        { label: 'FAQs', href: '#' },
+        { label: 'Contact Us', href: '#', page: 'contact' },
+        { label: 'Customer Feedback', href: '#', page: 'contact' },
+        { label: 'Careers', href: '#', page: 'career' }, // Now links to careers page
+        { label: 'FAQs', href: '#' }, // No page mapping for now
       ],
     },
     {
       links: [
-        { label: 'ZEEKR', href: '#' },
-        { label: 'RIDDARA', href: '#' },
-        { label: 'FORTHING', href: '#' },
-        { label: 'JMEV', href: '#' },
+        { label: 'ZEEKR', href: '#', page: 'zeekr' },
+        { label: 'RIDDARA', href: '#', page: 'riddara' },
+        { label: 'FORTHING', href: '#', page: 'forthing' },
+        { label: 'JMEV', href: '#', page: 'jmev' },
       ],
     },
   ];
@@ -92,6 +99,24 @@ const Footer: React.FC = () => {
     { label: 'Law Enforcement', href: '#' },
   ];
 
+  // Handle link clicks
+  const handleLinkClick = (page: PageType | undefined, e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    
+    if (page) {
+      // Internal navigation
+      onPageChange(page);
+    } else {
+      // External links or future functionality - you can handle these as needed
+      console.log('Link clicked but no page mapping defined');
+    }
+  };
+
+  // Handle logo click to go home
+  const handleLogoClick = () => {
+    onPageChange('home');
+  };
+
   return (
     <footer className="bg-white">
       <div className="max-w-7xl mx-auto px-6 py-12">
@@ -104,7 +129,8 @@ const Footer: React.FC = () => {
               <img 
                 src={logoMain} 
                 alt="Capital Smart Motors" 
-                className="h-16 w-auto" 
+                className="h-16 w-auto cursor-pointer hover:opacity-80 transition-opacity" 
+                onClick={handleLogoClick}
               />
             </div>
             
@@ -116,6 +142,8 @@ const Footer: React.FC = () => {
                   href={social.href}
                   className="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center text-white hover:bg-gray-700 transition-colors"
                   aria-label={social.name}
+                  target="_blank"
+                  rel="noopener noreferrer"
                 >
                   {social.icon}
                 </a>
@@ -130,7 +158,8 @@ const Footer: React.FC = () => {
                 <a
                   key={link.label}
                   href={link.href}
-                  className="text-gray-800 text-sm hover:text-gray-600 transition-colors font-medium"
+                  onClick={(e) => handleLinkClick(link.page, e)}
+                  className="text-gray-800 text-sm hover:text-gray-600 transition-colors font-medium cursor-pointer"
                 >
                   {link.label}
                 </a>
@@ -152,7 +181,8 @@ const Footer: React.FC = () => {
                 <a
                   key={link.label}
                   href={link.href}
-                  className="text-gray-800 text-sm hover:text-gray-600 transition-colors font-medium"
+                  onClick={(e) => handleLinkClick(link.page, e)}
+                  className="text-gray-800 text-sm hover:text-gray-600 transition-colors font-medium cursor-pointer"
                 >
                   {link.label}
                 </a>

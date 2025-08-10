@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from "react";
 import { ChevronLeft, ChevronRight, ArrowLeft } from "lucide-react";
 import whiteCar from "../assets/car_white.webp";
@@ -32,8 +31,10 @@ import cameraTech from "../assets/CameraTech.png";
 import DriveAssist from "../assets/DriveAssist.png";
 import ModernTrunk from "../assets/ModernTrunk.png";
 // Import MainApp for test drive navigation
-import MainApp from '../pages/testDrive';
+import MainApp from "../pages/testDrive";
 import TestDrive from "../pages/test";
+import Newsletter from "../pages/newsLetter";
+// import Footer from "../pages/footer";
 
 interface RiddaraProps {
   onBack: () => void;
@@ -83,14 +84,16 @@ export const RiddaraShowcase: React.FC<RiddaraProps> = ({ onBack }) => {
       <div className="relative w-full h-screen">
         {/* Render MainApp without onBack prop */}
         <MainApp />
-        
-        {/* Transparent back button overlay */}
+
+        {/* Transparent back button overlay - moved down 3 inches (72px) */}
         <button
           onClick={handleBackFromTestDrive}
-          className="fixed top-6 left-6 z-[999] flex items-center space-x-2 px-4 py-2 bg-white/90 backdrop-blur-sm hover:bg-white shadow-lg hover:shadow-xl rounded-lg transition-all duration-300 border border-gray-200"
+          className="fixed top-24 left-6 z-[999] flex items-center space-x-2 px-4 py-2 bg-white/90 backdrop-blur-sm hover:bg-white shadow-lg hover:shadow-xl rounded-lg transition-all duration-300 border border-gray-200"
         >
           <ArrowLeft className="w-5 h-5 text-gray-700" />
-          <span className="text-sm font-medium text-gray-700">Back to Riddara</span>
+          <span className="text-sm font-medium text-gray-700">
+            Back to Riddara
+          </span>
         </button>
       </div>
     );
@@ -102,14 +105,16 @@ export const RiddaraShowcase: React.FC<RiddaraProps> = ({ onBack }) => {
       <div className="relative w-full h-screen">
         {/* Render TestDrive component */}
         <TestDrive />
-        
+
         {/* Transparent back button overlay */}
         <button
           onClick={handleBackFromTestDrivePage}
-          className="fixed top-6 left-6 z-[999] flex items-center space-x-2 px-4 py-2 bg-white/90 backdrop-blur-sm hover:bg-white shadow-lg hover:shadow-xl rounded-lg transition-all duration-300 border border-gray-200"
+          className="fixed top-24 left-6 z-[999] flex items-center space-x-2 px-4 py-2 bg-white/90 backdrop-blur-sm hover:bg-white shadow-lg hover:shadow-xl rounded-lg transition-all duration-300 border border-gray-200"
         >
           <ArrowLeft className="w-5 h-5 text-gray-700" />
-          <span className="text-sm font-medium text-gray-700">Back to Riddara</span>
+          <span className="text-sm font-medium text-gray-700">
+            Back to Riddara
+          </span>
         </button>
       </div>
     );
@@ -284,10 +289,10 @@ export const RiddaraShowcase: React.FC<RiddaraProps> = ({ onBack }) => {
 
   return (
     <div className="w-full">
-      {/* Back to Home Button - Fixed position at top left */}
+      {/* Back to Home Button - Fixed position moved down 3 inches (72px) */}
       <button
         onClick={onBack}
-        className="fixed top-6 left-6 z-50 flex items-center space-x-2 px-4 py-2 bg-white/90 backdrop-blur-sm hover:bg-white shadow-lg hover:shadow-xl rounded-lg transition-all duration-300 border border-gray-200"
+        className="fixed top-24 left-6 z-50 flex items-center space-x-2 px-4 py-2 bg-white/90 backdrop-blur-sm hover:bg-white shadow-lg hover:shadow-xl rounded-lg transition-all duration-300 border border-gray-200"
       >
         <ArrowLeft className="w-5 h-5 text-gray-700" />
         <span className="text-sm font-medium text-gray-700">Back to Home</span>
@@ -716,6 +721,11 @@ export const RiddaraShowcase: React.FC<RiddaraProps> = ({ onBack }) => {
           </div>
         </div>
       </div>
+      {/* Newsletter Section */}
+      <Newsletter />
+      <div className="border-t border-gray-300" />
+      {/* Footer Section */}
+      {/* <Footer /> */}
     </div>
   );
 };

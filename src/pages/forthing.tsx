@@ -25,9 +25,10 @@ import ForthingBig from "../assets/Forthing/Grid/ForthingBig.png";
 import ForthingLeft from "../assets/Forthing/Grid/ForthingLeft.png";
 import ForthingRight from "../assets/Forthing/Grid/ForthingRight.png";
 // Import TestDrive for test drive navigation
-import TestDrive from '../pages/test';
-import MainApp from "../pages/testDrive";
-
+import TestDrive from "../pages/test";
+import MainApp from "../pages/testDrive2";
+import Newsletter from "../pages/newsLetter";
+// import Footer from "../pages/footer";
 // Define the props interface
 interface ForthingProps {
   onBack: () => void;
@@ -80,14 +81,16 @@ export const Forthing: React.FC<ForthingProps> = ({ onBack }) => {
       <div className="relative w-full h-screen">
         {/* Render MainApp without onBack prop */}
         <MainApp />
-        
+
         {/* Transparent back button overlay */}
         <button
           onClick={handleBackFromTestDrive}
-          className="fixed top-6 left-6 z-[999] flex items-center space-x-2 px-4 py-2 bg-white/90 backdrop-blur-sm hover:bg-white shadow-lg hover:shadow-xl rounded-lg transition-all duration-300 border border-gray-200"
+          className="fixed top-24 left-6 z-[999] flex items-center space-x-2 px-4 py-2 bg-white/90 backdrop-blur-sm hover:bg-white shadow-lg hover:shadow-xl rounded-lg transition-all duration-300 border border-gray-200"
         >
           <ArrowLeft className="w-5 h-5 text-gray-700" />
-          <span className="text-sm font-medium text-gray-700">Back to Forthing</span>
+          <span className="text-sm font-medium text-gray-700">
+            Back to Forthing
+          </span>
         </button>
       </div>
     );
@@ -99,14 +102,16 @@ export const Forthing: React.FC<ForthingProps> = ({ onBack }) => {
       <div className="relative w-full h-screen">
         {/* Render TestDrive component */}
         <TestDrive />
-        
+
         {/* Transparent back button overlay */}
         <button
           onClick={handleBackFromTestDrivePage}
-          className="fixed top-6 left-6 z-[999] flex items-center space-x-2 px-4 py-2 bg-white/90 backdrop-blur-sm hover:bg-white shadow-lg hover:shadow-xl rounded-lg transition-all duration-300 border border-gray-200"
+          className="fixed top-24 left-6 z-[999] flex items-center space-x-2 px-4 py-2 bg-white/90 backdrop-blur-sm hover:bg-white shadow-lg hover:shadow-xl rounded-lg transition-all duration-300 border border-gray-200"
         >
           <ArrowLeft className="w-5 h-5 text-gray-700" />
-          <span className="text-sm font-medium text-gray-700">Back to Forthing</span>
+          <span className="text-sm font-medium text-gray-700">
+            Back to Forthing
+          </span>
         </button>
       </div>
     );
@@ -316,15 +321,14 @@ export const Forthing: React.FC<ForthingProps> = ({ onBack }) => {
 
   return (
     <div className="w-full">
-      {/* Back to Home Button - Fixed position at top left */}
+      {/* Back to Home Button - Fixed position moved down 3 inches (72px) */}
       <button
         onClick={onBack}
-        className="fixed top-6 left-6 z-50 flex items-center space-x-2 px-4 py-2 bg-white/90 backdrop-blur-sm hover:bg-white shadow-lg hover:shadow-xl rounded-lg transition-all duration-300 border border-gray-200"
+        className="fixed top-24 left-6 z-50 flex items-center space-x-2 px-4 py-2 bg-white/90 backdrop-blur-sm hover:bg-white shadow-lg hover:shadow-xl rounded-lg transition-all duration-300 border border-gray-200"
       >
         <ArrowLeft className="w-5 h-5 text-gray-700" />
         <span className="text-sm font-medium text-gray-700">Back to Home</span>
       </button>
-
       {/* Hero Banner Section */}
       <div className="relative w-full">
         <img
@@ -732,6 +736,12 @@ export const Forthing: React.FC<ForthingProps> = ({ onBack }) => {
           </div>
         </div>
       </div>
+
+      {/* Newsletter Section */}
+      <Newsletter />
+      <div className="border-t border-gray-300" />
+      {/* Footer Section */}
+      {/* <Footer /> */}
     </div>
   );
 };

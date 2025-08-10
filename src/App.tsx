@@ -1,23 +1,21 @@
 // App.tsx
 import { useState } from "react";
 import Navbar from "./pages/navBar";
-import Footer from "./pages/footer";
-import type { PageType } from "./pages/types"; 
+import type { PageType } from "./pages/types";
 import ContactForm from "./pages/contactUs";
-
+import Footer from "./pages/footer";
 // Import page components
 import HomePage from "./pages/homePage";
 import ZeekrPage from "./pages/zeekr";
 import RiddaraPage from "./pages/riddara";
 import ForthingPage from "./pages/forthing";
 import JmevPage from "./pages/jmev";
-import Newsletter from "./pages/newsLetter";
 // import MainApp from './pages/testDrive'; // This should be your MainApp component that includes both EVTestDrive and OrderReview
 import AboutPage from "./pages/aboutUs";
 import News from "./pages/newsAndInsights";
 // import TestDrive from "./pages/test";
 import StoreLocation from "./pages/location";
-import JobForm from "./pages/career";
+import CombinedCareer from "./pages/career";
 
 function App() {
   // State to track current page - properly typed
@@ -54,10 +52,10 @@ function App() {
         return <ContactForm />;
       case "locations":
         return <StoreLocation />;
-      // case "Careers":
-        // return <JobForm />;
+      case "career":
+        return <CombinedCareer />;
       case "home":
-      case "homepage": 
+      case "homepage":
       default:
         return <HomePage />;
     }
@@ -67,9 +65,10 @@ function App() {
     <div className="min-h-screen flex flex-col">
       <Navbar onPageChange={handlePageChange} currentPage={currentPage} />
       <main className="flex-grow">{renderCurrentPage()}</main>
-      <Newsletter />
+      {/* <Newsletter />
       <div className="border-t border-gray-300" />
-      <Footer />
+      <Footer /> */}
+      <Footer onPageChange={handlePageChange} />
     </div>
   );
 }

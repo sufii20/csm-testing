@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronLeft, ChevronRight, Volume2, VolumeX } from "lucide-react";
 
 // Import page components
 import ZeekrPage from "./zeekr";
@@ -35,11 +35,14 @@ import fortingInterior from "../assets/interiorView/ForthingInterior.png";
 import jmeVInterior from "../assets/interiorView/JMeVInterior.png";
 import zeekrX from "../assets/interiorView/ZeekeX.png";
 import zeekrInterior from "../assets/interiorView/ZeekrInterior.png";
+import Newsletter from "../pages/newsLetter";
+// import Footer from "../pages/footer";
 
 const Homepage = () => {
   const [currentHeroBanner, setCurrentHeroBanner] = useState(0);
   const [currentInteriorBanner, setCurrentInteriorBanner] = useState(0);
   const [currentPage, setCurrentPage] = useState("home");
+  const [isMuted, setIsMuted] = useState(true);
 
   const heroBanners = [
     { id: 1, image: ZeekrBan },
@@ -179,6 +182,10 @@ const Homepage = () => {
     setCurrentHeroBanner(
       (prev) => (prev - 1 + heroBanners.length) % heroBanners.length
     );
+  };
+
+  const toggleMute = () => {
+    setIsMuted(!isMuted);
   };
 
   // Render different pages based on current page state
@@ -331,12 +338,23 @@ const Homepage = () => {
               className="w-full h-full object-cover"
               autoPlay
               loop
-              // muted
+              muted={isMuted}
               playsInline
             />
             <div className="absolute inset-0 bg-black/30 flex items-center justify-center">
               <div className="text-center text-white"></div>
             </div>
+            {/* Mute Button */}
+            <button
+              onClick={toggleMute}
+              className="absolute top-4 right-4 bg-black/50 hover:bg-black/70 rounded-full p-2 transition-all duration-300 shadow-lg"
+            >
+              {isMuted ? (
+                <VolumeX className="w-5 h-5 text-white" />
+              ) : (
+                <Volume2 className="w-5 h-5 text-white" />
+              )}
+            </button>
           </div>
         </div>
       </section>
@@ -527,6 +545,12 @@ const Homepage = () => {
           </div>
         </div>
       </section>
+
+      {/* Newsletter Section */}
+      <Newsletter />
+      <div className="border-t border-gray-300" />
+      {/* Footer Section */}
+      {/* <Footer /> */}
     </div>
   );
 };

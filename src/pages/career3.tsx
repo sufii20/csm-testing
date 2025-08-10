@@ -1,20 +1,29 @@
 import React from "react";
-import { Check } from "lucide-react";
+import { Check, X } from "lucide-react";
 
-const SuccessPopup: React.FC = () => {
+const SuccessPopup: React.FC<{ onClose: () => void }> = ({ onClose }) => {
   return (
-    <div className="fixed inset-0 flex  items-center justify-center bg-black bg-opacity-40 z-50">
-      <div className="bg-gray-100 p-10 rounded-lg text-center shadow-lg max-w-md w-full">
+    <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-40 z-50">
+      <div className="relative bg-gray-300 p-10 rounded-lg text-center shadow-lg max-w-md w-full">
+        
+        {/* Close Button */}
+        <button
+          onClick={onClose}
+          className="absolute top-3 right-3 text-gray-700 hover:text-black transition"
+        >
+          <X size={20} />
+        </button>
+
         {/* Icon */}
         <div className="flex justify-center mb-4">
-          <div className="border border-gray-400 bg-gray-200 rounded-full p-2">
+          <div className="border border-gray-500 bg-gray-200 rounded-full p-2">
             <Check className="w-8 h-8 text-gray-700" strokeWidth={2} />
           </div>
         </div>
 
         {/* Message */}
-        <p className="font-semibold bg-gray-200 text-lg text-gray-800 mb-2">
-          Your Request Had Been Submitted Successfully,
+        <p className="font-semibold text-lg text-gray-800 mb-2">
+          Your Request Has Been Submitted Successfully,
           <br />
           Our Representative Will Get In Touch With You Soon!
         </p>
